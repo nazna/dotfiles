@@ -1,0 +1,1 @@
+/home/naoya/.zprezto/runcoms/zshrc
