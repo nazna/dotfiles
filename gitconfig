@@ -5,4 +5,4 @@
   default = current
 [core]
   quotepath = false
-	editor = vim -c \"set fenc=UTF-8\"
+  editor = vim -c \"set fenc=UTF-8\"
