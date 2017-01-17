@@ -1,0 +1,8 @@
+[user]
+  email = naoya3e@gmail.com
+  name  = naoya3e
+[push]
+  default = current
+[core]
+  quotepath = false
+	editor = vim -c \"set fenc=UTF-8\"
