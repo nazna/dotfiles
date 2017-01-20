@@ -125,7 +125,15 @@ compdef _gibo gibo
 #
 
 # ls
-alias ls="ls -F --color=auto"
+case "${OSTYPE}" in
+darwin*)
+  alias ls="ls -GF"
+  ;;
+linux*)
+  alias ls="ls -F --color=auto"
+  ;;
+esac
+
 alias la="ls -A"
 alias ll="ls -l"
 alias lr="ls -R"
@@ -141,8 +149,8 @@ alias grep="grep --color"
 alias jwc="wc -m"
 
 # vim, neovim
-alias vi=nvim
-alias vim=nvim
+alias vi="nvim"
+alias vim="nvim"
 
 # git
 alias g="git"
@@ -153,6 +161,7 @@ alias gc="git commit -m"
 alias gp="git push"
 alias gd="git diff"
 alias gpl="git pull --rebase"
+alias gld="git branch -d $(git branch --merged | grep -v master | grep -v '*')"
 
 # copy, paste
 alias pbc=pbcopy
