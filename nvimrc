@@ -18,7 +18,6 @@ call dein#add('Shougo/deoplete.nvim')
 call dein#add('easymotion/vim-easymotion')
 
 " breacket
-call dein#add('cohama/lexima.vim')
 call dein#add('tpope/vim-surround')
 call dein#add('jiangmiao/auto-pairs')
 
@@ -40,8 +39,6 @@ call dein#add('othree/html5.vim')
 call dein#add('mattn/emmet-vim')
 call dein#add('hail2u/vim-css3-syntax')
 call dein#add('pangloss/vim-javascript')
-call dein#add('jelera/vim-javascript-syntax')
-call dein#add('othree/yajs.vim')
 call dein#add('mxw/vim-jsx')
 
 " color scheme
@@ -236,11 +233,6 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 let g:EasyMotion_do_mapping = 0
 
-" lexima.vim
-let g:lexima_enable_basic_rules = 1
-let g:lexima_enable_newline_rules = 1
-let g:lexima_enable_endwise_rules = 1
-
 " caw.vim
 nmap <Leader>c <Plug>(caw:hatpos:toggle)
 vmap <Leader>c <Plug>(caw:hatpos:toggle)
@@ -252,3 +244,6 @@ nmap ga <Plug>(EasyAlign)
 " lightline.vim
 let g:lightline = {}
 let g:lightline.colorscheme = 'hybrid'
+
+" vim-jsx
+let g:jsx_ext_required = 0
