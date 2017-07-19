@@ -14,6 +14,9 @@ call dein#add('Shougo/deol.nvim')
 call dein#add('Shougo/denite.nvim')
 call dein#add('Shougo/deoplete.nvim')
 
+" editor
+call dein#add('editorconfig/editorconfig-vim')
+
 " move
 call dein#add('easymotion/vim-easymotion')
 
@@ -21,7 +24,7 @@ call dein#add('easymotion/vim-easymotion')
 call dein#add('tpope/vim-surround')
 call dein#add('jiangmiao/auto-pairs')
 
-"indent
+" indent
 call dein#add('nathanaelkane/vim-indent-guides')
 
 " utility
