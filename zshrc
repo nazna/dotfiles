@@ -1,7 +1,4 @@
-#
 # zplug
-#
-
 source $HOME/.zplug/init.zsh
 
 zplug "zsh-users/zsh-completions"
@@ -26,25 +23,17 @@ fi
 
 zplug load
 
-#
 # prezto
-#
-
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-#
 # anyenv
-#
-
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
 
-#
 # Z Shell
-#
 
 # 補完設定
 autoload -U compinit; compinit
@@ -106,23 +95,19 @@ SAVESIZE=10000
 # 改行のない出力をプロンプトで上書きしない
 unsetopt promptcr
 
-
-#
 # gibo
-#
-
 _gibo() {
-    local_repo=${GIBO_BOILERPLATES:-"$HOME/.gitignore-boilerplates"}
-    if [ -e "$local_repo" ]; then
-        compadd -M 'm:{[:lower:]}={[:upper:]}' $( find "$local_repo" -name "*.gitignore" -exec basename \{\} .gitignore \; )
-    fi
+  local_repo=${GIBO_BOILERPLATES:-"$HOME/.gitignore-boilerplates"}
+  if [ -e "$local_repo" ]; then
+      compadd -M 'm:{[:lower:]}={[:upper:]}' $( find "$local_repo" -name "*.gitignore" -exec basename \{\} .gitignore \; )
+  fi
 }
 compdef _gibo gibo
 
+# pipeline
+export LESS='-R'
 
-#
 # Alias
-#
 
 # ls
 case "${OSTYPE}" in
@@ -140,11 +125,11 @@ alias lr="ls -R"
 alias lal="ls -Al"
 
 # rm
-alias rm="rm -i"
-alias rd="rm -rf"
+alias rm="gomi"
+alias rd="gomi"
 
 # word
-alias diff="diff -u"
+alias diff="colordiff -u"
 alias grep="grep --color"
 alias jwc="wc -m"
 
