@@ -140,7 +140,7 @@ alias vim="nvim"
 # git
 alias g="git"
 alias gs="git status ."
-alias gl="git log --oneline --graph --no-merges -7 --pretty=format:'%C(yellow)%h%Creset %C(Blue)%<(8)%ar%Creset %s'"
+alias gl="git log --oneline --graph --no-merges -7 --pretty=format:'%C(yellow)%h%Creset %C(Blue)%<(8)%ar%Creset %s' | cat"
 alias ga="git add"
 alias gc="git commit -m"
 alias gp="git push"
@@ -149,10 +149,12 @@ alias gpl="git pull --rebase"
 alias gld="git branch -d $(git branch --merged | grep -v master | grep -v '*')"
 
 # copy, paste
-alias pbc=pbcopy
-alias pbcopy='xclip -selection clipboard -in'
-alias pbp=pbpaste
-alias pbpaste='xclip -selection clipboard -out'
+case ${OSTYPE} in
+  linux*)
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+    ;;
+esac
 
 # youtube-dl
 alias mp3="youtube-dl -x --audio-format mp3 -o ~/Music/%(title)s.%(ext)s"
