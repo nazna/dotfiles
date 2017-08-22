@@ -159,5 +159,11 @@ esac
 # youtube-dl
 alias mp3="youtube-dl -x --audio-format mp3 -o ~/Music/%(title)s.%(ext)s"
 alias mp4="youtube-dl --format 'best[ext=mp4]' -o ~/Videos/%(title)s.%(ext)s"
-alias mp42mp3="(){ ffmpeg -i $1 -ab 256k $2 }"
-alias flv2mp4="(){ ffmpeg -i $1 -strict -experimental $2 }"
+
+function flv2mp4() {
+  ffmpeg -i $1 -codec copy ${1%.flv}.mp4
+}
+
+function mp42mp3() {
+  ffmpeg -i $1 -ab 256k ${1%.mp4}.mp3
+}
