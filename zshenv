@@ -4,7 +4,8 @@ fi
 
 export EDITOR=nvim
 export FCEDIT=nvim
-export PAGER=less
-export SHELL=zsh
+# export PAGER=less
 export XDG_CONFIG_HOME=$HOME/.config
-export PATH="/Users/naoya/anaconda/bin:$PATH"
+
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
