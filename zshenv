@@ -4,7 +4,7 @@ fi
 
 export EDITOR=nvim
 export FCEDIT=nvim
-# export PAGER=less
+export GOPATH=$HOME/.go
 export XDG_CONFIG_HOME=$HOME/.config
 
 export PATH="$HOME/.anyenv/bin:$PATH"
