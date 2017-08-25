@@ -15,6 +15,9 @@ fi
 zplug load
 
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
 autoload -U compinit; compinit
 autoload -U colors; colors
 
@@ -52,6 +55,13 @@ export LESS="-R"
 
 
 case ${OSTYPE} in
+  linux*)
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+    ;;
+esac
+
+case ${OSTYPE} in
   darwin*)
     alias ls="ls -GF"
     ;;
@@ -80,13 +90,6 @@ alias gc="git commit -m"
 alias gp="git push"
 alias gd="git diff"
 alias gld="git branch -d $(git branch --merged | grep -v master | grep -v '*')"
-
-case ${OSTYPE} in
-  linux*)
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
-    ;;
-esac
 
 alias mp3="youtube-dl -x --audio-format mp3 -o ~/Music/%(title)s.%(ext)s"
 alias mp4="youtube-dl --format 'best[ext=mp4]' -o ~/Videos/%(title)s.%(ext)s"
