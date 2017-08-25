@@ -4,9 +4,9 @@
 if &compatible
   set nocompatible
 endif
-set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
 
-call dein#begin(expand('~/.config/nvim/dein/'))
+call dein#begin(expand('~/.vim/bundles/'))
 
 " dark power
 call dein#add('Shougo/dein.vim')
