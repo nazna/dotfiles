@@ -8,3 +8,5 @@
   editor = vim -c \"set fenc=UTF-8\"
 [status]
   showUntrackedFiles = all
+[ghq]
+  root = ~/.ghq
