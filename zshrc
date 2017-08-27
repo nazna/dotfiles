@@ -26,7 +26,7 @@ zplug "modules/utility", from:prezto
 
 zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:module:prompt' theme 'sorin'
-zstyle ':prezto:module:node:info:version' format 'version:%v'
+zstyle ':prezto:module:node:info:version' format '⬢ %v'
 
 if ! zplug check; then
   zplug install
@@ -97,6 +97,9 @@ alias gp="git push"
 alias gd="git diff"
 alias gld="git branch -d $(git branch --merged | grep -v master | grep -v '*')"
 
+alias activate="source $PYENV_ROOT/versions/anaconda3-4.4.0/bin/activate"
+alias deactivate="source $PYENV_ROOT/versions/anaconda3-4.4.0/bin/deactivate"
+
 alias mp3="youtube-dl -x --audio-format mp3 -o ~/Music/%(title)s.%(ext)s"
 alias mp4="youtube-dl --format 'best[ext=mp4]' -o ~/Videos/%(title)s.%(ext)s"
 
@@ -107,3 +110,5 @@ function flv2mp4() {
 function mp42mp3() {
   ffmpeg -i $1 -ab 256k ${1%.mp4}.mp3
 }
+
+RPROMPT='$node_info[version] $python_info[virtualenv] ${editor_info[overwrite]}%(?:: %F{1}⏎%f)${VIM:+" %B%F{6}V%f%b"}${_prompt_sorin_git}'
