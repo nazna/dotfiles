@@ -5,8 +5,28 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 
+zplug "b4b4r07/zsh-gomi"
+zplug "rupa/z", use:z.sh
 zplug "mafredri/zsh-async", from:github
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
+# zplug "pecigonzalo/pure-spaceship-zsh-theme", use:pure.zsh, from:github, as:theme
+
+zplug "modules/archive", from:prezto
+zplug "modules/directory", from:prezto
+zplug "modules/editor", from:prezto
+zplug "modules/git", from:prezto
+zplug "modules/history", from:prezto
+zplug "modules/node", from:prezto
+zplug "modules/prompt", from:prezto
+zplug "modules/python", from:prezto
+zplug "modules/spectrum", from:prezto
+zplug "modules/terminal", from:prezto
+zplug "modules/utility", from:prezto
+
+zstyle ':prezto:*:*' color 'yes'
+zstyle ':prezto:module:prompt' theme 'sorin'
+zstyle ':prezto:module:node:info:version' format 'version:%v'
 
 if ! zplug check; then
   zplug install
@@ -23,32 +43,18 @@ autoload -U colors; colors
 
 bindkey -e
 
-setopt no_beep
-setopt auto_cd
-setopt auto_pushd
 setopt auto_menu
+setopt complete_aliases
+setopt correct
+setopt hist_reduce_blanks
 setopt list_packed
 setopt list_types
-setopt pushd_ignore_dups
-
-setopt correct
 setopt magic_equal_subst
-setopt complete_aliases
-setopt extended_glob
-unsetopt caseglob
+setopt no_beep
 setopt nonomatch
 
-setopt extended_history
-setopt hist_ignore_dups
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_reduce_blanks
-
+unsetopt caseglob
 unsetopt promptcr
-
-HISTFILE=$HOME/.zhistory
-HISTSIZE=1000
-SAVESIZE=100000
 
 
 export LESS="-R"
