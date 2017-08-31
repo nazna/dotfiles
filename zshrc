@@ -15,7 +15,6 @@ zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:them
 zplug "modules/archive", from:prezto
 zplug "modules/history", from:prezto
 
-
 if ! zplug check; then
   zplug install
 fi
@@ -24,6 +23,12 @@ zplug load
 
 autoload -U compinit; compinit
 autoload -U colors; colors
+
+zstyle ':completion::complete:*' use-cache true
+zstyle ':completion:*:default' menu select=1
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' list-colors "${LS_COLORS}"
 
 SPACESHIP_PROMPT_SYMBOL="%B%F{1}❯%F{3}❯%F{2}❯%f%b"
 HISTFILE=$HOME/.zhistory
