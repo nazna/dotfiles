@@ -1,7 +1,9 @@
 #!/bin/sh
 
-sudo cp $HOME/.dotfiles/hybrid.theme /usr/share/xfce4/terminal/colorschemes/
-sudo cp $HOME/.dotfiles/onedark.theme /usr/share/xfce4/terminal/colorschemes/
+if [ "$(uname)" != 'Darwin' ]; then
+  sudo cp $HOME/.dotfiles/hybrid.theme /usr/share/xfce4/terminal/colorschemes/
+  sudo cp $HOME/.dotfiles/onedark.theme /usr/share/xfce4/terminal/colorschemes/
+fi
 
 ln -is $HOME/.dotfiles/gitconfig $HOME/.gitconfig
 ln -is $HOME/.dotfiles/nvimrc $HOME/.config/nvim/init.vim
