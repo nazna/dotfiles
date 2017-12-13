@@ -5,15 +5,18 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 
-zplug "b4b4r07/zsh-gomi"
-zplug "rupa/z", use:z.sh
-zplug "mafredri/zsh-async", from:github
 zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
-zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
+zplug "b4b4r07/zsh-gomi", as:command, use:bin/gomi, on:junegunn/fzf-bin
+zplug "momo-lab/zsh-replace-multiple-dots"
+zplug "rupa/z", use:z.sh
+
+zplug "geometry-zsh/geometry", as:theme
 
 zplug "modules/archive", from:prezto
 zplug "modules/history", from:prezto
+
+zplug "zplug/zplug", hook-build: "zplug --self-manage"
 
 if ! zplug check; then
   zplug install
@@ -30,15 +33,11 @@ zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 
-SPACESHIP_PROMPT_SYMBOL="%B%F{1}❯%F{3}❯%F{2}❯%f%b"
 HISTFILE=$HOME/.zhistory
-HISTSIZE=1000
+HISTSIZE=10000
 SAVESIZE=100000
 
-bindkey -e
-
 setopt no_beep
-
 setopt auto_cd
 setopt auto_pushd
 setopt auto_menu
@@ -63,6 +62,7 @@ unsetopt promptcr
 
 export LESS="-R"
 
+# pbcopy, pbpaste
 case ${OSTYPE} in
   linux*)
     alias pbcopy='xsel --clipboard --input'
@@ -70,27 +70,41 @@ case ${OSTYPE} in
     ;;
 esac
 
-case ${OSTYPE} in
-  darwin*)
-    alias ls="ls -GF"
-    ;;
-  linux*)
-    alias ls="ls -F --color=auto"
-    ;;
-esac
+# ls
+if [[ -x `which exa` ]]; then
+  alias ls="exa -F"
+  alias la="exa -Fa"
+  alias ll="exa -bhlHF"
+  alias lla="exa -bhlHFa"
+else
+  case ${OSTYPE} in
+    darwin*)
+      alias ls="ls -GF"
+      ;;
+    linux*)
+      alias ls="ls -F --color=auto"
+      ;;
+  esac
 
-alias la="ls -A"
-alias ll="ls -l"
+  alias la="ls -A"
+  alias ll="ls -l"
+  alias lla="ls -lA"
+fi
 
-alias rm="gomi"
-alias rd="gomi"
+# colordiff
+if [[ -x `which colordiff` ]]; then
+  alias diff="colordiff"
+fi
 
-alias diff="colordiff -u"
-alias grep="grep --color"
+# gomi
+if [[ -x `which gomi` ]]; then
+  alias rm="gomi"
+fi
 
-alias vi="nvim"
-alias vim="nvim"
+# grep
+alias grep="grep --color=always"
 
+# git
 alias g="git"
 alias gs="git status ."
 alias gl="git log --oneline --graph --no-merges -7 --pretty=format:'%C(yellow)%h%Creset %C(Blue)%<(8)%ar%Creset %s' | cat"
@@ -98,10 +112,11 @@ alias ga="git add"
 alias gc="git commit -m"
 alias gp="git push"
 alias gd="git diff"
-alias gld="git branch -d $(git branch --merged | grep -v master | grep -v '*')"
+alias gclean="git branch -d $(git branch --merged | grep -v master | grep -v '*')"
 
-alias mp3="youtube-dl -x --audio-format mp3 -o ~/Music/%(title)s.%(ext)s"
-alias mp4="youtube-dl --format 'best[ext=mp4]' -o ~/Videos/%(title)s.%(ext)s"
+# youtube-dl
+alias mp3="youtube-dl -x --audio-format mp3 -o $HOME/Music/%(title)s.%(ext)s"
+alias mp4="youtube-dl --format 'best[ext=mp4]' -o $HOME/Movies/%(title)s.%(ext)s"
 
 function flv2mp4() {
   ffmpeg -i $1 -codec copy ${1%.flv}.mp4
