@@ -1,0 +1,21 @@
+# keep
+!.gitkeep
+
+# macOS
+.DS_Store
+Thumbs.db
+
+# LaTeX
+*.dvi
+*.aux
+
+# clang
+*.out
+
+# node.js
+node_modules/
+
+# others
+*.swp
+*.bak
+*~

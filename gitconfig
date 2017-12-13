@@ -1,12 +1,26 @@
 [user]
+  name  = Naoya Yamashita
   email = naoya3e@gmail.com
-  name  = naoya3e
+[core]
+  editor = vim
+  precomposeunicode = true
+  excludesfile = $HOME/.globalignore
+  quotepath = false
 [push]
   default = current
-[core]
-  quotepath = false
-  editor = vim -c \"set fenc=UTF-8\"
 [status]
   showUntrackedFiles = all
+[diff]
+  renames = true
+  compactionHeuristic = true
+[color]
+  ui = true
+  status = always
+  branch = always
+  grep = always
+  diff = always
+  diff-highlight = always
+[pull]
+  rebase = true
 [ghq]
   root = ~/.ghq
