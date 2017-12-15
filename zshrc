@@ -8,8 +8,9 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 zplug "b4b4r07/zsh-gomi", as:command, use:bin/gomi, on:junegunn/fzf-bin
+zplug "b4b4r07/enhancd", use:init.sh, on:junegunn/fzf-bin
 zplug "momo-lab/zsh-replace-multiple-dots"
-zplug "rupa/z", use:z.sh
+zplug "simonwhitaker/gibo", use:gibo, as:command
 
 zplug "geometry-zsh/geometry", as:theme
 
