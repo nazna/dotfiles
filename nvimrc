@@ -1,6 +1,3 @@
-" This is Neovim setting file
-" .nvimrc link .config/nvim/init.vim
-
 if &compatible
   set nocompatible
 endif
@@ -10,7 +7,6 @@ call dein#begin(expand('~/.vim/bundles/'))
 
 " dark power
 call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/deol.nvim')
 call dein#add('Shougo/denite.nvim')
 call dein#add('Shougo/deoplete.nvim')
 
@@ -46,8 +42,8 @@ call dein#add('mxw/vim-jsx')
 
 " color scheme
 call dein#add('w0ng/vim-hybrid')
-call dein#add('itchyny/lightline.vim')
 call dein#add('cocopon/lightline-hybrid.vim')
+call dein#add('itchyny/lightline.vim')
 
 call dein#end()
 
@@ -70,6 +66,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 " 暗色背景を設定
 set background=dark
 " カラースキームを設定
+let g:hybrid_custom_term_colors = 1
 colorscheme hybrid
 
 " メニューバーを非表示
@@ -245,8 +242,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " lightline.vim
-let g:lightline = {}
-let g:lightline.colorscheme = 'hybrid'
+let g:lightline = { 'colorscheme': 'hybrid' }
 
 " vim-jsx
 let g:jsx_ext_required = 0
