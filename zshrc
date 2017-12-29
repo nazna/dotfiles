@@ -5,17 +5,16 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 
+zplug "modules/archive", from:prezto
+zplug "modules/history", from:prezto
+
 zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 zplug "b4b4r07/zsh-gomi", as:command, use:bin/gomi, on:junegunn/fzf-bin
 zplug "b4b4r07/enhancd", use:init.sh, on:junegunn/fzf-bin
-zplug "momo-lab/zsh-replace-multiple-dots"
 zplug "simonwhitaker/gibo", use:gibo, as:command
 
-zplug "geometry-zsh/geometry", as:theme
-
-zplug "modules/archive", from:prezto
-zplug "modules/history", from:prezto
+zplug "geometry-zsh/geometry"
 
 zplug "zplug/zplug", hook-build: "zplug --self-manage"
 
@@ -102,8 +101,19 @@ if [[ -x `which gomi` ]]; then
   alias rm="gomi"
 fi
 
+# history
+case ${OSTYPE} in
+  darwin*)
+    alias history="history -i 1"
+    ;;
+esac
+
 # grep
 alias grep="grep --color=always"
+
+# vim
+alias vi=nvim
+alias vim=nvim
 
 # git
 alias g="git"
@@ -115,14 +125,13 @@ alias gp="git push"
 alias gd="git diff"
 alias gclean="git branch -d $(git branch --merged | grep -v master | grep -v '*')"
 
+# python venv
+alias activate='(){source $HOME/.venv/$1/bin/activate}'
+alias create='(){python3 -m venv $HOME/.venv/$1}'
+alias delete='(){/bin/rm -rf $HOME/.venv/$1}'
+
 # youtube-dl
 alias mp3="youtube-dl -x --audio-format mp3 -o $HOME/Music/%(title)s.%(ext)s"
 alias mp4="youtube-dl --format 'best[ext=mp4]' -o $HOME/Movies/%(title)s.%(ext)s"
-
-function flv2mp4() {
-  ffmpeg -i $1 -codec copy ${1%.flv}.mp4
-}
-
-function mp42mp3() {
-  ffmpeg -i $1 -ab 256k ${1%.mp4}.mp3
-}
+alias flv2mp4='(){ffmpeg -i $1 -codec copy ${1%.flv}.mp4}'
+alias mp42mp3='(){ffmpeg -i $1 -ab 256k ${1%.mp4}.mp3}'
