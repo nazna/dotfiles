@@ -8,6 +8,7 @@ export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 export XDG_CONFIG_HOME=$HOME/.config
 
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+export GEOMETRY_SYMBOL_PROMPT="▲ "
+export GEOMETRY_PROMPT_PLUGINS=(exec_time git node virtualenv)
+
+eval "$(nodenv init -)"
