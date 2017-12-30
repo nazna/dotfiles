@@ -2,6 +2,8 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+export LESS="-R"
+
 export EDITOR=nvim
 export FCEDIT=nvim
 export GOPATH=$HOME/.go

@@ -60,7 +60,29 @@ setopt hist_reduce_blanks
 unsetopt caseglob
 unsetopt promptcr
 
-export LESS="-R"
+# fzf: history search
+function history-fzf() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+
+  zle reset-prompt
+}
+zle -N history-fzf
+bindkey '^r' history-fzf
+
+# fzf: ghq search
+function ghq-fzf() {
+  local selected_dir=$(ghq list --full-path | fzf --query="$LBUFFER")
+
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+
+  zle reset-prompt
+}
+zle -N ghq-fzf
+bindkey '^t' ghq-fzf
 
 # pbcopy, pbpaste
 case ${OSTYPE} in
@@ -100,13 +122,6 @@ fi
 if [[ -x `which gomi` ]]; then
   alias rm="gomi"
 fi
-
-# history
-case ${OSTYPE} in
-  darwin*)
-    alias history="history -i 1"
-    ;;
-esac
 
 # grep
 alias grep="grep --color=always"
