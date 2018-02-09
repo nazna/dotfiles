@@ -13,6 +13,7 @@ zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 zplug "b4b4r07/zsh-gomi", as:command, use:bin/gomi, on:junegunn/fzf-bin
 zplug "b4b4r07/enhancd", use:init.sh, on:junegunn/fzf-bin
 zplug "simonwhitaker/gibo", use:gibo, as:command
+zplug "lukechilds/zsh-nvm"
 
 zplug "geometry-zsh/geometry"
 
