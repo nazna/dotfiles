@@ -6,8 +6,8 @@ open https://www.google.co.jp/chrome/browser/desktop/index.html
 
 # install homebrew packages
 brew update
-brew install python3 nodenv youtube-dl neovim
-brew cask install iina
+brew install python3 nodenv youtube-dl neovim ghostscript
+brew cask install iina basictex
 
 # install ethereum
 brew tap ethereum/ethereum
@@ -45,3 +45,7 @@ cat $HOME/.ssh/id_ed25519.pub | pbcopy
 # setup zsh configure
 git clone git@github.com:naoya3e/.dotfiles.git && cd .dotfiles
 sh ./install.sh
+
+# setup latex packages
+sudo tlmgr install collection-langjapanese latexmk here multirow collection-fontsrecommended graphicx
+pip install pygments
