@@ -6,8 +6,8 @@ open https://www.google.co.jp/chrome/browser/desktop/index.html
 
 # install homebrew packages
 brew update
-brew install python3 nodenv youtube-dl neovim ghostscript
-brew cask install iina basictex
+brew install python3 nodenv youtube-dl neovim
+brew cask install iina
 
 # install ethereum
 brew tap ethereum/ethereum
@@ -20,6 +20,8 @@ curl https://sh.rustup.rs -sSf | sh
 cargo install --no-default-features exa
 
 # setup neovim
+pip install neovim
+pip3 install neovim
 mkdir -p $HOME/.vim/bundles
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh $HOME/.vim/bundles
@@ -47,5 +49,7 @@ git clone git@github.com:naoya3e/.dotfiles.git && cd .dotfiles
 sh ./install.sh
 
 # setup latex packages
-sudo tlmgr install collection-langjapanese latexmk here multirow collection-fontsrecommended graphicx
+brew install ghostscript
+brew cask install basictex
 pip install pygments
+sudo tlmgr install collection-langjapanese latexmk here multirow collection-fontsrecommended graphicx
