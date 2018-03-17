@@ -33,12 +33,16 @@ call dein#add('tpope/vim-fugitive')
 " C++
 call dein#add('octol/vim-cpp-enhanced-highlight')
 
+" LaTeX
+call dein#add('lervag/vimtex')
+
 " web development
 call dein#add('othree/html5.vim')
 call dein#add('mattn/emmet-vim')
 call dein#add('hail2u/vim-css3-syntax')
 call dein#add('pangloss/vim-javascript')
 call dein#add('mxw/vim-jsx')
+call dein#add('styled-components/vim-styled-components')
 
 " color scheme
 call dein#add('w0ng/vim-hybrid')
@@ -62,6 +66,9 @@ set mouse=a
 set t_Co=256
 " カーソルが行頭行末で停止しない
 set whichwrap=b,s,h,l,<,>,[,]
+
+" default shell in Terminal mode
+set sh=zsh
 
 " 暗色背景を設定
 set background=dark
@@ -174,6 +181,9 @@ nnoremap <silent> p p`]
 " 不要なウィンドウのポップアップを抑制
 map q: :q
 
+" ESC going to normal mode in Terminal mode
+tnoremap <silent> <ESC> <C-\><C-n>
+
 " HTMLのとじタグを補完
 autocmd FileType html inoremap <silent> <buffer> </ </<C-x><C-o>
 
@@ -243,6 +253,14 @@ nmap ga <Plug>(EasyAlign)
 
 " lightline.vim
 let g:lightline = { 'colorscheme': 'hybrid' }
+
+" vimtex
+let g:tex_flavor = "latex"
+
+let g:vimtex_latexmk_enabled = 1
+let g:vimtex_latexmk_options = '-pdfdvi'
+let g:vimtex_view_method = 'general'
+let g:vimtex_view_general_viewer = 'open'
 
 " vim-jsx
 let g:jsx_ext_required = 0
