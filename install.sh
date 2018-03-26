@@ -7,6 +7,7 @@ fi
 
 ln -is $HOME/.dotfiles/gitconfig $HOME/.gitconfig
 ln -is $HOME/.dotfiles/globalignore $HOME/.globalignore
+ln -is $HOME/.dotfiles/latexmkrc $HOME/.latexmkrc
 ln -is $HOME/.dotfiles/nvimrc $HOME/.config/nvim/init.vim
 ln -is $HOME/.dotfiles/nvimrc $HOME/.nvimrc
 ln -is $HOME/.dotfiles/zshenv $HOME/.zshenv
