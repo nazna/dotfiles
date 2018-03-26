@@ -123,11 +123,6 @@ if [[ -x `which colordiff` ]]; then
   alias diff="colordiff"
 fi
 
-# gomi
-if [[ -x `which gomi` ]]; then
-  alias rm="gomi"
-fi
-
 # grep
 alias grep="grep --color=always"
 
