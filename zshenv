@@ -5,6 +5,8 @@ export FCEDIT=nvim
 
 export XDG_CONFIG_HOME=$HOME/.config
 
+export ZPLUG_HOME="$HOME/.zplug"
+
 export GEOMETRY_COLOR_PACKAGER_VERSION="green"
 export GEOMETRY_PROMPT_PLUGINS=(exec_time git node virtualenv)
 export GEOMETRY_SYMBOL_GIT_DIRTY=${GEOMETRY_SYMBOL_GIT_DIRTY:-"⬡ "}

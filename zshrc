@@ -1,27 +1,28 @@
 source $HOME/.zplug/init.zsh
 
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-history-substring-search"
+# zsh package
+zplug "zsh-users/zsh-completions", defer:0
+zplug "zsh-users/zsh-autosuggestions", defer:0
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:3
 
-zplug "modules/archive", from:prezto
-zplug "modules/history", from:prezto
-
-zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
-zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
+# command
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+zplug "stedolan/jq", as:command, from:gh-r, rename-to:jq
+zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
 zplug "b4b4r07/zsh-gomi", as:command, use:bin/gomi, on:junegunn/fzf-bin
+zplug "simonwhitaker/gibo", as:command, use:gibo
+
+# environment
+zplug "lukechilds/zsh-nvm"
 zplug "b4b4r07/enhancd", use:init.sh, on:junegunn/fzf-bin
 
+# emoji
 zplug "b4b4r07/emoji-cli"
 zplug "mrowa44/emojify"
 
-zplug "simonwhitaker/gibo", use:gibo, as:command
-zplug "lukechilds/zsh-nvm"
-
+# theme and prompt
 zplug "geometry-zsh/geometry"
-
-zplug "zplug/zplug", hook-build: "zplug --self-manage"
 
 if ! zplug check; then
   zplug install
@@ -29,8 +30,8 @@ fi
 
 zplug load
 
-autoload -U compinit; compinit
-autoload -U colors; colors
+autoload -Uz compinit; compinit
+autoload -Uz colors; colors
 
 zstyle ':completion::complete:*' use-cache true
 zstyle ':completion:*:default' menu select=1
@@ -39,7 +40,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 
 HISTFILE=$HOME/.zhistory
-HISTSIZE=10000
+HISTSIZE=100000
 SAVESIZE=100000
 
 setopt no_beep
@@ -123,17 +124,23 @@ if [[ -x `which colordiff` ]]; then
   alias diff="colordiff"
 fi
 
+if ! type "$colordiff" > /dev/null; then
+  alias diff="colordiff"
+fi
+
 # grep
 alias grep="grep --color=always"
 
 # vim
-alias vi=nvim
-alias vim=nvim
+if [[ -x `which nvim` ]]; then
+  alias vi=nvim
+  alias vim=nvim
+fi
 
 # git
 alias g="git"
 alias gs="git status ."
-alias gl="git log --oneline --graph --no-merges -7 --pretty=format:'%C(yellow)%h%Creset %C(Blue)%<(8)%ar%Creset %s' | cat"
+alias gl="git log --oneline --graph --no-merges -7 --pretty=format:'%C(yellow)%h%Creset %C(Blue)%<(8)%ar%Creset %s'"
 alias ga="git add"
 alias gc="git commit -m"
 alias gp="git push"
@@ -143,7 +150,7 @@ alias gclean="git branch -d $(git branch --merged | grep -v master | grep -v '*'
 # python venv
 alias activate='(){source $HOME/.venv/$1/bin/activate}'
 alias create='(){python3 -m venv $HOME/.venv/$1}'
-alias delete='(){/bin/rm -rf $HOME/.venv/$1}'
+alias delete='(){rm -rf $HOME/.venv/$1}'
 
 # youtube-dl
 alias mp3="youtube-dl -x --audio-format mp3 -o $HOME/Music/%(title)s.%(ext)s"
