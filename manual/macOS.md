@@ -6,7 +6,7 @@ open https://www.google.co.jp/chrome/browser/desktop/index.html
 
 # install homebrew packages
 brew update
-brew install python3 nodenv youtube-dl neovim
+brew install python python3 nodenv youtube-dl neovim
 brew cask install iina
 
 # install ethereum
@@ -20,8 +20,8 @@ curl https://sh.rustup.rs -sSf | sh
 cargo install --no-default-features exa
 
 # setup neovim
-pip install neovim
-pip3 install neovim
+pip2 install neovim --upgrade
+pip3 install neovim --upgrade
 mkdir -p $HOME/.vim/bundles
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh $HOME/.vim/bundles
@@ -36,7 +36,7 @@ open https://www.iterm2.com/downloads.html
 mkdir -p $HOME/.fonts $HOME/.icons $HOME/.config/nvim
 
 # install fonts
-curl -L https://github.com/miiton/Cica/releases/download/v2.0.4/Cica_v2.0.4.zip -o $HOME/Cica.zip
+curl -L https://github.com/miiton/Cica/releases/download/v2.1.0/Cica_v2.1.0.zip -o $HOME/Cica.zip
 unzip Cica.zip -d $HOME/.fonts/Cica
 rm $HOME/Cica.zip
 
@@ -53,3 +53,6 @@ brew install ghostscript
 brew cask install basictex
 pip install pygments
 sudo tlmgr install collection-langjapanese latexmk here multirow collection-fontsrecommended graphicx
+
+# install node packages
+npm install -g doctoc

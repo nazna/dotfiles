@@ -155,10 +155,6 @@ set nowritebackup
 set clipboard=unnamedplus
 
 
-""""""""""""""""
-"  key maping  "
-""""""""""""""""
-
 " ハイライトを消去
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
@@ -208,16 +204,15 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
-" 画面サイズ調整
+" Resize bindings
 nnoremap <S-Left> <C-w><<CR>
 nnoremap <S-Right> <C-w>><CR>
 nnoremap <S-Up> <C-w>-<CR>
 nnoremap <S-Down> <C-w>+<CR>
 
 
-""""""""""""""""
-"  plugins     "
-""""""""""""""""
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
