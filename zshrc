@@ -140,7 +140,7 @@ fi
 # git
 alias g="git"
 alias gs="git status ."
-alias gl="git log --oneline --graph --no-merges -7 --pretty=format:'%C(yellow)%h%Creset %C(Blue)%<(8)%ar%Creset %s'"
+alias gl="git log --oneline --graph --no-merges --pretty=format:'%C(yellow)%h%Creset %C(Blue)%<(8)%ar%Creset %s'"
 alias ga="git add"
 alias gc="git commit -m"
 alias gp="git push"
