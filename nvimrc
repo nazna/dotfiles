@@ -12,6 +12,7 @@ call dein#add('Shougo/deoplete.nvim')
 
 " editor
 call dein#add('editorconfig/editorconfig-vim')
+call dein#add('junegunn/goyo.vim')
 
 " move
 call dein#add('easymotion/vim-easymotion')
@@ -215,7 +216,7 @@ nnoremap <S-Up> <C-w>-<CR>
 nnoremap <S-Down> <C-w>+<CR>
 
 
-let g:python2_host_prog = '/usr/local/bin/python'
+let g:python2_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 " deoplete.nvim
@@ -260,6 +261,7 @@ let g:vimtex_latexmk_enabled = 1
 let g:vimtex_latexmk_options = '-pdfdvi'
 let g:vimtex_view_method = 'general'
 let g:vimtex_view_general_viewer = 'open'
+let g:vimtex_compiler_progname = 'nvr'
 
 " vim-jsx
 let g:jsx_ext_required = 0
