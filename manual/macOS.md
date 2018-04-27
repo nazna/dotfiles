@@ -6,12 +6,8 @@ open https://www.google.co.jp/chrome/browser/desktop/index.html
 
 # install homebrew packages
 brew update
-brew install python python3 nodenv youtube-dl neovim
+brew install python2 python3 youtube-dl
 brew cask install iina
-
-# install ethereum
-brew tap ethereum/ethereum
-brew install ethereum
 
 # install rust language
 curl https://sh.rustup.rs -sSf | sh
@@ -20,14 +16,13 @@ curl https://sh.rustup.rs -sSf | sh
 cargo install --no-default-features exa
 
 # setup neovim
-pip2 install neovim --upgrade
-pip3 install neovim --upgrade
+pip2 install --upgrade pip
+pip3 install --upgrade pip
+pip2 install --upgrade neovim
+pip3 install --upgrade neovim flake8
 mkdir -p $HOME/.vim/bundles
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh $HOME/.vim/bundles
-
-# download Typora
-open https://typora.io/
 
 # download iTerm2
 open https://www.iterm2.com/downloads.html
