@@ -66,6 +66,9 @@ setopt hist_reduce_blanks
 unsetopt caseglob
 unsetopt promptcr
 
+# command completion for pipenv
+eval "$(pipenv --completion)"
+
 # fzf: history search
 function history-fzf() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")

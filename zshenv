@@ -19,3 +19,4 @@ export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
 export PYENV_ROOT=$HOME/.venv
+export PIPENV_VENV_IN_PROJECT=true
