@@ -16,7 +16,7 @@ export GEOMETRY_SYMBOL_NODE_NPM_VERSION="⬡ "
 export GEOMETRY_SYMBOL_PROMPT="▲ "
 
 export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/.cargo/bin
 
 export PYENV_ROOT=$HOME/.venv
 export PIPENV_VENV_IN_PROJECT=true
