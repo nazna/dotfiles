@@ -13,6 +13,7 @@ call dein#add('Shougo/deoplete.nvim')
 " editor
 call dein#add('editorconfig/editorconfig-vim')
 call dein#add('junegunn/goyo.vim')
+call dein#add('w0rp/ale')
 
 " move
 call dein#add('easymotion/vim-easymotion')
@@ -227,6 +228,13 @@ let g:deoplete#sources#syntax#min_keyword_length = 2
 
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+
+" ale
+let g:ale_lint_on_enter = 0
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_error = "E"
+let g:ale_sign_warning = "W"
 
 " vim-easymotion
 map  <Leader>f <Plug>(easymotion-bd-f)
