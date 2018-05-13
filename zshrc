@@ -41,7 +41,7 @@ zstyle ':completion:*' list-colors "${LS_COLORS}"
 
 HISTFILE=$HOME/.zhistory
 HISTSIZE=100000
-SAVESIZE=100000
+SAVEHIST=100000
 
 setopt no_beep
 setopt auto_cd
