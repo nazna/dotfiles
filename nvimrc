@@ -231,7 +231,7 @@ inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 
 " ale
 let g:ale_lint_on_enter = 0
-let g:ale_sign_column_always = 1
+let g:ale_sign_column_always = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = "E"
 let g:ale_sign_warning = "W"
