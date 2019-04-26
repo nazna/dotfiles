@@ -1,6 +1,8 @@
-# .dotfiles
-
-A dotfiles management repository
+<div align="center">
+  <img src=".github/dotfile.png" width="150px">
+  <h1 align="center">.dotfiles</h1>
+  <sup align="center">Naoya's dotfiles</sup>
+</div>
 
 ## 更新を反映する
 
