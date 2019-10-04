@@ -2,6 +2,10 @@
 
 set -eu
 
+mkdir $HOME/.fonts
+mkdir -p $HOME/.cache/dein
+mkdir -p $HOME/.config/nvim
+
 ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/editorconfig $HOME/.editorconfig
 ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/gitconfig $HOME/.gitconfig
 ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/globalgitignore $HOME/.globalgitignore
@@ -18,3 +22,7 @@ sh ./installer.sh $HOME/.cache/dein
 
 sudo echo "/usr/local/bin/zsh" >> /etc/shells
 chsh -s /usr/local/bin/zsh
+
+echo "Generating ssh key..."
+ssh-keygen -t ed25519
+cat $HOME/.ssh/id_ed25519.pub | pbcopy

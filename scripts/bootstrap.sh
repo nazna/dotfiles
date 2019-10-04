@@ -2,12 +2,12 @@
 
 set -eu
 
-DOTPATH=$HOME/.dotfiles
+DOTPATH=$HOME/workspace/ghq/github.com/naoya3e/dotfiles
 
 echo "Bootstrapping..."
 
 if [ ! -d "$DOTPATH" ]; then
-  git clone https://github.com/naoya3e/dotfiles
+  git clone https://github.com/naoya3e/dotfiles.git $DOTPATH
 else
   echo "$DOTPATH already exist. Updateing..."
   cd "$DOTPATH"

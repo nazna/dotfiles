@@ -7,7 +7,7 @@
 # Bootstrap
 
 ```sh
-bash -c "${curl -L https://raw...}"
+bash -c "$(curl -L https://raw.githubusercontent.com/naoya3e/dotfiles/master/scripts/bootstrap.sh)"
 ```
 
 # Fonts
