@@ -1,22 +1,20 @@
 export LESS="-R"
-
 export EDITOR=nvim
 export FCEDIT=nvim
+export LANG="ja_JP.UTF-8"
+export HISTFILE=$HOME/.zhistory
+export HISTSIZE=100000
+export SAVEHIST=100000
+export FZF_DEFAULT_OPTS="--height 40% --ansi --reverse --preview-window down:1"
+
+export BREW_INSTALLED=/usr/local/opt/
 
 export XDG_CONFIG_HOME=$HOME/.config
-
-export ZPLUG_HOME="$HOME/.zplug"
-
-export GEOMETRY_COLOR_PACKAGER_VERSION="green"
-export GEOMETRY_PROMPT_PLUGINS=(exec_time git node virtualenv)
-export GEOMETRY_SYMBOL_GIT_DIRTY=${GEOMETRY_SYMBOL_GIT_DIRTY:-"⬡ "}
-export GEOMETRY_SYMBOL_GIT_CLEAN=${GEOMETRY_SYMBOL_GIT_CLEAN:-"⬢ "}
-export GEOMETRY_SYMBOL_GIT_BARE=${GEOMETRY_SYMBOL_GIT_BARE:-"⬢ "}
-export GEOMETRY_SYMBOL_NODE_NPM_VERSION="⬡ "
-export GEOMETRY_SYMBOL_PROMPT="▲ "
+export ZPLUG_HOME=$BREW_INSTALLED/zplug
 
 export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin:$HOME/.cargo/bin
+export FZFPATH=$HOME/.fzf
+export NVMPATH = $HOME/.nvm
+export CARGOPATH=$HOME/.cargo
 
-export PYENV_ROOT=$HOME/.venv
-export PIPENV_VENV_IN_PROJECT=true
+export PATH=$GOPATH/bin:$CARGOPATH/bin:$FZFPATH/bin${PATH:+:${PATH}}

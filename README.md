@@ -1,31 +1,18 @@
 <div align="center">
-  <img src=".github/dotfile.png" width="150px">
-  <h1 align="center">.dotfiles</h1>
-  <sup align="center">Naoya's dotfiles</sup>
+  <img src=".github/dot.png" width="150px">
+  <h1 align="center">Naoya's dotfiles</h1>
+  <sup align="center">These configuration dotfiles assume macOS.</sup>
 </div>
 
-## 更新を反映する
-
-ターミナルで以下のコマンドを入力する
+# Bootstrap
 
 ```sh
-$ git pull
-$ sh ./install.sh
+bash -c "${curl -L https://raw...}"
 ```
 
-`install.sh`はシンボリックリンクを張るスクリプトである。
-インタラクティブに確認を行うようにしているため、`replace?`とか聞かれたら`yes`と入力してシンボリックリンクを上書きしてやることでたぶん大丈夫
+# Fonts
 
-## Node.js
-
-## Python
-
-- numpy
-- matplotlib
-- opencv3
-- neovim
-- pandas
-- h5py
-- pillow
-- seaborn
-- flake8
+- Cica
+- Montserrat
+- M+ 1p
+- M+ 1m

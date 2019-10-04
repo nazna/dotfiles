@@ -5,7 +5,7 @@
 .DS_Store
 Thumbs.db
 
-# LaTeX
+# latex
 *.dvi
 *.aux
 

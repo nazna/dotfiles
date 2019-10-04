@@ -4,8 +4,10 @@
 [core]
   editor = vim
   precomposeunicode = true
-  excludesfile = $HOME/.globalignore
+  excludesfile = $HOME/.globalgitignore
+  ignorecase = false
   quotepath = false
+  pager = less -FRX
 [push]
   default = current
 [status]
@@ -13,6 +15,8 @@
 [diff]
   renames = true
   compactionHeuristic = true
+[grep]
+  lineNumber = true
 [color]
   ui = true
   status = always
@@ -22,5 +26,6 @@
   diff-highlight = always
 [pull]
   rebase = true
+  prune = true
 [ghq]
-  root = ~/.ghq
+  root = $HOME/workspace/ghq
