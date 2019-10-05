@@ -1,5 +1,6 @@
 echo "Configuring..."
 defaults write com.apple.screencapture disable-shadow -boolean true
+defaults write com.apple.screencapture name "ScreenShot"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 defaults write com.apple.CrashReporter DialogType -string "none"
