@@ -6,6 +6,8 @@ mkdir $HOME/.fonts
 mkdir -p $HOME/.cache/dein
 mkdir -p $HOME/.config/nvim
 
+rm $HOME/Applications/.localized $HOME/Desktop/.localized $HOME/Documents/.localized $HOME/Downloads/.localized $HOME/Library/.localized $HOME/Movies/.localized $HOME/Music/.localized $HOME/Pictures/.localized $HOME/Public/.localized
+
 ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/editorconfig $HOME/.editorconfig
 ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/gitconfig $HOME/.gitconfig
 ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/globalgitignore $HOME/.globalgitignore
