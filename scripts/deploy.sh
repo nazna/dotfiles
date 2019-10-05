@@ -29,3 +29,5 @@ chsh -s /usr/local/bin/zsh
 echo "Generating ssh key..."
 ssh-keygen -t ed25519
 cat $HOME/.ssh/id_ed25519.pub | pbcopy
+
+nvm install node
