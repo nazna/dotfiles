@@ -20,7 +20,7 @@ ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/editorconfig $HOME/.edit
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh $HOME/.cache/dein
 
-sudo echo "/usr/local/bin/zsh" >> /etc/shells
+sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
 
 echo "Generating ssh key..."
