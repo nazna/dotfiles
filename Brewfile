@@ -7,7 +7,7 @@ brew "git"
 brew "mas"
 brew "nvm"
 brew "fzf"
-brew "exa
+brew "exa"
 brew "ghq"
 brew "zsh"
 brew "nkf"
