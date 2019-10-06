@@ -20,11 +20,17 @@ chsh -s /usr/local/bin/zsh
 echo "Prepare VSCode setting sync..."
 code --install-extension Shan.code-settings-sync
 
-echo "Generating ssh key..."
-ssh-keygen -t ed25519
-cat $HOME/.ssh/id_ed25519.pub | pbcopy
-
 echo "Configuring node.js environment..."
 nvm install node
 npm install -g commitizen cz-conventional-changelog
 echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+
+echo "Generating ssh key..."
+ssh-keygen -t ed25519
+cat $HOME/.ssh/id_ed25519.pub | pbcopy
+
+echo "Copied your generated SSH key to clipboard."
+echo "Register the key on GitHub :)"
+open -a "Google Chrome" https://github.com/settings/keys
+read -p "Are you ready? (Hit enter key)"
+ghq get git@github.com:naoya3e/dotfiles.git
