@@ -21,9 +21,11 @@ echo "Prepare VSCode setting sync..."
 code --install-extension Shan.code-settings-sync
 
 echo "Configuring node.js environment..."
+NVM_DIR=$HOME/.config/.nvm
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
 nvm install node
 npm install -g commitizen cz-conventional-changelog
-echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+echo '{ "path": "cz-conventional-changelog" }' > $HOME/.czrc
 
 echo "Generating ssh key..."
 ssh-keygen -t ed25519
