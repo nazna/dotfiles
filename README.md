@@ -4,13 +4,20 @@
   <sup align="center">These configuration dotfiles assume macOS.</sup>
 </div>
 
-# Bootstrap
+## Bootstrap
 
 ```sh
 bash -c "$(curl -L https://raw.githubusercontent.com/naoya3e/dotfiles/master/scripts/bootstrap.sh)"
 ```
 
-# Fonts
+## Apply updates
+
+```sh
+cd $DOTPATH
+./scripts/deploy.sh
+```
+
+## Fonts
 
 - Cica
 - Montserrat
