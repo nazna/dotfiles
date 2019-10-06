@@ -5,8 +5,6 @@ zplug "zsh-users/zsh-autosuggestions", defer:0
 zplug "zsh-users/zsh-history-substring-search", defer:1
 zplug "zdharma/fast-syntax-highlighting", defer:1
 
-zplug "zplug/zplug", hook-build:"zplug --self-manage"
-
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "mafredri/zsh-async", from:github
 
@@ -49,8 +47,8 @@ unsetopt promptcr
 
 eval "$(starship init zsh)"
 
-[ -s "$BREW_INSTALLED/nvm/nvm.sh" ] && \. "$BREW_INSTALLED/nvm/nvm.sh"
-[ -s "$BREW_INSTALLED/nvm/etc/bash_completion" ] && \. "$BREW_INSTALLED/nvm/etc/bash_completion"
+[ -s "$NVM_HOME/nvm.sh" ] && \. "$NVM_HOME/nvm.sh"
+[ -s "$NVM_HOME/etc/bash_completion" ] && \. "$NVM_HOME/etc/bash_completion"
 
 function history-fzf() {
   BUFFER=$(history -n -r 1 | fzf --no-sort --ansi +m --query "$LBUFFER" --prompt="history > ")
