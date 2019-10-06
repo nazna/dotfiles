@@ -14,7 +14,7 @@ export ZPLUG_HOME=$BREW_INSTALLED/zplug
 
 export GOPATH=$HOME/.go
 export FZFPATH=$HOME/.fzf
-export NVMPATH = $HOME/.nvm
+export NVMPATH=$HOME/.nvm
 export CARGOPATH=$HOME/.cargo
 
 export PATH=$GOPATH/bin:$CARGOPATH/bin:$FZFPATH/bin${PATH:+:${PATH}}
