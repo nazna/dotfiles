@@ -9,10 +9,10 @@ fi
 
 echo "Bootstrapping..."
 
-curl -L https://github.com/naoya3e/dotfiles/archive/master.zip -o dotfiles.zip
-unzip dotfiles.zip
-rm dotfiles.zip
-cd dotfiles-master
+curl -L https://github.com/naoya3e/dotfiles/archive/master.zip -o $HOME/dotfiles.zip
+unzip $HOME/dotfiles.zip
+rm $HOME/dotfiles.zip
+cd $HOME/dotfiles-master
 
 if ! command -v brew >/dev/null 2>&1; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -30,6 +30,8 @@ echo
 
 scripts/deploy.sh
 echo
+
+rm -rf $HOME/dotfiles-master
 
 echo "==============================================="
 echo
