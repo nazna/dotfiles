@@ -20,7 +20,6 @@ export ZPLUG_HOME=/usr/local/opt/zplug
 
 export GOPATH=$HOME/.go
 export FZFPATH=$HOME/.fzf
-export NVMPATH=$HOME/.nvm
 export CARGOPATH=$HOME/.cargo
 
 export PATH=$GOPATH/bin:$CARGOPATH/bin:$FZFPATH/bin${PATH:+:${PATH}}
