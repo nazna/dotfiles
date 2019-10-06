@@ -19,4 +19,7 @@ echo "Generating ssh key..."
 ssh-keygen -t ed25519
 cat $HOME/.ssh/id_ed25519.pub | pbcopy
 
+echo "Configuring node.js environment..."
 nvm install node
+npm install -g commitizen cz-conventional-changelog
+echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
