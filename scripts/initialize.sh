@@ -4,6 +4,7 @@ set -eu
 
 mkdir $HOME/.fonts
 mkdir -p $HOME/.cache/dein
+mkdir -p $HOME/.config/nvm
 mkdir -p $HOME/.config/nvim
 
 rm /Applications/.localized $HOME/Desktop/.localized $HOME/Documents/.localized $HOME/Downloads/.localized $HOME/Library/.localized $HOME/Movies/.localized $HOME/Music/.localized $HOME/Pictures/.localized $HOME/Public/.localized
@@ -35,4 +36,7 @@ echo "Copied your generated SSH key to clipboard."
 echo "Register the key on GitHub :)"
 open -a "Google Chrome" https://github.com/settings/keys
 read -p "Are you ready? (Hit enter key)"
+
+cp ./gitconfig $HOME/.gitconfig
 ghq get git@github.com:naoya3e/dotfiles.git
+rm $HOME/.gitconfig
