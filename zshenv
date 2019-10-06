@@ -1,17 +1,22 @@
 export LESS="-R"
 export EDITOR=nvim
 export FCEDIT=nvim
+
 export LANG="ja_JP.UTF-8"
+
 export HISTFILE=$HOME/.zhistory
 export HISTSIZE=100000
 export SAVEHIST=100000
+
 export FZF_DEFAULT_OPTS="--height 40% --ansi --reverse --preview-window down:1"
 
-export BREW_INSTALLED=/usr/local/opt
 export DOTPATH=$HOME/workspace/ghq/github.com/naoya3e/dotfiles
 
 export XDG_CONFIG_HOME=$HOME/.config
-export ZPLUG_HOME=$BREW_INSTALLED/zplug
+
+export NVM_DIR=$XDG_CONFIG_HOME/.nvm
+export NVM_HOME/usr/local/opt/nvm
+export ZPLUG_HOME=/usr/local/opt/zplug
 
 export GOPATH=$HOME/.go
 export FZFPATH=$HOME/.fzf
