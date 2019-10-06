@@ -8,6 +8,7 @@ export SAVEHIST=100000
 export FZF_DEFAULT_OPTS="--height 40% --ansi --reverse --preview-window down:1"
 
 export BREW_INSTALLED=/usr/local/opt
+export DOTPATH=$HOME/workspace/ghq/github.com/naoya3e/dotfiles
 
 export XDG_CONFIG_HOME=$HOME/.config
 export ZPLUG_HOME=$BREW_INSTALLED/zplug
