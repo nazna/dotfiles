@@ -4,7 +4,7 @@
 [core]
   editor = vim
   precomposeunicode = true
-  excludesfile = $HOME/.globalgitignore
+  excludesfile = ~/.globalgitignore
   ignorecase = false
   quotepath = false
   pager = less -FRX
@@ -28,4 +28,4 @@
   rebase = true
   prune = true
 [ghq]
-  root = $HOME/workspace/ghq
+  root = ~/workspace/ghq
