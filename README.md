@@ -18,6 +18,8 @@ git pull --rebase
 ./scripts/deploy.sh
 ```
 
+Maybe last line is unnecessary.
+
 ## Fonts
 
 - Cica
