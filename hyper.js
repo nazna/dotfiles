@@ -69,7 +69,7 @@ module.exports = {
   },
 
   plugins: [
-    'hyper-materialshell'
+    'hyperterm-material'
   ],
 
   localPlugins: [],
