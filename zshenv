@@ -15,7 +15,7 @@ export DOTPATH=$HOME/workspace/ghq/github.com/naoya3e/dotfiles
 export XDG_CONFIG_HOME=$HOME/.config
 
 export NVM_DIR=$XDG_CONFIG_HOME/nvm
-export NVM_HOME/usr/local/opt/nvm
+export NVM_HOME=/usr/local/opt/nvm
 export ZPLUG_HOME=/usr/local/opt/zplug
 
 export GOPATH=$HOME/.go
