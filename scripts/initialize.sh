@@ -18,14 +18,15 @@ chsh -s /usr/local/bin/zsh
 
 code --install-extension Shan.code-settings-sync
 
-NVM_DIR=$HOME/.config/.nvm
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
+NVM_DIR=$HOME/.config/nvm
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 nvm install node
 npm install -g commitizen cz-conventional-changelog
 
 ssh-keygen -t ed25519
 cat $HOME/.ssh/id_ed25519.pub | pbcopy
 
+echo
 echo "Copied your generated SSH key to clipboard."
 echo "Google Chrome is opening..."
 echo "Register the key on GitHub :)"

@@ -1,4 +1,4 @@
-source "$ZPLUG_HOME/init.zsh"
+source "/usr/local/opt/zplug/init.zsh"
 
 zplug "zsh-users/zsh-completions", defer:0
 zplug "zsh-users/zsh-autosuggestions", defer:0
@@ -15,7 +15,7 @@ fi
 zplug load
 
 if builtin command -v brew > /dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+  FPATH=/usr/local/share/zsh/site-functions:$FPATH
 fi
 
 if builtin command -v starship > /dev/null; then
@@ -53,8 +53,8 @@ setopt hist_reduce_blanks
 unsetopt caseglob
 unsetopt promptcr
 
-[ -s "$NVM_HOME/nvm.sh" ] && . "$NVM_HOME/nvm.sh"
-[ -s "$NVM_HOME/etc/bash_completion" ] && . "$NVM_HOME/etc/bash_completion"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
 
 function history-fzf() {
   BUFFER=$(history -n -r 1 | fzf +s +m --query="$LBUFFER" --prompt="history > ")
