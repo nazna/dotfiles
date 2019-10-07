@@ -13,7 +13,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('junegunn/goyo.vim')
 
-  call dein#add('hzchirs/vim-material')
+  call dein#add('kristijanhusak/vim-hybrid-material')
   call dein#add('itchyny/lightline.vim')
 
   call dein#end()
@@ -101,5 +101,5 @@ let g:deoplete#enable_smart_case = 1
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 
-let g:lightline = { 'colorscheme': 'material' }
+let g:lightline = { 'colorscheme': 'hybrid' }
 

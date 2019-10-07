@@ -69,7 +69,7 @@ module.exports = {
   },
 
   plugins: [
-    'hyperterm-material'
+    'hyper-hybrid-reduced-contrast'
   ],
 
   localPlugins: [],

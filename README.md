@@ -13,7 +13,7 @@ bash -c "$(curl -L https://raw.githubusercontent.com/naoya3e/dotfiles/master/scr
 ## Apply updates
 
 ```sh
-cd $DOTPATH
+cd $HOME/workspace/ghq/github.com/naoya3e/dotfiles
 git pull --rebase
 ./scripts/deploy.sh
 ```
