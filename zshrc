@@ -1,4 +1,4 @@
-source $ZPLUG_HOME/init.zsh
+source "$ZPLUG_HOME/init.zsh"
 
 zplug "zsh-users/zsh-completions", defer:0
 zplug "zsh-users/zsh-autosuggestions", defer:0
@@ -14,11 +14,11 @@ fi
 
 zplug load
 
-if [[ -x $(which brew) ]]; then
+if builtin command -v brew > /dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-if [[ -x $(which starship) ]]; then
+if builtin command -v starship > /dev/null; then
   eval "$(starship init zsh)"
 fi
 
@@ -75,16 +75,16 @@ function ghq-fzf() {
 zle -N ghq-fzf
 bindkey '^t' ghq-fzf
 
-if [[ -x $(which colordiff) ]]; then
+if builtin command -v colordiff > /dev/null; then
   alias diff="colordiff"
 fi
 
-if [[ -x $(which nvim) ]]; then
+if builtin command -v nvim > /dev/null; then
   alias vi="nvim"
   alias vim="nvim"
 fi
 
-if [[ -x $(which exa) ]]; then
+if builtin command -v exa > /dev/null; then
   alias l="exa -F"
   alias ls="exa -F"
   alias la="exa -Fa"
