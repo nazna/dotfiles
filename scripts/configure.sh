@@ -51,3 +51,5 @@ killall Dock
 killall Finder
 killall SystemUIServer
 killall System\ Preferences
+
+echo "Configure Sysytem Preferences using defaults command done."
