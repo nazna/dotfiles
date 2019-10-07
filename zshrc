@@ -14,6 +14,14 @@ fi
 
 zplug load
 
+if [[ -x $(which brew) ]]; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+if [[ -x $(which starship) ]]; then
+  eval "$(starship init zsh)"
+fi
+
 autoload -Uz compinit; compinit
 autoload -Uz colors; colors
 
@@ -45,43 +53,38 @@ setopt hist_reduce_blanks
 unsetopt caseglob
 unsetopt promptcr
 
-eval "$(starship init zsh)"
-
-[ -s "$NVM_HOME/nvm.sh" ] && \. "$NVM_HOME/nvm.sh"
-[ -s "$NVM_HOME/etc/bash_completion" ] && \. "$NVM_HOME/etc/bash_completion"
+[ -s "$NVM_HOME/nvm.sh" ] && . "$NVM_HOME/nvm.sh"
+[ -s "$NVM_HOME/etc/bash_completion" ] && . "$NVM_HOME/etc/bash_completion"
 
 function history-fzf() {
-  BUFFER=$(history -n -r 1 | fzf --no-sort --ansi +m --query "$LBUFFER" --prompt="history > ")
+  BUFFER=$(history -n -r 1 | fzf +s +m --query="$LBUFFER" --prompt="history > ")
   CURSOR=$#BUFFER
-
   zle reset-prompt
 }
 zle -N history-fzf
 bindkey '^r' history-fzf
 
 function ghq-fzf() {
-  local selected_dir=$(ghq list --full-path | fzf --ansi +m --query="$LBUFFER" --prompt="ghq > ")
-
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
+  local selected=$(ghq list | fzf +m --query="$LBUFFER" --prompt="ghq > ")
+  if [ -n "$selected" ]; then
+    BUFFER="cd ${selected}"
     zle accept-line
   fi
-
   zle reset-prompt
 }
 zle -N ghq-fzf
 bindkey '^t' ghq-fzf
 
-if [[ -x `which colordiff` ]]; then
+if [[ -x $(which colordiff) ]]; then
   alias diff="colordiff"
 fi
 
-if [[ -x `which nvim` ]]; then
+if [[ -x $(which nvim) ]]; then
   alias vi="nvim"
   alias vim="nvim"
 fi
 
-if [[ -x `which exa` ]]; then
+if [[ -x $(which exa) ]]; then
   alias l="exa -F"
   alias ls="exa -F"
   alias la="exa -Fa"
