@@ -30,7 +30,6 @@ scripts/deploy.sh
 echo
 
 rm -rf $HOME/dotfiles-master
-rm $HOME/.bash_history
 
 echo "==============================================="
 echo
