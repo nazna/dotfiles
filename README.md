@@ -14,6 +14,7 @@ bash -c "$(curl -L https://raw.githubusercontent.com/naoya3e/dotfiles/master/scr
 
 ```sh
 cd $DOTPATH
+git pull --rebase
 ./scripts/deploy.sh
 ```
 
