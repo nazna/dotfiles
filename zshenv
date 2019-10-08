@@ -4,7 +4,7 @@ export FCEDIT=nvim
 
 export LANG="ja_JP.UTF-8"
 
-export HISTFILE=$HOME/.zhistory
+export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000
 
