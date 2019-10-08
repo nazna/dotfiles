@@ -1,4 +1,5 @@
 source "/usr/local/opt/zplug/init.zsh"
+source "$HOME/.hyper.zshrc"
 
 zplug "zsh-users/zsh-completions", defer:0
 zplug "zsh-users/zsh-autosuggestions", defer:0
@@ -65,7 +66,7 @@ zle -N history-fzf
 bindkey '^r' history-fzf
 
 function ghq-fzf() {
-  local selected=$(ghq list | fzf +m --query="$LBUFFER" --prompt="ghq > ")
+  local selected=$(ghq list --full-path | fzf +m --query="$LBUFFER" --prompt="ghq > ")
   if [ -n "$selected" ]; then
     BUFFER="cd ${selected}"
     zle accept-line
@@ -105,6 +106,7 @@ alias gl="git log --date=short --pretty=format:'%C(yellow)%h %Cgreen%cd %Cblue%c
 alias gc="git cz"
 alias ga="git add"
 alias gd="git diff"
+alias gp="git push"
 alias gf="git fetch"
 alias gb="git branch"
 alias gco="git checkout"

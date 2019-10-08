@@ -36,6 +36,6 @@ echo
 echo "All automatic configuration was done :)"
 echo
 echo "Please setup the rest of the System Preferences while checking Dropbox Paper."
-echo "Next, setup Launcher, Finder, f.lux, Amphetamine and VSCode."
+echo "Next, configure Launchpad, Finder, Amphetamine and VSCode."
 echo
 echo "==============================================="

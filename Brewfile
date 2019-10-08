@@ -23,7 +23,6 @@ brew "starship"
 brew "colordiff"
 brew "youtube-dl"
 
-cask "flux"
 cask "hyper"
 cask "slack"
 cask "google-chrome"

@@ -2,7 +2,7 @@ module.exports = {
   config: {
     updateChannel: 'stable',
 
-    fontSize: 16,
+    fontSize: 18,
 
     fontFamily: 'Cica, Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
     fontWeight: 'normal',
@@ -29,7 +29,7 @@ module.exports = {
     showHamburgerMenu: '',
     showWindowControls: '',
 
-    padding: '16px',
+    padding: '16px 24px',
 
     colors: {
       black: '#000000',
@@ -69,7 +69,8 @@ module.exports = {
   },
 
   plugins: [
-    'hyper-hybrid-reduced-contrast'
+    'hyper-hybrid-reduced-contrast',
+    'hyper-tab-icons-plus'
   ],
 
   localPlugins: [],

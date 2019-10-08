@@ -32,7 +32,8 @@ set t_Co=256
 set whichwrap=b,s,h,l,<,>,[,]
 
 set background=dark
-colorscheme vim-material
+autocmd ColorScheme * highlight Normal ctermbg=none
+colorscheme hybrid_material
 
 set guioptions-=m
 set guioptions-=T
@@ -101,5 +102,6 @@ let g:deoplete#enable_smart_case = 1
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 
+let g:enable_bold_font = 1
 let g:lightline = { 'colorscheme': 'hybrid' }
 
