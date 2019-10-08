@@ -66,6 +66,15 @@ module.exports = {
     macOptionSelectionMode: 'vertical',
 
     webGLRenderer: true,
+
+    tabIcons: {
+      mapIcons: {
+        vim: ['vim', 'nvim']
+      },
+      mapColors: {
+        nvim: '#007f00'
+      }
+    }
   },
 
   plugins: [

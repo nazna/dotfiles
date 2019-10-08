@@ -1,10 +1,8 @@
 precmd() {
-   pwd=$(pwd)
-   cwd=${pwd##*/}
-   print -Pn "\e]0;$cwd\a"
+   printf "\e]0;%s\a" "$PWD"
 }
 
 preexec() {
-   printf "\033]0;%s\a" "${1%% *} | $cwd"
+   printf "\e]0;%s\a" "${1%% *} | $cwd"
 }
 

@@ -67,10 +67,12 @@ set incsearch
 set hlsearch
 
 set number
-set title
 set showcmd
 set showmatch
 set laststatus=2
+
+set title
+set titlestring=nvim%(\ %)\|%(\ %)%f%(\ %)%m
 
 set t_vb=
 set novisualbell
