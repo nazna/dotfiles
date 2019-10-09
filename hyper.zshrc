@@ -3,6 +3,6 @@ precmd() {
 }
 
 preexec() {
-   printf "\e]0;%s\a" "${1%% *} | $cwd"
+   printf "\e]0;%s\a" "${1%% *} | $PWD"
 }
 
