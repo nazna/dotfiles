@@ -23,7 +23,11 @@ module.exports = {
 
     borderColor: '#333',
 
-    css: '',
+    css: `
+      .hyper_main:fullscreen {
+        border: none;
+      }
+    `,
     termCSS: '',
 
     showHamburgerMenu: '',
@@ -54,6 +58,9 @@ module.exports = {
     shellArgs: ['--login'],
 
     env: {},
+
+    windowSize: [960, 540],
+    scrollback: 10000,
 
     bell: false,
 
