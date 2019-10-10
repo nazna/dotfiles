@@ -24,7 +24,7 @@ module.exports = {
     borderColor: '#333',
 
     css: `
-      .hyper_main:fullscreen {
+      .hyper_main {
         border: none;
       }
     `,
