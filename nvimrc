@@ -15,6 +15,9 @@ if dein#load_state('~/.cache/dein')
 
   call dein#add('kristijanhusak/vim-hybrid-material')
   call dein#add('itchyny/lightline.vim')
+  call dein#add('cocopon/lightline-hybrid.vim')
+
+  call dein#add('easymotion/vim-easymotion')
 
   call dein#end()
   call dein#save_state()
@@ -32,6 +35,7 @@ set t_Co=256
 set whichwrap=b,s,h,l,<,>,[,]
 
 set background=dark
+
 autocmd ColorScheme * highlight Normal ctermbg=none
 colorscheme hybrid_material
 
@@ -77,6 +81,7 @@ set titlestring=nvim%(\ %)\|%(\ %)%f%(\ %)%m
 set t_vb=
 set novisualbell
 
+set iskeyword-=_
 set matchpairs& matchpairs+=<:>
 
 set wildmenu
@@ -106,4 +111,8 @@ inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 
 let g:enable_bold_font = 1
 let g:lightline = { 'colorscheme': 'hybrid' }
+
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+nmap <Space> <Plug>(easymotion-s2)
 
