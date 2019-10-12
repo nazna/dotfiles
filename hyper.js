@@ -30,8 +30,8 @@ module.exports = {
     `,
     termCSS: '',
 
-    showHamburgerMenu: '',
-    showWindowControls: '',
+    showHamburgerMenu: false,
+    showWindowControls: false,
 
     padding: '16px 24px',
 

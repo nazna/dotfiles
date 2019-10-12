@@ -33,9 +33,10 @@ rm -rf $HOME/dotfiles-master
 
 echo "==============================================="
 echo
-echo "All automatic configuration was done :)"
+echo "Automatic configuration was all done :)"
 echo
-echo "Please setup the rest of the System Preferences while checking Dropbox Paper."
-echo "Next, configure Launchpad, Finder, Amphetamine and VSCode."
+echo "Next, setup System Priferences, Finder, Launchpad, Amphetamine, Google Chrome and VSCode."
+echo "For VSCode, download settings from my gist by Setting-Sync."
+echo "Press cmd+shift+p and type `download setting`."
 echo
 echo "==============================================="
