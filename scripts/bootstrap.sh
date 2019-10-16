@@ -12,6 +12,8 @@ unzip $HOME/dotfiles.zip
 rm $HOME/dotfiles.zip
 cd $HOME/dotfiles-master
 
+xcode-select --install
+
 if ! builtin command -v brew > /dev/null 2>&1; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   echo

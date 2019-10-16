@@ -18,11 +18,9 @@ git pull --rebase
 ./scripts/deploy.sh
 ```
 
-Maybe last line is unnecessary.
-
 ## Fonts
 
-- Cica
-- Montserrat
-- M+ 1p
-- M+ 1m
+- [Cica](https://github.com/miiton/Cica)
+- [Montserrat](https://fonts.google.com/specimen/Montserrat?selection.family=Montserrat)
+- [M+ FONTS 1p](https://mplus-fonts.osdn.jp/about.html)
+- [M+ FONTS 1m](https://mplus-fonts.osdn.jp/about.html)
