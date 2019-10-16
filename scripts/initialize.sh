@@ -16,6 +16,7 @@ rm ./installer.sh
 sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
 
+code
 echo
 echo "Check VSCode security status on Preferences > Security and Privacy > General"
 read -p "Are you ready? (Hit enter key)"
