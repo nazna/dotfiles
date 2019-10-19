@@ -7,7 +7,9 @@ mkdir -p $HOME/.cache/dein
 mkdir -p $HOME/.config/nvm
 mkdir -p $HOME/.config/nvim
 
-rm $HOME/Desktop/.localized $HOME/Documents/.localized $HOME/Downloads/.localized $HOME/Library/.localized $HOME/Movies/.localized $HOME/Music/.localized $HOME/Pictures/.localized $HOME/Public/.localized
+rm $HOME/Applications/.localized $HOME/Desktop/.localized $HOME/Documents/.localized $HOME/Downloads/.localized $HOME/Library/.localized $HOME/Movies/.localized $HOME/Music/.localized $HOME/Pictures/.localized $HOME/Public/.localized
+
+rm /Applications/.localized
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh $HOME/.cache/dein
@@ -17,7 +19,7 @@ sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
 
 echo
-echo "Exec `code` once, then check VSCode security status on Preferences > Security and Privacy > General"
+echo "Exec 'code' once, then check VSCode security status on Preferences > Security and Privacy > General"
 read -p "Are you ready? (Hit enter key)"
 code --install-extension Shan.code-settings-sync
 

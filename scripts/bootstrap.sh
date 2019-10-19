@@ -37,8 +37,8 @@ echo "==============================================="
 echo
 echo "Automatic configuration was all done :)"
 echo
-echo "Next, setup System Priferences, Finder, Launchpad, Amphetamine, Google Chrome and VSCode."
+echo "Next, setup System Preferences, Finder, Launchpad, Amphetamine, Google Chrome and VSCode."
 echo "For VSCode, download settings from my gist by Setting-Sync."
-echo "Press cmd+shift+p and type `download setting`."
+echo "Press cmd+shift+p and type 'download setting'."
 echo
 echo "==============================================="
