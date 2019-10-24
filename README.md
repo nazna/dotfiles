@@ -21,6 +21,7 @@ git pull --rebase
 ## Fonts
 
 - [Cica](https://github.com/miiton/Cica)
+- [Product Sans](https://befonts.com/product-sans-font.html)
 - [Montserrat](https://fonts.google.com/specimen/Montserrat?selection.family=Montserrat)
 - [M+ FONTS 1p](https://mplus-fonts.osdn.jp/about.html)
 - [M+ FONTS 1m](https://mplus-fonts.osdn.jp/about.html)
