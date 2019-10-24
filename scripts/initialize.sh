@@ -39,6 +39,8 @@ echo
 open -a "Google Chrome" https://github.com/settings/keys
 read -p "Are you ready? (Hit enter key)"
 
+gist --login
+
 cp ./gitconfig $HOME/.gitconfig
 ghq get git@github.com:naoya3e/dotfiles.git
 rm $HOME/.gitconfig
