@@ -25,3 +25,8 @@ git pull --rebase
 - [Montserrat](https://fonts.google.com/specimen/Montserrat?selection.family=Montserrat)
 - [M+ FONTS 1p](https://mplus-fonts.osdn.jp/about.html)
 - [M+ FONTS 1m](https://mplus-fonts.osdn.jp/about.html)
+
+## Todos
+
+- [ ] bootstrap.sh などのスクリプトを Zsh をデフォルトに変更する
+- [ ] bootstrap.sh はエラーが発生すると終了してしまうが `mkdir` などのエラーハンドリングを考え直す
