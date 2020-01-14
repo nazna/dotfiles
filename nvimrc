@@ -11,6 +11,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('Shougo/deoplete.nvim')
 
   call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('cohama/lexima.vim')
   call dein#add('junegunn/goyo.vim')
 
   call dein#add('kristijanhusak/vim-hybrid-material')
