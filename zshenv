@@ -17,4 +17,4 @@ export GOPATH=$HOME/.go
 export FZFPATH=$HOME/.fzf
 export CARGOPATH=$HOME/.cargo
 
-export PATH=/usr/local/sbin:$GOPATH/bin:$CARGOPATH/bin:$FZFPATH/bin${PATH:+:${PATH}}
+export PATH=/usr/local/sbin:/usr/local/bin:$GOPATH/bin:$CARGOPATH/bin:$FZFPATH/bin${PATH:+:${PATH}}
