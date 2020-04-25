@@ -1,0 +1,33 @@
+cask_args appdir: "/Applications"
+
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+
+brew "colordiff"
+brew "curl"
+brew "exa"
+brew "ffmpeg"
+brew "fzf"
+brew "ghq"
+brew "git"
+brew "imagemagick"
+brew "mas"
+brew "nkf"
+brew "nvm"
+brew "starship"
+brew "tree"
+brew "volta"
+brew "wget"
+brew "youtube-dl"
+brew "zplug"
+brew "zsh"
+
+cask "1password"
+cask "discord"
+cask "google-chrome"
+cask "google-japanese-ime"
+cask "iterm2"
+cask "visual-studio-code"
+
+mas "LINE", id: 53988307
