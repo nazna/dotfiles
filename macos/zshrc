@@ -62,7 +62,7 @@ bindkey '^r' fzf-history
 function fzf-ghq() {
   local repository=$(ghq list | fzf +m --query="$LBUFFER" --prompt="repository > ")
   if [ -n "$repository" ]; then
-    BUFFER="cd $(ghq root)/${selected}"
+    BUFFER="cd $(ghq root)/${repository}"
     zle accept-line
   fi
   zle reset-prompt
@@ -93,10 +93,11 @@ if builtin command -v git > /dev/null; then
   alias gs="git status --short --branch"
   alias gl="git log --date=short --pretty=format:'%C(yellow)%h %Cgreen%cd %Cblue%cn %Creset%s'"
   alias ga="git add"
+  alias gc="git commit"
   alias gd="git diff"
   alias gp="git push"
   alias gf="git fetch"
   alias gb="git branch"
   alias gco="git checkout"
-  alias gcm="git commit -m"
+  alias gcm="git commit --message"
 fi
