@@ -50,6 +50,9 @@ rm ./Cica.zip
 sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
 
+chmod 755 /usr/local/share/zsh/site-functions
+chmod 755 /usr/local/share/zsh
+
 echo ">>> Configure Vim"
 mkdir -p $HOME/.cache/dein
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
@@ -63,8 +66,9 @@ echo ">>> Configure macOS system settings"
 sudo rm -f /Applications/.localized $HOME/Applications/.localized $HOME/Desktop/.localized $HOME/Documents/.localized $HOME/Downloads/.localized $HOME/Library/.localized $HOME/Movies/.localized $HOME/Music/.localized $HOME/Pictures/.localized $HOME/Public/.localized
 $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/scripts/configure.sh
 
-echo ">>> ==============================="
+echo ">>> ==================================================="
 echo ">>>  Done!"
-echo ">>>  Next, setup System Preferences, Finder, Launchpad, Google Chrome, VSCode and SSH."
+echo ">>>  Next, setup System Preferences, Finder, Launchpad,"
+echo ">>>    Google Chrome, VSCode and SSH."
 echo ">>>  Please reboot this to meet awesome computer :)"
-echo ">>> ==============================="
+echo ">>> ==================================================="
