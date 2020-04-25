@@ -22,7 +22,7 @@ if ! builtin command -v brew > /dev/null; then
 fi
 
 echo ">>> Install Homebrew Formulae"
-brew bundle --file $HOME/workspace/ghq/github.com/naoya3e/dotfiles/Brewfile
+brew bundle --file $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/Brewfile
 
 echo ">>> Install Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
