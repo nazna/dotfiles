@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 set -eu
 
@@ -44,8 +44,8 @@ ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/zshrc $HOME/.zshrc
 echo ">>> Configure iTerm2"
 mkdir -p $HOME/.fonts
 curl -L -o Cica.zip https://github.com/miiton/Cica/releases/download/v5.0.1/Cica_v5.0.1_with_emoji.zip
-unzip -d $HOME/Library/Fonts Cica.zip "*.ttf"
-rm Cica.zip
+unzip -d $HOME/Library/Fonts ./Cica.zip "*.ttf"
+rm ./Cica.zip
 
 sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
@@ -60,7 +60,7 @@ echo ">>> Configure VSCode"
 code --install-extension Shan.code-settings-sync
 
 echo ">>> Configure macOS system settings"
-sudo rm /Applications/.localized $HOME/Applications/.localized $HOME/Desktop/.localized $HOME/Documents/.localized $HOME/Downloads/.localized $HOME/Library/.localized $HOME/Movies/.localized $HOME/Music/.localized $HOME/Pictures/.localized $HOME/Public/.localized
+sudo rm -f /Applications/.localized $HOME/Applications/.localized $HOME/Desktop/.localized $HOME/Documents/.localized $HOME/Downloads/.localized $HOME/Library/.localized $HOME/Movies/.localized $HOME/Music/.localized $HOME/Pictures/.localized $HOME/Public/.localized
 $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/scripts/configure.sh
 
 echo ">>> ==============================="
