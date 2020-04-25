@@ -1,0 +1,5 @@
+# misc
+.DS_Store
+
+# Homebrew
+Brewfile.lock.json
