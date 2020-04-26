@@ -69,6 +69,6 @@ $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/scripts/configure.sh
 echo ">>> ==================================================="
 echo ">>>  Done!"
 echo ">>>  Next, setup System Preferences, Finder, Launchpad,"
-echo ">>>    Google Chrome, VSCode and SSH."
+echo ">>>    Vim, Google Chrome, VSCode and SSH."
 echo ">>>  Please reboot this to meet awesome computer :)"
 echo ">>> ==================================================="
