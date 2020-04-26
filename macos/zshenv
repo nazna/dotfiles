@@ -12,3 +12,7 @@ export SAVEHIST=100000
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export FZF_DEFAULT_OPTS="--height 40% --ansi --cycle --reverse --select-1 --exit-0 --bind=tab:down --bind=btab:up"
+
+export VOLTA_HOME="$HOME/.volta"
+
+export PATH=$HOME/.cargo/bin:$VOLTA_HOME/bin${PATH:+:${PATH}}
