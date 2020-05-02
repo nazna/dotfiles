@@ -22,7 +22,6 @@ brew "youtube-dl"
 brew "zplug"
 brew "zsh"
 
-cask "1password"
 cask "discord"
 cask "google-chrome"
 cask "google-japanese-ime"
