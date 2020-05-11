@@ -92,7 +92,7 @@ set nobackup
 set noswapfile
 set nowritebackup
 
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 autocmd FileType python setlocal autoindent
 autocmd FileType python setlocal smartindent
