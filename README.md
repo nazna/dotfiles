@@ -1,4 +1,4 @@
-# Naoya's dotfiles
+# nazna's dotfiles
 
 > Bootstrap to meet new awesome computer :)
 
