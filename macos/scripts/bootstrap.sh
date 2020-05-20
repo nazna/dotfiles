@@ -2,7 +2,7 @@
 
 set -eu
 
-if [ -e "$HOME/workspace/ghq/github.com/naoya3e/dotfiles" ]; then
+if [ -e "$HOME/workspace/ghq/github.com/nazna/dotfiles" ]; then
   echo >&2 "Quit bootstrap because dotfiles already exist."
   exit 1
 fi
@@ -13,8 +13,8 @@ if ! builtin command -v xcode-select --print-path > /dev/null; then
 fi
 
 echo ">>> Fetch dotfiles"
-mkdir -p $HOME/workspace/ghq/github.com/naoya3e
-git clone https://github.com/naoya3e/dotfiles.git $HOME/workspace/ghq/github.com/naoya3e/dotfiles
+mkdir -p $HOME/workspace/ghq/github.com/nazna
+git clone https://github.com/nazna/dotfiles.git $HOME/workspace/ghq/github.com/nazna/dotfiles
 
 if ! builtin command -v brew > /dev/null; then
   echo ">>> Install Homebrew"
@@ -22,7 +22,7 @@ if ! builtin command -v brew > /dev/null; then
 fi
 
 echo ">>> Install Homebrew Formulae"
-brew bundle --file $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/Brewfile
+brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/Brewfile
 
 echo ">>> Install Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -32,14 +32,14 @@ volta install node@latest
 
 echo ">>> Link dotfiles"
 mkdir -p $HOME/.config
-ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/editorconfig $HOME/.editorconfig
-ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/gitconfig $HOME/.gitconfig
-ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/globalgitignore $HOME/.globalgitignore
-ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/npmrc $HOME/.npmrc
-ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/starship.toml $HOME/.config/starship.toml
-ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/vimrc $HOME/.vimrc
-ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/zshenv $HOME/.zshenv
-ln -nfs $HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/zshrc $HOME/.zshrc
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/editorconfig $HOME/.editorconfig
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/gitconfig $HOME/.gitconfig
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/globalgitignore $HOME/.globalgitignore
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/npmrc $HOME/.npmrc
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/starship.toml $HOME/.config/starship.toml
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/vimrc $HOME/.vimrc
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/zshenv $HOME/.zshenv
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/zshrc $HOME/.zshrc
 
 echo ">>> Configure iTerm2"
 mkdir -p $HOME/.fonts
