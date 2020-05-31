@@ -64,7 +64,7 @@ code --install-extension Shan.code-settings-sync
 
 echo ">>> Configure macOS system settings"
 sudo rm -f /Applications/.localized $HOME/Applications/.localized $HOME/Desktop/.localized $HOME/Documents/.localized $HOME/Downloads/.localized $HOME/Library/.localized $HOME/Movies/.localized $HOME/Music/.localized $HOME/Pictures/.localized $HOME/Public/.localized
-$HOME/workspace/ghq/github.com/naoya3e/dotfiles/macos/scripts/configure.sh
+$HOME/workspace/ghq/github.com/nazna/dotfiles/macos/scripts/configure.sh
 
 echo ">>> ==================================================="
 echo ">>>  Done!"
