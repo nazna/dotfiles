@@ -83,8 +83,8 @@ if builtin command -v exa > /dev/null; then
   alias lla="exa -bhlHFa"
   alias llg="exa -bhlHFa --sort=type"
 else
-  alias l="ls -F --color=auto"
-  alias ls="ls -F --color=auto"
+  alias l="ls -FG"
+  alias ls="ls -FG"
   alias la="ls -A"
   alias ll="ls -l"
   alias lla="ls -AlF"
