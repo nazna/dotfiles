@@ -13,6 +13,7 @@
 [status]
   showUntrackedFiles = all
 [diff]
+  algorithm = histogram
   renames = true
   compactionHeuristic = true
 [grep]
