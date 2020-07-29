@@ -1,0 +1,32 @@
+[user]
+  name = nazna
+  email = 14846330+nazna@users.noreply.github.com
+[core]
+  editor = vim
+  precomposeunicode = true
+  excludesfile = ~/.globalgitignore
+  ignorecase = false
+  quotepath = false
+  pager = less -FRX
+[push]
+  default = current
+[status]
+  showUntrackedFiles = all
+[diff]
+  algorithm = histogram
+  renames = true
+  compactionHeuristic = true
+[grep]
+  lineNumber = true
+[color]
+  ui = true
+  status = always
+  branch = always
+  grep = always
+  diff = always
+  diff-highlight = always
+[pull]
+  rebase = true
+  prune = true
+[ghq]
+  root = ~/workspace/ghq
