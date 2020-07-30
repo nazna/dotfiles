@@ -16,6 +16,9 @@ if ! builtin command -v brew > /dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
+echo ">>> Activate linuxbrew for temporarily"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 echo ">>> Install Homebrew Formulae"
 brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/Brewfile
 
