@@ -9,6 +9,7 @@ fi
 
 echo ">>> Instal apt packages"
 sudo apt update -y
+sudo apt upgrade -y
 sudo apt install -y build-essential
 
 if ! builtin command -v brew > /dev/null; then
@@ -23,11 +24,14 @@ echo ">>> Fetch dotfiles"
 mkdir -p $HOME/workspace/ghq/github.com/nazna
 git clone https://github.com/nazna/dotfiles.git $HOME/workspace/ghq/github.com/nazna/dotfiles
 
+echo ">>> Install Rust"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 echo ">>> Install Homebrew Formulae"
 brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/Brewfile
 
-echo ">>> Install Rust"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+echo ">>> Install Volta"
+curl https://get.volta.sh | bash
 
 echo ">>> Install Node.js"
 volta install node@latest
