@@ -19,12 +19,12 @@ fi
 echo ">>> Activate linuxbrew for temporarily"
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-echo ">>> Install Homebrew Formulae"
-brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/Brewfile
-
 echo ">>> Fetch dotfiles"
 mkdir -p $HOME/workspace/ghq/github.com/nazna
 git clone https://github.com/nazna/dotfiles.git $HOME/workspace/ghq/github.com/nazna/dotfiles
+
+echo ">>> Install Homebrew Formulae"
+brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/Brewfile
 
 echo ">>> Install Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -34,14 +34,14 @@ volta install node@latest
 
 echo ">>> Link dotfiles"
 mkdir -p $HOME/.config
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/editorconfig $HOME/.editorconfig
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/gitconfig $HOME/.gitconfig
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/globalgitignore $HOME/.globalgitignore
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/npmrc $HOME/.npmrc
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/starship.toml $HOME/.config/starship.toml
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/vimrc $HOME/.vimrc
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/zshenv $HOME/.zshenv
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/zshrc $HOME/.zshrc
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/editorconfig $HOME/.editorconfig
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/gitconfig $HOME/.gitconfig
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/globalgitignore $HOME/.globalgitignore
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/npmrc $HOME/.npmrc
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/starship.toml $HOME/.config/starship.toml
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/vimrc $HOME/.vimrc
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/zshenv $HOME/.zshenv
+ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/zshrc $HOME/.zshrc
 
 echo ">>> Configure iTerm2"
 chsh -s $(which zsh)

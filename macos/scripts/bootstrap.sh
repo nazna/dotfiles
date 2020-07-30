@@ -17,12 +17,12 @@ if ! builtin command -v brew > /dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-echo ">>> Install Homebrew Formulae"
-brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/Brewfile
-
 echo ">>> Fetch dotfiles"
 mkdir -p $HOME/workspace/ghq/github.com/nazna
 git clone https://github.com/nazna/dotfiles.git $HOME/workspace/ghq/github.com/nazna/dotfiles
+
+echo ">>> Install Homebrew Formulae"
+brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/Brewfile
 
 echo ">>> Install Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
