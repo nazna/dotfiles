@@ -18,7 +18,8 @@ if ! builtin command -v brew > /dev/null; then
 fi
 
 echo ">>> Activate linuxbrew for temporarily"
-test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+test -d $HOME/.linuxbrew && eval $($HOME/.linuxbrew/bin/brew shellenv)
+test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 echo ">>> Fetch dotfiles"
 mkdir -p $HOME/workspace/ghq/github.com/nazna
@@ -48,6 +49,7 @@ ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/zshenv $HOME/.zshenv
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/zshrc $HOME/.zshrc
 
 echo ">>> Configure iTerm2"
+sudo echo $(which zsh) >> /etc/shells
 chsh -s $(which zsh)
 
 echo ">>> Configure Vim"
