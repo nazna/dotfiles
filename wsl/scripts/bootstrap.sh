@@ -16,6 +16,7 @@ echo ">>> Install Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 echo ">>> Activate linuxbrew for temporarily"
+PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 echo ">>> Fetch dotfiles"
@@ -41,7 +42,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 echo ">>> Install Volta"
 curl https://get.volta.sh | bash -s -- --skip-setup
-PATH=$HOME/.volta/bin:$PATH
+PATH=$HOME/.volta/in:$PATH
 
 echo ">>> Install Node.js"
 volta install node@latest
