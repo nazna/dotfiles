@@ -10,7 +10,7 @@ fi
 echo ">>> Instal apt packages"
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y build-essential
+sudo apt install -y build-essential zsh
 
 echo ">>> Install Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
