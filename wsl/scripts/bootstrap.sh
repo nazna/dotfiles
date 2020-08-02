@@ -12,30 +12,18 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt install -y build-essential
 
-if ! builtin command -v brew > /dev/null; then
-  echo ">>> Install Homebrew"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
+echo ">>> Install Homebrew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 echo ">>> Activate linuxbrew for temporarily"
-test -d $HOME/.linuxbrew && eval $($HOME/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 echo ">>> Fetch dotfiles"
 mkdir -p $HOME/workspace/ghq/github.com/nazna
 git clone https://github.com/nazna/dotfiles.git $HOME/workspace/ghq/github.com/nazna/dotfiles
 
-echo ">>> Install Rust"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
 echo ">>> Install Homebrew Formulae"
 brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/Brewfile
-
-echo ">>> Install Volta"
-curl https://get.volta.sh | bash
-
-echo ">>> Install Node.js"
-volta install node@latest
 
 echo ">>> Link dotfiles"
 mkdir -p $HOME/.config
@@ -47,6 +35,16 @@ ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/starship.toml $HOME/.c
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/vimrc $HOME/.vimrc
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/zshenv $HOME/.zshenv
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/zshrc $HOME/.zshrc
+
+echo ">>> Install Rust"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+echo ">>> Install Volta"
+curl https://get.volta.sh | bash -s -- --skip-setup
+PATH=$HOME/.volta/bin:$PATH
+
+echo ">>> Install Node.js"
+volta install node@latest
 
 echo ">>> Configure iTerm2"
 sudo echo $(which zsh) >> /etc/shells
