@@ -26,7 +26,12 @@ echo ">>> Activate linuxbrew for temporarily"
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 echo ">>> Install Homebrew Formulae"
-brew install colordiff exa gcc ffmpeg fzf ghq git imagemagick nkf starship tree volta wget youtube-dl zplug zsh
+brew update
+brew upgrade
+brew install --force libxml2
+gem install nokogiri -- --use-system-libraries
+brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/Brewfile
+brew unlink libxml2
 
 echo ">>> Link dotfiles"
 mkdir -p $HOME/.config
