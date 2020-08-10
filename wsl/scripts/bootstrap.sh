@@ -23,10 +23,10 @@ echo ">>> Install Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 echo ">>> Activate linuxbrew for temporarily"
-test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 echo ">>> Install Homebrew Formulae"
-brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/Brewfile
+brew install colordiff exa gcc ffmpeg fzf ghq git imagemagick nkf starship tree volta wget youtube-dl zplug zsh
 
 echo ">>> Link dotfiles"
 mkdir -p $HOME/.config
