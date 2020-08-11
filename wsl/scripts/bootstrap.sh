@@ -18,7 +18,7 @@ git clone https://github.com/nazna/dotfiles.git $HOME/workspace/ghq/github.com/n
 
 echo ">>> Install Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source $HOME/.cargo/env
+export PATH=$HOME/.cargo/bin:$PATH
 
 echo ">>> Install Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
