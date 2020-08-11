@@ -18,7 +18,7 @@ git clone https://github.com/nazna/dotfiles.git $HOME/workspace/ghq/github.com/n
 
 echo ">>> Install Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-export PATH=$HOME/.cargo/bin:$PATH
+export PATH="$HOME/.cargo/bin:$PATH"
 
 echo ">>> Install Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -40,7 +40,7 @@ ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/zshrc $HOME/.zshrc
 
 echo ">>> Install Node.js"
 curl https://get.volta.sh | bash
-export PATH=$HOME/.volta/bin:$PATH
+export PATH="$HOME/.volta/bin:$PATH"
 volta install node@latest
 
 echo ">>> Configure Z Shell"
