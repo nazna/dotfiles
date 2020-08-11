@@ -18,20 +18,14 @@ git clone https://github.com/nazna/dotfiles.git $HOME/workspace/ghq/github.com/n
 
 echo ">>> Install Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
 
 echo ">>> Install Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-echo ">>> Activate linuxbrew for temporarily"
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 echo ">>> Install Homebrew Formulae"
-brew update
-brew upgrade
-brew install --force libxml2
-gem install nokogiri -- --use-system-libraries
 brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/Brewfile
-brew unlink libxml2
 
 echo ">>> Link dotfiles"
 mkdir -p $HOME/.config
@@ -45,6 +39,8 @@ ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/zshenv $HOME/.zshenv
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/zshrc $HOME/.zshrc
 
 echo ">>> Install Node.js"
+curl https://get.volta.sh | bash
+export PATH=$HOME/.volta/bin:$PATH
 volta install node@latest
 
 echo ">>> Configure Z Shell"
