@@ -26,6 +26,7 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 echo ">>> Install Homebrew Formulae"
 brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/Brewfile
+brew install zsh
 
 echo ">>> Link dotfiles"
 mkdir -p $HOME/.config
