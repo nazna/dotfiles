@@ -10,7 +10,7 @@ fi
 echo ">>> Instal apt packages"
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y patch build-essential
+sudo apt install -y patch build-essential zsh
 
 echo ">>> Fetch dotfiles"
 mkdir -p $HOME/workspace/ghq/github.com/nazna
@@ -25,7 +25,6 @@ echo ">>> Install Homebrew"
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 echo ">>> Install Homebrew Formulae"
-brew install zsh -s
 brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/Brewfile
 
 echo ">>> Link dotfiles"
