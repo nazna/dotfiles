@@ -45,7 +45,7 @@ volta install node@latest
 
 echo ">>> Configure Z Shell"
 echo $(which zsh) | sudo tee -a /etc/shells
-sudo chsh $UESR -s $(which zsh)
+sudo chsh $USER -s $(which zsh)
 
 echo ">>> Configure Vim"
 mkdir -p $HOME/.cache/dein
