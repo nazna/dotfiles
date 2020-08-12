@@ -10,7 +10,7 @@ fi
 echo ">>> Instal apt packages"
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y build-essential
+sudo apt install -y patch build-essential
 
 echo ">>> Fetch dotfiles"
 mkdir -p $HOME/workspace/ghq/github.com/nazna
@@ -44,7 +44,7 @@ export PATH="$HOME/.volta/bin:$PATH"
 volta install node@latest
 
 echo ">>> Configure Z Shell"
-sudo echo $(which zsh) >> /etc/shells
+echo $(which zsh) | sudo tee -a /etc/shells > /dev/null
 chsh -s $(which zsh)
 
 echo ">>> Configure Vim"
