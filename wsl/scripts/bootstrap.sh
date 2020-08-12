@@ -25,7 +25,7 @@ echo ">>> Install Homebrew"
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 echo ">>> Install Homebrew Formulae"
-brew install zsh
+brew install zsh -s
 brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/Brewfile
 
 echo ">>> Link dotfiles"
