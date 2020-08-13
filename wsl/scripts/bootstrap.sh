@@ -49,7 +49,7 @@ sudo chsh $USER -s $(which zsh)
 
 echo ">>> Configure Vim"
 mkdir -p $HOME/.cache/dein
-pip3 installer pynvim
+pip3 install pynvim
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh $HOME/.cache/dein
 rm ./installer.sh
