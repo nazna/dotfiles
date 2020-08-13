@@ -32,6 +32,7 @@ if dein#check_install()
   call dein#install()
 endif
 
+set encoding=utf-8
 set mouse=a
 set t_Co=256
 set whichwrap=b,s,h,l,<,>,[,]

@@ -39,7 +39,7 @@ ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/zshenv $HOME/.zshenv
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/wsl/zshrc $HOME/.zshrc
 
 echo ">>> Install Node.js"
-curl https://get.volta.sh | bash
+curl https://get.volta.sh | bash -s -- --skip-setup
 export PATH="$HOME/.volta/bin:$PATH"
 volta install node@latest
 
@@ -49,6 +49,7 @@ sudo chsh $USER -s $(which zsh)
 
 echo ">>> Configure Vim"
 mkdir -p $HOME/.cache/dein
+pip3 installer pynvim
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh $HOME/.cache/dein
 rm ./installer.sh
