@@ -10,7 +10,7 @@ fi
 echo ">>> Instal apt packages"
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y patch build-essential zsh
+sudo apt install -y patch build-essential zsh locales-all
 
 echo ">>> Fetch dotfiles"
 mkdir -p $HOME/workspace/ghq/github.com/nazna
