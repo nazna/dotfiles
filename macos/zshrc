@@ -110,6 +110,7 @@ if builtin command -v git > /dev/null; then
   alias gp="git push"
   alias gf="git fetch"
   alias gb="git branch"
+  alias glg="git log --oneline --graph --decorate"
   alias gco="git checkout"
   alias gcm="git commit --message"
 fi
