@@ -82,6 +82,16 @@ function fzf-ghq() {
 zle -N fzf-ghq
 bindkey '^t' fzf-ghq
 
+
+function fzf-git-switch() {
+  local branch=$(git branch -a | tr -d " " | fzf +m --query="$LBUFFER" --prompt="switch > " --preview "git log --oneline --graph --decorate" | sed -e "s/^\*\s*//g" | sed -e "s/remotes\/origin\///g")
+  BUFFER="git switch ${branch}"
+  zle accept-line
+  zle reset-prompt
+}
+zle -N fzf-git-switch
+bindkey '^y' fzf-git-switch
+
 if builtin command -v colordiff > /dev/null; then
   alias diff="colordiff"
 fi
@@ -103,14 +113,14 @@ fi
 
 if builtin command -v git > /dev/null; then
   alias gs="git status --short --branch"
-  alias gl="git log --date=short --pretty=format:'%C(yellow)%h %Cgreen%cd %Cblue%cn %Creset%s'"
+  alias gl="git log -n 10 --date=short --pretty=format:'%C(yellow)%h %C(green)%cd %C(blue)%cn %C(reset)%s'"
+  alias glg="git log --graph --date=short --pretty=format:'%C(yellow)%h %C(green)%cd %C(blue)%cn%C(magenta)%d %C(reset)%s'"
   alias ga="git add"
   alias gc="git commit"
   alias gd="git diff"
   alias gp="git push"
   alias gf="git fetch"
   alias gb="git branch"
-  alias glg="git log --oneline --graph --decorate"
   alias gco="git checkout"
   alias gcm="git commit --message"
 fi
