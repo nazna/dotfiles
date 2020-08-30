@@ -106,6 +106,8 @@ nmap <silent> <Esc><Esc> :nohlsearch<CR>
 noremap j gj
 noremap k gk
 
+nnoremap ; :
+
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option("smart_case", v:true)
 
