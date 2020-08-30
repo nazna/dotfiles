@@ -1,4 +1,4 @@
-source "/usr/local/opt/zplug/init.zsh"
+source "$(dirname $(dirname $(which brew)))/opt/zplug/init.zsh"
 
 zplug "zsh-users/zsh-completions", defer:0
 zplug "zsh-users/zsh-autosuggestions", defer:0
@@ -12,13 +12,24 @@ fi
 
 zplug load
 
-if builtin command -v brew > /dev/null; then
-  FPATH=/usr/local/share/zsh/site-functions:$FPATH
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  if builtin command -v brew > /dev/null; then
+    FPATH=/usr/local/share/zsh/site-functions:$FPATH
+  fi
+
+  if builtin command -v starship > /dev/null; then
+    eval "$(starship init zsh)"
+  fi
+elif  [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  if builtin command -v brew > /dev/null; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  fi
+
+  if builtin command -v starship > /dev/null; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/starship init zsh)
+  fi
 fi
 
-if builtin command -v starship > /dev/null; then
-  eval "$(starship init zsh)"
-fi
 
 autoload -Uz compinit; compinit
 autoload -Uz colors; colors
@@ -101,4 +112,8 @@ if builtin command -v git > /dev/null; then
   alias gb="git branch"
   alias gco="git checkout"
   alias gcm="git commit --message"
+fi
+
+if builtin command -v clip.exe > /dev/null; then
+  alias pbcopy="clip.exe"
 fi

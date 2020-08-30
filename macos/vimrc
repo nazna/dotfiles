@@ -32,6 +32,7 @@ if dein#check_install()
   call dein#install()
 endif
 
+set encoding=utf-8
 set mouse=a
 set t_Co=256
 set whichwrap=b,s,h,l,<,>,[,]
@@ -104,6 +105,8 @@ nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
 noremap j gj
 noremap k gk
+
+nnoremap ; :
 
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option("smart_case", v:true)
