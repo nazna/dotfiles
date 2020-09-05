@@ -85,8 +85,10 @@ bindkey '^t' fzf-ghq
 
 function fzf-git-switch() {
   local branch=$(git branch -a | tr -d " " | fzf +m --query="$LBUFFER" --prompt="switch > " --preview "git log --oneline --graph --decorate" | sed -e "s/^\*\s*//g" | sed -e "s/remotes\/origin\///g")
-  BUFFER="git switch ${branch}"
-  zle accept-line
+  if [ -n "$branch" ]; then
+    BUFFER="git switch ${branch}"
+    zle accept-line
+  fi
   zle reset-prompt
 }
 zle -N fzf-git-switch
@@ -121,7 +123,6 @@ if builtin command -v git > /dev/null; then
   alias gp="git push"
   alias gf="git fetch"
   alias gb="git branch"
-  alias gco="git checkout"
   alias gcm="git commit --message"
 fi
 
