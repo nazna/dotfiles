@@ -240,6 +240,13 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
+		<key>0x72-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
@@ -273,7 +280,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/workspace/ghq/github.com/nazna/dotfiles/macos</string>
+	<string>~/workspace/ghq/github.com/nazna/dotfiles</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{799, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -289,7 +296,7 @@
 		<string>0.000000, 0.000000, 224.000000, 258.000000, NO, NO</string>
 		<string>0.000000, 259.000000, 224.000000, 48.000000, NO, NO</string>
 	</array>
-	<key>NSTableView Columns v2 KeyBingingTable</key>
+	<key>NSTableView Columns v3 KeyBingingTable</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
 	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVVBcnJheYABrgsMEx4fICEiIyQqNDU2VSRu
@@ -320,7 +327,7 @@
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>320 321 799 448 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>155 93 570 452 0 0 1440 877 </string>
+	<string>138 191 760 553 0 0 1440 875 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -824,11 +831,13 @@
 	<key>NoSyncInstallationId</key>
 	<string>3B300B60-44C4-4358-BB49-C35080252909</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>3</integer>
+	<integer>30</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
-	<real>609699405.99060404</real>
+	<real>610379251.00874603</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
 	<true/>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncRecordedVariables</key>
 	<dict>
 		<key>0</key>
@@ -1172,6 +1181,22 @@
 				<true/>
 				<key>name</key>
 				<string>currentTab.currentSession.termid</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>currentTab.currentSession.terminalWindowName</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>currentTab.currentSession.terminalIconName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1534,7 +1559,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-  <string>/Users/naoya/workspace/ghq/github.com/nazna/dotfiles/macos</string>
+	<string>/Users/naoya/workspace/ghq/github.com/nazna/dotfiles</string>
 	<key>SUEnableAutomaticChecks</key>
 	<false/>
 	<key>SUFeedAlternateAppNameKey</key>
