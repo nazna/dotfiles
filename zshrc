@@ -1,16 +1,13 @@
-source "$(dirname $(dirname $(which brew)))/opt/zplug/init.zsh"
+source "$HOME/.zinit/bin/zinit.zsh"
 
-zplug "zsh-users/zsh-completions", defer:0
-zplug "zsh-users/zsh-autosuggestions", defer:0
-zplug "zsh-users/zsh-history-substring-search", defer:1
-zplug "zdharma/fast-syntax-highlighting", defer:1
-zplug "b4b4r07/enhancd", use:init.sh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-if ! zplug check; then
-  zplug install
-fi
-
-zplug load
+zinit light "zsh-users/zsh-completions"
+zinit light "zsh-users/zsh-autosuggestions"
+zinit light "zsh-users/zsh-history-substring-search"
+zinit light "zdharma/fast-syntax-highlighting"
+zinit light "b4b4r07/enhancd"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   if builtin command -v brew > /dev/null; then
