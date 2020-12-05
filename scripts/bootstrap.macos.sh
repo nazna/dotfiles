@@ -25,6 +25,25 @@ brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/Brewfile.
 # install nodejs
 volta install node@latest
 
+# configure shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+chsh $USER -s /usr/local/bin/zsh
+chmod 755 /usr/local/share/zsh/site-functions
+chmod 755 /usr/local/share/zsh
+
+# configure shell font
+mkdir -p $HOME/.fonts
+curl -L -o $HOME/Cica.zip https://github.com/miiton/Cica/releases/download/v5.0.2/Cica_v5.0.2_with_emoji.zip
+unzip -d $HOME/Library/Fonts $HOME/Cica.zip "*.ttf"
+rm $HOME/Cica.zip
+
+# configure vim
+git clone git@github.com:editorconfig/editorconfig-vim.git $HOME/.vim/pack/editor/start
+git clone git@github.com:cohama/lexima.vim.git $HOME/.vim/pack/editor/start
+git clone git@github.com:kristijanhusak/vim-hybrid-material.git $HOME/.vim/pack/theme/start
+git clone git@github.com:itchyny/lightline.vim.git $HOME/.vim/pack/theme/start
+git clone git@github.com:cocopon/lightline-hybrid.vim.git $HOME/.vim/pack/theme/start
+
 # deploy dotfiles
 mkdir -p $HOME/.config
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/editorconfig $HOME/.editorconfig
@@ -35,24 +54,6 @@ ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/starship.toml $HOME/.confi
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/vimrc $HOME/.vimrc
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/zshenv $HOME/.zshenv
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/zshrc $HOME/.zshrc
-
-# configure shell
-chsh $USER -s /usr/local/bin/zsh
-chmod 755 /usr/local/share/zsh/site-functions
-chmod 755 /usr/local/share/zsh
-
-# configure shell font
-mkdir -p $HOME/.fonts
-curl -L -o $HOME/Cica.zip https://github.com/miiton/Cica/releases/download/v5.0.1/Cica_v5.0.1_with_emoji.zip
-unzip -d $HOME/Library/Fonts $HOME/Cica.zip "*.ttf"
-rm $HOME/Cica.zip
-
-# configure vim
-mkdir -p $HOME/.cache/dein
-pip3 install pynvim
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > $HOME/installer.sh
-sh $HOME/installer.sh $HOME/.cache/dein
-rm $HOME/installer.sh
 
 # configure finder
 sudo rm -f /Applications/.localized $HOME/Applications/.localized $HOME/Desktop/.localized $HOME/Documents/.localized $HOME/Downloads/.localized $HOME/Library/.localized $HOME/Movies/.localized $HOME/Music/.localized $HOME/Pictures/.localized $HOME/Public/.localized

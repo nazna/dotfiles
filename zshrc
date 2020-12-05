@@ -14,7 +14,7 @@ zplug load
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   if builtin command -v brew > /dev/null; then
-    FPATH=/usr/local/share/zsh/site-functions:$FPATH
+    FPATH="/usr/local/share/zsh/site-functions:$FPATH"
   fi
 
   if builtin command -v starship > /dev/null; then
@@ -29,7 +29,6 @@ elif  [[ "$OSTYPE" == "linux-gnu"* ]]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/starship init zsh)
   fi
 fi
-
 
 autoload -Uz compinit; compinit
 autoload -Uz colors; colors
@@ -93,10 +92,6 @@ function fzf-git-switch() {
 }
 zle -N fzf-git-switch
 bindkey '^y' fzf-git-switch
-
-if builtin command -v colordiff > /dev/null; then
-  alias diff="colordiff"
-fi
 
 if builtin command -v exa > /dev/null; then
   alias l="exa -F"

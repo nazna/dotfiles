@@ -4,7 +4,6 @@ export LESS="-R"
 export EDITOR="vim"
 export FCEDIT="vim"
 
-export HISTFILE="$HOME/.zhistory"
 export FISTSIZE=100000
 export SAVEHIST=100000
 
@@ -14,7 +13,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export VOLTA_HOME="$HOME/.volta"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  export PATH=/home/linuxbrew/.linuxbrew/bin:$PATHH
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 fi
 
-export PATH=$HOME/.cargo/bin:$VOLTA_HOME/bin${PATH:+:${PATH}}
+export PATH="$HOME/.cargo/bin:$VOLTA_HOME/bin:$PATH"

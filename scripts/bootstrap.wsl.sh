@@ -48,11 +48,11 @@ echo $(which zsh) | sudo tee -a /etc/shells
 chsh $USER -s $(which zsh)
 
 # configure vim
-mkdir -p $HOME/.cache/dein
-pip3 install pynvim
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > $HOME/installer.sh
-sh $HOME/installer.sh $HOME/.cache/dein
-rm $HOME/installer.sh
+git clone git@github.com:editorconfig/editorconfig-vim.git $HOME/.vim/pack/editor/start
+git clone git@github.com:cohama/lexima.vim.git $HOME/.vim/pack/editor/start
+git clone git@github.com:kristijanhusak/vim-hybrid-material.git $HOME/.vim/pack/theme/start
+git clone git@github.com:itchyny/lightline.vim.git $HOME/.vim/pack/theme/start
+git clone git@github.com:cocopon/lightline-hybrid.vim.git $HOME/.vim/pack/theme/start
 
 echo ">>> ========================================"
 echo ">>> 1. reboot"
