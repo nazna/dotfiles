@@ -42,9 +42,9 @@ unzip -d $HOME/Library/Fonts $HOME/Cica.zip "*.ttf"
 rm $HOME/Cica.zip
 
 # configure vim
+git clone https://github.com/kristijanhusak/vim-hybrid-material.git $HOME/.vim/colors/vim-hybrid-material
 git clone https://github.com/editorconfig/editorconfig-vim.git $HOME/.vim/pack/editorconfig-vim/start
 git clone https://github.com/cohama/lexima.vim.git $HOME/.vim/pack/lexima/start
-git clone https://github.com/kristijanhusak/vim-hybrid-material.git $HOME/.vim/pack/vim-hybrid-material/start
 git clone https://github.com/itchyny/lightline.vim.git $HOME/.vim/pack/lightline/start
 git clone https://github.com/cocopon/lightline-hybrid.vim.git $HOME/.vim/pack/lightline-hybrid/start
 
