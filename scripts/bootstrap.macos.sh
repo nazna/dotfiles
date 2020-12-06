@@ -24,7 +24,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # install homebrew formulae
-brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/macos/Brewfile.macos
+brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/Brewfile.macos
 
 # install nodejs
 volta install node@latest
@@ -63,7 +63,7 @@ ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/zshrc $HOME/.zshrc
 sudo rm -f /Applications/.localized $HOME/Applications/.localized $HOME/Desktop/.localized $HOME/Documents/.localized $HOME/Downloads/.localized $HOME/Library/.localized $HOME/Movies/.localized $HOME/Music/.localized $HOME/Pictures/.localized $HOME/Public/.localized
 
 # configure system preferences on macos
-$HOME/workspace/ghq/github.com/nazna/dotfiles/macos/scripts/configure.sh
+$HOME/workspace/ghq/github.com/nazna/dotfiles/scripts/configure.macos.sh
 
 echo ">>> ========================================"
 echo ">>> 1. reboot"
