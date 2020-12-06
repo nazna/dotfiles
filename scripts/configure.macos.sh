@@ -1,4 +1,4 @@
-defaults write com.apple.screencapture disable-shadow -boolean true
+defaults write com.apple.screencapture disable-shadow -bool true
 defaults write com.apple.screencapture name "screenshot"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
@@ -45,4 +45,3 @@ defaults write com.apple.finder NewWindowTargetPath -string "file://Users/naoya/
 killall Dock
 killall Finder
 killall SystemUIServer
-killall System\ Preferences
