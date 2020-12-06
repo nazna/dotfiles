@@ -11,8 +11,12 @@ fi
 mkdir -p $HOME/workspace/ghq/github.com/nazna
 git clone https://github.com/nazna/dotfiles.git $HOME/workspace/ghq/github.com/nazna/dotfiles
 
+# install xcode
+if [ ! -e "/Library/Developer/CommandLineTools" ]; then
+  sudo xcode-select --install
+fi
+
 # install homebrew
-xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # install rust
