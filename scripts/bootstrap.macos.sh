@@ -42,11 +42,11 @@ unzip -d $HOME/Library/Fonts $HOME/Cica.zip "*.ttf"
 rm $HOME/Cica.zip
 
 # configure vim
-git clone git@github.com:editorconfig/editorconfig-vim.git $HOME/.vim/pack/editor/start
-git clone git@github.com:cohama/lexima.vim.git $HOME/.vim/pack/editor/start
-git clone git@github.com:kristijanhusak/vim-hybrid-material.git $HOME/.vim/pack/theme/start
-git clone git@github.com:itchyny/lightline.vim.git $HOME/.vim/pack/theme/start
-git clone git@github.com:cocopon/lightline-hybrid.vim.git $HOME/.vim/pack/theme/start
+git clone https://github.com/editorconfig/editorconfig-vim.git $HOME/.vim/pack/editor/start
+git clone https://github.com/cohama/lexima.vim.git $HOME/.vim/pack/editor/start
+git clone https://github.com/kristijanhusak/vim-hybrid-material.git $HOME/.vim/pack/theme/start
+git clone https://github.com/itchyny/lightline.vim.git $HOME/.vim/pack/theme/start
+git clone https://github.com/cocopon/lightline-hybrid.vim.git $HOME/.vim/pack/theme/start
 
 # deploy dotfiles
 mkdir -p $HOME/.config
