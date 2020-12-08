@@ -45,10 +45,10 @@ rm $HOME/Cica.zip
 mkdir -p $HOME/.vim/colors
 curl -o $HOME/hybrid_material.vim https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/master/colors/hybrid_material.vim
 mv $HOME/hybrid_material.vim $HOME/.vim/colors
-git clone https://github.com/editorconfig/editorconfig-vim.git $HOME/.vim/pack/editorconfig-vim/start
-git clone https://github.com/cohama/lexima.vim.git $HOME/.vim/pack/lexima/start
-git clone https://github.com/itchyny/lightline.vim.git $HOME/.vim/pack/lightline/start
-git clone https://github.com/cocopon/lightline-hybrid.vim.git $HOME/.vim/pack/lightline-hybrid/start
+git clone https://github.com/editorconfig/editorconfig-vim.git $HOME/.vim/pack/plugins/start/editorconfig-vim
+git clone https://github.com/cohama/lexima.vim.git $HOME/.vim/pack/plugins/start/lexima
+git clone https://github.com/itchyny/lightline.vim.git $HOME/.vim/pack/plugins/start/lightline
+git clone https://github.com/cocopon/lightline-hybrid.vim.git $HOME/.vim/pack/plugins/start/lightline-hybrid
 
 # deploy dotfiles
 mkdir -p $HOME/.config
