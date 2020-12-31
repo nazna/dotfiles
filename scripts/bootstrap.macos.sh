@@ -24,7 +24,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # install homebrew formulae
-brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/Brewfile.macos
+brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/Brewfile
 
 # install nodejs
 volta install node@latest

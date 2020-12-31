@@ -30,7 +30,7 @@ export PATH="$HOME/.volta/bin:$PATH"
 volta install node@latest
 
 # install homebrew formulae
-brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/Brewfile.wsl
+brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/Brewfile
 
 # deploy dotfiles
 mkdir -p $HOME/.config
