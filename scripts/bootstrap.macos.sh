@@ -28,6 +28,7 @@ brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/Brewfile
 
 # install nodejs
 volta install node@latest
+volta setup
 
 # configure shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
