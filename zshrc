@@ -27,6 +27,10 @@ elif  [[ "$OSTYPE" == "linux-gnu"* ]]; then
   fi
 fi
 
+if [ -e "$HOME/.cargo" ]; then
+  source "$HOME/.cargo/env"
+fi
+
 autoload -Uz compinit; compinit
 autoload -Uz colors; colors
 
@@ -58,6 +62,25 @@ setopt hist_reduce_blanks
 
 unsetopt caseglob
 unsetopt promptcr
+
+export LESS="-R"
+export LANG="ja_JP.UTF-8"
+export EDITOR="vim"
+export FCEDIT="vim"
+
+export FISTSIZE=100000
+export SAVEHIST=100000
+
+export FZF_DEFAULT_OPTS="--height 40% --ansi --cycle --reverse --select-1 --exit-0 --bind=tab:down --bind=btab:up"
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export VOLTA_HOME="$HOME/.volta"
+
+export PATH="$HOME/.cargo/bin:$VOLTA_HOME/bin:$PATH"
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+fi
 
 function fzf-history() {
   BUFFER=$(history -n -r 1 | fzf +s +m --query="$LBUFFER" --prompt="history > ")
