@@ -46,8 +46,6 @@ volta setup
 echo $(which zsh) | sudo tee -a /etc/shells
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 sudo chsh $USER -s $(which zsh)
-chmod 755 /usr/local/share/zsh/site-functions
-chmod 755 /usr/local/share/zsh
 
 # configure vim
 mkdir -p $HOME/.vim/colors
