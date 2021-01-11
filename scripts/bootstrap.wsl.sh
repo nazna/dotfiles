@@ -45,7 +45,7 @@ volta setup
 # configure shell
 echo $(which zsh) | sudo tee -a /etc/shells
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-chsh $USER -s $(which zsh)
+sudo chsh $USER -s $(which zsh)
 chmod 755 /usr/local/share/zsh/site-functions
 chmod 755 /usr/local/share/zsh
 
