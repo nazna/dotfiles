@@ -10,7 +10,7 @@ fi
 # pre-setup
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y build-essential pkg-config
+sudo apt install -y build-essential pkg-config libssl-dev
 
 # fetch dotfiles
 mkdir -p $HOME/workspace/ghq/github.com/nazna
