@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CopySelection</key>
+	<false/>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Hybrid</key>
@@ -221,6 +223,8 @@
 	<true/>
 	<key>EnableDivisionView</key>
 	<false/>
+	<key>EnterCopyModeAutomatically</key>
+	<false/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x19-0x60000</key>
@@ -241,20 +245,6 @@
 		<dict>
 			<key>Action</key>
 			<integer>32</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0xf700-0x300000</key>
-		<dict>
-			<key>Action</key>
-			<integer>7</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0xf701-0x300000</key>
-		<dict>
-			<key>Action</key>
-			<integer>6</integer>
 			<key>Text</key>
 			<string></string>
 		</dict>
@@ -421,7 +411,7 @@
 				<real>0.5527348518371582</real>
 			</dict>
 			<key>BM Growl</key>
-			<true/>
+			<false/>
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -772,10 +762,12 @@
 			<string>kContextMenuPointerAction</string>
 		</dict>
 	</dict>
+	<key>ShowPaneTitles</key>
+	<false/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.13106325363100274</real>
+	<real>0.1</real>
 	<key>StatusBarPosition</key>
 	<integer>1</integer>
 	<key>SwitchWindowModifier</key>
