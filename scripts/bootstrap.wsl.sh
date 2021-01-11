@@ -10,7 +10,7 @@ fi
 # pre-setup
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y patch build-essential zsh locales-all
+sudo apt install -y build-essential pkg-config
 
 # fetch dotfiles
 mkdir -p $HOME/workspace/ghq/github.com/nazna
@@ -24,13 +24,39 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# install nodejs (volta on homebrew is broken)
-curl https://get.volta.sh | bash -s -- --skip-setup
-export PATH="$HOME/.volta/bin:$PATH"
-volta install node@latest
-
 # install homebrew formulae
-brew bundle --file $HOME/workspace/ghq/github.com/nazna/dotfiles/Brewfile
+brew install curl
+brew install exa
+brew install fzf
+brew install ghq
+brew install git
+brew install jq
+brew install starship
+brew install tree
+brew install vim
+brew install volta
+brew install youtube-dl
+brew install zsh
+
+# install nodejs
+volta install node@latest
+volta setup
+
+# configure shell
+echo $(which zsh) | sudo tee -a /etc/shells
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+chsh $USER -s $(which zsh)
+chmod 755 /usr/local/share/zsh/site-functions
+chmod 755 /usr/local/share/zsh
+
+# configure vim
+mkdir -p $HOME/.vim/colors
+curl -o $HOME/hybrid_material.vim https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/master/colors/hybrid_material.vim
+mv $HOME/hybrid_material.vim $HOME/.vim/colors
+git clone https://github.com/editorconfig/editorconfig-vim.git $HOME/.vim/pack/plugins/start/editorconfig-vim
+git clone https://github.com/cohama/lexima.vim.git $HOME/.vim/pack/plugins/start/lexima
+git clone https://github.com/itchyny/lightline.vim.git $HOME/.vim/pack/plugins/start/lightline
+git clone https://github.com/cocopon/lightline-hybrid.vim.git $HOME/.vim/pack/plugins/start/lightline-hybrid
 
 # deploy dotfiles
 mkdir -p $HOME/.config
@@ -43,16 +69,6 @@ ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/vimrc $HOME/.vimrc
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/zshenv $HOME/.zshenv
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/zshrc $HOME/.zshrc
 
-# configure shell
-echo $(which zsh) | sudo tee -a /etc/shells
-chsh $USER -s $(which zsh)
-
-# configure vim
-git clone git@github.com:editorconfig/editorconfig-vim.git $HOME/.vim/pack/editor/start
-git clone git@github.com:cohama/lexima.vim.git $HOME/.vim/pack/editor/start
-git clone git@github.com:kristijanhusak/vim-hybrid-material.git $HOME/.vim/pack/theme/start
-git clone git@github.com:itchyny/lightline.vim.git $HOME/.vim/pack/theme/start
-git clone git@github.com:cocopon/lightline-hybrid.vim.git $HOME/.vim/pack/theme/start
 
 echo ">>> ========================================"
 echo ">>> 1. reboot"
