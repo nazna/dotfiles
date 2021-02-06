@@ -1,3 +1,5 @@
+[init]
+  defaultBranch = main
 [user]
   name = nazna
   email = 14846330+nazna@users.noreply.github.com
@@ -10,6 +12,9 @@
   pager = less -FRX
 [push]
   default = current
+[pull]
+  rebase = false
+  prune = true
 [status]
   showUntrackedFiles = all
 [diff]
@@ -25,8 +30,5 @@
   grep = always
   diff = always
   diff-highlight = always
-[pull]
-  rebase = true
-  prune = true
 [ghq]
   root = ~/workspace/ghq
