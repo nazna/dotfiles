@@ -1,2 +1,8 @@
+also=dev
+save=true
+save-exact=true
+progress=false
+engine-strict=true
+
 init.author.email=naoya3e@gmail.com
 init.author.name=nazna
