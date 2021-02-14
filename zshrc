@@ -68,6 +68,7 @@ export LANG="ja_JP.UTF-8"
 export EDITOR="vim"
 export FCEDIT="vim"
 
+export HISTFILE="$HOME/.zsh_history"
 export FISTSIZE=100000
 export SAVEHIST=100000
 
