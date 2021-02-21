@@ -102,7 +102,6 @@ function fzf-ghq() {
 zle -N fzf-ghq
 bindkey '^t' fzf-ghq
 
-
 function fzf-git-switch() {
   local branch=$(git branch -a | tr -d " " | fzf +m --query="$LBUFFER" --prompt="switch > " --preview "git log --oneline --graph --decorate" | sed -e "s/^\*\s*//g" | sed -e "s/remotes\/origin\///g")
   if [ -n "$branch" ]; then
