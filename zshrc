@@ -103,7 +103,7 @@ zle -N fzf-ghq
 bindkey '^t' fzf-ghq
 
 function fzf-git-switch() {
-  local branch=$(git branch -a | tr -d " " | fzf +m --query="$LBUFFER" --prompt="switch > " --preview "git log --oneline --graph --decorate" | sed -e "s/^\*\s*//g" | sed -e "s/remotes\/origin\///g")
+  local branch=$(git branch -a | tr -d " " | fzf +m --query="$LBUFFER" --prompt="switch > ")
   if [ -n "$branch" ]; then
     BUFFER="git switch ${branch}"
     zle accept-line
