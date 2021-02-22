@@ -33,8 +33,8 @@ volta setup
 # configure shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 chsh $USER -s /usr/local/bin/zsh
-chmod 755 /usr/local/share/zsh/site-functions
 chmod 755 /usr/local/share/zsh
+chmod 755 /usr/local/share/zsh/site-functions
 
 # configure shell font
 mkdir -p $HOME/.fonts
@@ -59,7 +59,6 @@ ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/globalgitignore $HOME/.glo
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/npmrc $HOME/.npmrc
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/starship.toml $HOME/.config/starship.toml
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/vimrc $HOME/.vimrc
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/zshenv $HOME/.zshenv
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/zshrc $HOME/.zshrc
 
 # configure finder

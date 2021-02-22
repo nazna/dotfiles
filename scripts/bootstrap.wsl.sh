@@ -30,12 +30,14 @@ brew install exa
 brew install fzf
 brew install ghq
 brew install git
+brew install go
 brew install jq
 brew install starship
 brew install tree
 brew install vim
 brew install volta
 brew install youtube-dl
+brew install zip
 brew install zsh
 
 # install nodejs
@@ -64,7 +66,6 @@ ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/globalgitignore $HOME/.glo
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/npmrc $HOME/.npmrc
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/starship.toml $HOME/.config/starship.toml
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/vimrc $HOME/.vimrc
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/zshenv $HOME/.zshenv
 ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/zshrc $HOME/.zshrc
 
 

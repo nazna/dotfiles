@@ -10,10 +10,6 @@ zinit light "zdharma/fast-syntax-highlighting"
 zinit light "b4b4r07/enhancd"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  if builtin command -v brew > /dev/null; then
-    FPATH="/usr/local/share/zsh/site-functions:$FPATH"
-  fi
-
   if builtin command -v starship > /dev/null; then
     eval "$(starship init zsh)"
   fi
@@ -114,14 +110,11 @@ zle -N fzf-git-switch
 bindkey '^y' fzf-git-switch
 
 if builtin command -v exa > /dev/null; then
-  alias l="exa -F"
   alias ls="exa -F"
   alias la="exa -Fa"
   alias ll="exa -bhlHF"
   alias lla="exa -bhlHFa"
-  alias llg="exa -bhlHFa --sort=type"
 else
-  alias l="ls -FG"
   alias ls="ls -FG"
   alias la="ls -A"
   alias ll="ls -l"
@@ -131,12 +124,9 @@ fi
 if builtin command -v git > /dev/null; then
   alias gs="git status --short --branch"
   alias gl="git log -n 10 --date=short --pretty=format:'%C(yellow)%h %C(green)%cd %C(blue)%cn %C(reset)%s'"
-  alias glg="git log --graph --date=short --pretty=format:'%C(yellow)%h %C(green)%cd %C(blue)%cn%C(magenta)%d %C(reset)%s'"
   alias ga="git add"
   alias gc="git commit"
-  alias gd="git diff"
   alias gp="git push"
-  alias gf="git fetch"
   alias gb="git branch"
   alias gcm="git commit --message"
 fi
