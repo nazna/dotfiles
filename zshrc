@@ -129,6 +129,7 @@ if builtin command -v git > /dev/null; then
   alias gp="git push"
   alias gd="git diff"
   alias gb="git branch"
+  alias gpl="git pull"
   alias gcm="git commit --message"
 fi
 

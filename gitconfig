@@ -10,11 +10,12 @@
   ignorecase = false
   quotepath = false
   pager = less -FRX
+[fetch]
+  prune = true
 [push]
   default = current
 [pull]
-  rebase = false
-  prune = true
+  ff = only
 [status]
   showUntrackedFiles = all
 [diff]
