@@ -6,3 +6,6 @@ disabled = true
 
 [hostname]
 ssh_only = true
+
+[nodejs]
+symbol = "🐢"
