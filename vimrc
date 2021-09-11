@@ -46,13 +46,11 @@ set wrapscan
 set incsearch
 set hlsearch
 
+set title
 set number
 set showcmd
 set showmatch
 set laststatus=2
-
-set title
-set titlestring=nvim%(\ %)\|%(\ %)%f%(\ %)%m
 
 set t_vb=
 set novisualbell
@@ -67,11 +65,6 @@ set noswapfile
 set nowritebackup
 
 set clipboard^=unnamed,unnamedplus
-
-autocmd FileType python setlocal autoindent
-autocmd FileType python setlocal smartindent
-autocmd FileType python setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd FileType python setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4
 
 map q: :q
 nmap <silent> <Esc><Esc> :nohlsearch<CR>

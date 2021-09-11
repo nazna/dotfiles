@@ -1,6 +1,6 @@
 # nazna's dotfiles
 
-> Bootstrap to meet new awesome computer :)
+> nazna's dotfiles and setup scripts
 
 ## macOS
 

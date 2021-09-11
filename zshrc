@@ -7,25 +7,6 @@ zinit light "zsh-users/zsh-completions"
 zinit light "zsh-users/zsh-autosuggestions"
 zinit light "zsh-users/zsh-history-substring-search"
 zinit light "zdharma/fast-syntax-highlighting"
-zinit light "b4b4r07/enhancd"
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  if builtin command -v starship > /dev/null; then
-    eval "$(starship init zsh)"
-  fi
-elif  [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  if builtin command -v brew > /dev/null; then
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-  fi
-
-  if builtin command -v starship > /dev/null; then
-    eval $(/home/linuxbrew/.linuxbrew/bin/starship init zsh)
-  fi
-fi
-
-if [ -e "$HOME/.cargo" ]; then
-  source "$HOME/.cargo/env"
-fi
 
 autoload -Uz compinit; compinit
 autoload -Uz colors; colors
@@ -71,12 +52,32 @@ export SAVEHIST=100000
 export FZF_DEFAULT_OPTS="--height 40% --ansi --cycle --reverse --select-1 --exit-0 --bind=tab:down --bind=btab:up"
 
 export XDG_CONFIG_HOME="$HOME/.config"
-export VOLTA_HOME="$HOME/.volta"
+export GO_PATH="$HOME/.go"
 
-export PATH="$HOME/.cargo/bin:$VOLTA_HOME/bin:$PATH"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # export PATH for MacOS only needed
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  export PATH="$HOME/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:$PATH"
+fi
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  if builtin command -v brew > /dev/null; then
+    FPATH="/usr/local/share/zsh/site-functions:$FPATH"
+  fi
+  if builtin command -v starship > /dev/null; then
+    eval "$(starship init zsh)"
+  fi
+elif  [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  if builtin command -v brew > /dev/null; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  fi
+  if builtin command -v starship > /dev/null; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/starship init zsh)
+  fi
+fi
+
+if [ -e "$HOME/.cargo" ]; then
+  source "$HOME/.cargo/env"
 fi
 
 function fzf-history() {
@@ -115,21 +116,20 @@ if builtin command -v exa > /dev/null; then
   alias ll="exa -bhlHF"
   alias lla="exa -bhlHFa"
 else
-  alias ls="ls -FG"
-  alias la="ls -A"
-  alias ll="ls -l"
-  alias lla="ls -AlF"
+  alias ls="ls -hFG"
+  alias la="ls -hA"
+  alias ll="ls -hl"
+  alias lla="ls -hAlF"
 fi
 
 if builtin command -v git > /dev/null; then
   alias gs="git status --short --branch"
   alias gl="git log -n 10 --date=short --pretty=format:'%C(yellow)%h %C(green)%cd %C(blue)%cn %C(reset)%s'"
   alias ga="git add"
-  alias gc="git commit"
-  alias gp="git push"
-  alias gd="git diff"
   alias gb="git branch"
+  alias gd="git diff"
   alias gpl="git pull"
+  alias gps="git push"
   alias gcm="git commit --message"
 fi
 

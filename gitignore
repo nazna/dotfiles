@@ -1,0 +1,17 @@
+# Misc
+!.gitkeep
+
+# Backup
+*.swp
+*.bak
+*~
+
+# macOS
+.DS_Store
+
+# TeX
+*.dvi
+*.aux
+
+# Node.js
+node_modules

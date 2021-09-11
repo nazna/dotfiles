@@ -1,15 +1,14 @@
-[init]
-  defaultBranch = main
 [user]
   name = nazna
   email = 14846330+nazna@users.noreply.github.com
+[init]
+  defaultBranch = main
 [core]
   editor = vim
   precomposeunicode = true
-  excludesfile = ~/.globalgitignore
   ignorecase = false
   quotepath = false
-  pager = less -FRX
+  pager = LESSCHARSET=utf-8 less
 [fetch]
   prune = true
 [push]
