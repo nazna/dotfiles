@@ -1,46 +1,93 @@
-defaults write com.apple.screencapture disable-shadow -bool true
-defaults write com.apple.screencapture name "screenshot"
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-defaults write com.apple.CrashReporter DialogType -string "none"
-defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
-defaults write NSGlobalDomain AppleScrollerPagingBehavior -int 1
+## ----------------------------------------
+##  @ref https://github.com/ulwlu/dotfiles/blob/master/system/macos.sh
+## ----------------------------------------
 
-defaults write com.apple.screensaver idleTime -int 0
+General() {
+  defaults write .GlobalPreferences NSTableViewDefaultSizeMode -int 1
+}
 
-defaults write com.apple.dock persistent-apps -array
-defaults write com.apple.dock tilesize -int 40
-defaults write com.apple.dock autohide -bool true
-defaults write com.apple.dock autohide-delay -float 0
-defaults write com.apple.dock autohide-time-modifier -float 0
-defaults write com.apple.dock expose-animation-duration -float 0
+ScreenShot() {
+  defaults write com.apple.screencapture location -string "$HOME/Downloads"
+  defaults write com.apple.screencapture type -string "png"
+  defaults write com.apple.screencapture disable-shadow -bool true
+  defaults write com.apple.screencapture name -string "ss"
+  defaults write com.apple.screencapture include-date -bool true
+  defaults write .GlobalPreferences AppleShowScrollBars -string "Automatic"
+  defaults write .GlobalPreferences AppleScrollerPagingBehavior -bool true
+}
 
-sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+Finder() {
+  defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+  defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+  defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
+  defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
+  defaults write com.apple.finder NewWindowTarget -string "${HOME}"
+  defaults write com.apple.finder FinderSpawnTab -bool true
+  defaults write com.apple.finder ShowRecentTags -bool false
+  defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+  defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool false
+  defaults write com.apple.finder WarnOnEmptyTrash -bool false
+  defaults write com.apple.finder FXRemoveOldTrashItems -bool true
+  defaults write com.apple.finder FXPreferredViewStyle -string Nlsv
+  defaults write -g AppleShowAllExtensions -bool true
 
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 36" "${HOME}"/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:textSize 12" "${HOME}"/Library/Preferences/com.apple.finder.plist
 
-defaults write NSGlobalDomain KeyRepeat -int 2
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
+  defaults write com.apple.finder ShowSidebar -bool true
+  defaults write com.apple.finder ShowPreviewPane -bool true
+  defaults write com.apple.finder ShowPathbar -bool true
+  defaults write com.apple.finder ShowTabView -bool true
+  defaults write com.apple.finder ShowStatusBar -bool true
+  defaults write com.apple.finder AppleShowAllFiles true
+  defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+  defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+  defaults write com.apple.finder DisableAllAnimations -bool true
+}
 
-defaults write NSGlobalDomain com.apple.mouse.scaling -1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.trackpad.forceClick -int 0
-defaults write NSGlobalDomain com.apple.trackpad.scaling -float 2.5
-defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
-defaults write com.apple.AppleMultitouchTrackpad com.apple.driver.AppleBluetoothMultitouch.trackpad -bool true
+Dock() {
+  defaults write com.apple.dock tilesize -int 30
+  defaults write com.apple.dock autohide -bool true
+  defaults write com.apple.dock autohide-delay -float 0
+  defaults write com.apple.dock autohide-time-modifier -float 0
+  defaults write com.apple.dock show-recents -bool false
+}
 
-defaults write com.apple.menuextra.clock IsAnalog -bool false
+EnergySaver() {
+  defaults write com.apple.controlcenter "NSStatusItem Visible Battery" -bool true
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Battery -int 18
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist BatteryShowPercentage -bool true
+}
 
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-defaults write com.apple.Finder FXPreferredViewStyle -string "icnv"
-defaults write com.apple.finder ShowStatusBar -bool true
-defaults write com.apple.finder ShowPathbar -bool true
-defaults write com.apple.finder QLEnableTextSelection -bool true
-defaults write com.apple.finder NewWindowTarget -string "PfHm"
-defaults write com.apple.finder NewWindowTargetPath -string "file://Users/naoya/"
+DateTime() {
+  defaults write com.apple.menuextra.clock IsAnalog -bool false
+  defaults write com.apple.menuextra.clock ShowSeconds -bool true
+  defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
+  defaults write com.apple.menuextra.clock Show24Hour -bool true
+}
+
+Keyboard() {
+  defaults write .GlobalPreferences InitialKeyRepeat -int 15
+  defaults write .GlobalPreferences KeyRepeat -int 2
+}
+
+ExtraSettings() {
+  defaults delete com.apple.dock persistent-apps
+  defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+  defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+  defaults write com.apple.CrashReporter UseUNC 1
+  defaults -currentHost write com.apple.screensaver idleTime -int 0
+  sudo nvram SystemAudioVolume=" "
+}
+
+## ----------------------------------------
+##  Run
+## ----------------------------------------
+General
+ScreenShot
+Finder
+Keyboard
+ExtraSettings
 
 killall Dock
 killall Finder

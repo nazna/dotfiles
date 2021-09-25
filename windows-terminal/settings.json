@@ -1,0 +1,87 @@
+{
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+  "copyOnSelect": false,
+  "copyFormatting": "none",
+  "initialCols": 128,
+  "initialRows": 32,
+  "profiles": {
+    "defaults": {
+      "colorScheme": "Hybrid",
+      "cursorShape": "filledBox",
+      "fontFace": "JetBrains Mono"
+    },
+    "list": [
+      {
+        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+        "hidden": false,
+        "name": "Ubuntu",
+        "source": "Windows.Terminal.Wsl",
+        "commandline": "wsl.exe ~ -d Ubuntu"
+      },
+      {
+        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+        "hidden": false,
+        "name": "Azure Cloud Shell",
+        "source": "Windows.Terminal.Azure"
+      }
+    ]
+  },
+  "schemes": [
+    {
+      "name": "Hybrid",
+      "black": "#2a2e33",
+      "red": "#b84d51",
+      "green": "#b3bf5a",
+      "yellow": "#e4b55e",
+      "blue": "#6e90b0",
+      "purple": "#a17eac",
+      "cyan": "#7fbfb4",
+      "white": "#b5b9b6",
+      "brightBlack": "#1d1f22",
+      "brightRed": "#8d2e32",
+      "brightGreen": "#798431",
+      "brightYellow": "#e58a50",
+      "brightBlue": "#4b6b88",
+      "brightPurple": "#6e5079",
+      "brightCyan": "#4d7b74",
+      "brightWhite": "#5a626a",
+      "background": "#161719",
+      "foreground": "#b7bcba"
+    }
+  ],
+  "actions": [
+    {
+      "command": {
+        "action": "copy",
+        "singleLine": false
+      },
+      "keys": "ctrl+c"
+    },
+    {
+      "command": "paste",
+      "keys": "ctrl+v"
+    },
+    {
+      "command": "find",
+      "keys": "ctrl+shift+f"
+    }
+  ],
+  "keybindings": [
+    { "command": "newTab", "keys": "ctrl+t" },
+    { "command": "closePane", "keys": "ctrl+w" },
+    { "command": { "action": "switchToTab", "index": 0 }, "keys": "ctrl+1" },
+    { "command": { "action": "switchToTab", "index": 1 }, "keys": "ctrl+2" },
+    { "command": { "action": "switchToTab", "index": 2 }, "keys": "ctrl+3" },
+    { "command": { "action": "switchToTab", "index": 3 }, "keys": "ctrl+4" },
+    { "command": { "action": "switchToTab", "index": 4 }, "keys": "ctrl+5" },
+    { "command": { "action": "switchToTab", "index": 5 }, "keys": "ctrl+6" },
+    { "command": { "action": "switchToTab", "index": 6 }, "keys": "ctrl+7" },
+    { "command": { "action": "switchToTab", "index": 7 }, "keys": "ctrl+8" },
+    { "command": { "action": "switchToTab", "index": 8 }, "keys": "ctrl+9" },
+    {
+      "command": { "action": "splitPane", "split": "vertical" },
+      "keys": "ctrl+d"
+    }
+  ]
+}

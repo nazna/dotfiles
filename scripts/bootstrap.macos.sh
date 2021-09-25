@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -eu
 
@@ -53,13 +53,13 @@ git clone https://github.com/cocopon/lightline-hybrid.vim.git $HOME/.vim/pack/pl
 
 # deploy dotfiles
 mkdir -p $HOME/.config/git
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/editorconfig $HOME/.editorconfig
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/npmrc $HOME/.npmrc
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/starship.toml $HOME/.config/starship.toml
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/gitignore $HOME/.config/git/ignore
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/gitconfig $HOME/.gitconfig
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/vimrc $HOME/.vimrc
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/zshrc $HOME/.zshrc
+ln -nfs $HOME/work/ghq/github.com/nazna/dotfiles/editorconfig $HOME/.editorconfig
+ln -nfs $HOME/work/ghq/github.com/nazna/dotfiles/gitconfig $HOME/.gitconfig
+ln -nfs $HOME/work/ghq/github.com/nazna/dotfiles/gitignore $HOME/.config/git/ignore
+ln -nfs $HOME/work/ghq/github.com/nazna/dotfiles/starship.toml $HOME/.config/starship.toml
+ln -nfs $HOME/work/ghq/github.com/nazna/dotfiles/vimrc $HOME/.vimrc
+ln -nfs $HOME/work/ghq/github.com/nazna/dotfiles/zshrc $HOME/.zshrc
+ln -nfs $HOME/work/ghq/github.com/nazna/dotfiles/npmrc $HOME/.npmrc
 
 # configure finder
 sudo rm -f /Applications/.localized $HOME/Applications/.localized $HOME/Desktop/.localized $HOME/Documents/.localized $HOME/Downloads/.localized $HOME/Library/.localized $HOME/Movies/.localized $HOME/Music/.localized $HOME/Pictures/.localized $HOME/Public/.localized
