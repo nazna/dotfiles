@@ -31,4 +31,4 @@
   diff = always
   diff-highlight = always
 [ghq]
-  root = ~/workspace/ghq
+  root = ~/work/ghq

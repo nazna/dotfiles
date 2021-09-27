@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 source "$HOME/.zinit/bin/zinit.zsh"
 
 autoload -Uz _zinit
@@ -52,65 +54,60 @@ export SAVEHIST=100000
 export FZF_DEFAULT_OPTS="--height 40% --ansi --cycle --reverse --select-1 --exit-0 --bind=tab:down --bind=btab:up"
 
 export XDG_CONFIG_HOME="$HOME/.config"
-export GO_PATH="$HOME/.go"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  # export PATH for MacOS only needed
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  export PATH="$HOME/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:$PATH"
-fi
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  if builtin command -v brew > /dev/null; then
-    FPATH="/usr/local/share/zsh/site-functions:$FPATH"
-  fi
-  if builtin command -v starship > /dev/null; then
-    eval "$(starship init zsh)"
-  fi
+  eval "$(/usr/local/bin/brew shellenv)"
 elif  [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  if builtin command -v brew > /dev/null; then
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-  fi
-  if builtin command -v starship > /dev/null; then
-    eval $(/home/linuxbrew/.linuxbrew/bin/starship init zsh)
-  fi
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-if [ -e "$HOME/.cargo" ]; then
+if [[ -e "$HOME/.cargo/env" ]]; then
   source "$HOME/.cargo/env"
 fi
 
-function fzf-history() {
+if [[ -e "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
+  source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
+
+if type fnm > /dev/null 2>&1; then
+  eval "$(fnm env)"
+fi
+
+if type starship > /dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
+
+function fzf_history() {
   BUFFER=$(history -n -r 1 | fzf +s +m --query="$LBUFFER" --prompt="history > ")
   CURSOR=$#BUFFER
   zle reset-prompt
 }
-zle -N fzf-history
-bindkey '^r' fzf-history
+zle -N fzf_history
+bindkey '^r' fzf_history
 
-function fzf-ghq() {
-  local repository=$(ghq list | fzf +m --query="$LBUFFER" --prompt="repository > ")
-  if [ -n "$repository" ]; then
+function fzf_ghq() {
+  local repository=$(ghq list | fzf +m --query="$LBUFFER" --prompt="ghq > ")
+  if [[ -n "$repository" ]]; then
     BUFFER="cd $(ghq root)/${repository}"
     zle accept-line
   fi
   zle reset-prompt
 }
-zle -N fzf-ghq
-bindkey '^t' fzf-ghq
+zle -N fzf_ghq
+bindkey '^t' fzf_ghq
 
-function fzf-git-switch() {
+function fzf_git_switch() {
   local branch=$(git branch -a | tr -d " " | fzf +m --query="$LBUFFER" --prompt="switch > ")
-  if [ -n "$branch" ]; then
+  if [[ -n "$branch" ]]; then
     BUFFER="git switch ${branch}"
     zle accept-line
   fi
   zle reset-prompt
 }
-zle -N fzf-git-switch
-bindkey '^y' fzf-git-switch
+zle -N fzf_git_switch
+bindkey '^y' fzf_git_switch
 
-if builtin command -v exa > /dev/null; then
+if type exa > /dev/null 2>&1; then
   alias ls="exa -F"
   alias la="exa -Fa"
   alias ll="exa -bhlHF"
@@ -122,7 +119,7 @@ else
   alias lla="ls -hAlF"
 fi
 
-if builtin command -v git > /dev/null; then
+if type git > /dev/null 2>&1; then
   alias gs="git status --short --branch"
   alias gl="git log -n 10 --date=short --pretty=format:'%C(yellow)%h %C(green)%cd %C(blue)%cn %C(reset)%s'"
   alias ga="git add"
@@ -133,6 +130,6 @@ if builtin command -v git > /dev/null; then
   alias gcm="git commit --message"
 fi
 
-if builtin command -v clip.exe > /dev/null; then
+if type clip.exe > /dev/null 2>&1; then
   alias pbcopy="clip.exe"
 fi

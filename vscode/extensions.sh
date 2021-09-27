@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 code --install-extension wyze.theme-hybrid-next
 code --install-extension pkief.material-icon-theme
 

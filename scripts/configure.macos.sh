@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ## ----------------------------------------
 ##  @ref https://github.com/ulwlu/dotfiles/blob/master/system/macos.sh
 ## ----------------------------------------

@@ -1,79 +1,103 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -eu
 
-if [ -e "$HOME/workspace/ghq/github.com/nazna/dotfiles" ]; then
-  echo >&2 "[ERROR] Exit bootstrapping because dotfiles already exist."
-  exit 1
-fi
+function pre_setup() {
+  sudo apt update -y
+  sudo apt upgrade -y
+  sudo apt install -y build-essential pkg-config libssl-dev
+}
 
-# pre-setup
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install -y build-essential pkg-config libssl-dev
+function fetch_dotfiles() {
+  if [[ ! -e "$HOME/work/ghq/github.com/nazna/dotfiles" ]]; then
+    git clone https://github.com/nazna/dotfiles.git "$HOME/work/ghq/github.com/nazna/dotfiles"
+  fi
+}
 
-# fetch dotfiles
-mkdir -p $HOME/workspace/ghq/github.com/nazna
-git clone https://github.com/nazna/dotfiles.git $HOME/workspace/ghq/github.com/nazna/dotfiles
+function install_rust() {
+  # https://www.rust-lang.org/
+  if ! type rustup > /dev/null 2>&1; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+  fi
+}
 
-# install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> $HOME/.zprofile
+function install_sdkman() {
+  # https://sdkman.io/
+  if ! type sdk > /dev/null 2>&1; then
+    curl -s "https://get.sdkman.io?rcupdate=false" | bash
+  fi
+}
 
-# install rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-export PATH="$HOME/.cargo/bin:$PATH"
+function install_nodejs() {
+  # https://github.com/Schniz/fnm
+  if ! type fnm > /dev/null 2>&1; then
+    curl -fsSL https://fnm.vercel.app/install | bash -- --skip-shell
+    fnm completions --shell zsh
+  fi
+}
 
-# install homebrew formulae
-brew install curl
-brew install exa
-brew install fzf
-brew install ghq
-brew install git
-brew install go
-brew install jq
-brew install starship
-brew install tree
-brew install vim
-brew install volta
-brew install youtube-dl
-brew install zip
-brew install zsh
+function install_homebrew() {
+  # https://brew.sh/
+  if ! type brew > /dev/null 2>&1; then
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
+}
 
-# install nodejs
-volta install node@latest
-volta setup
+function install_homebrew_formulae() {
+  if type brew > /dev/null 2>&1; then
+    brew install curl exa fzf ghq git jq nkf starship tree vim youtube-dl zsh
+  fi
+}
 
-# configure shell
-echo $(which zsh) | sudo tee -a /etc/shells
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-sudo chsh $USER -s $(which zsh)
+function setup_shell() {
+  # https://github.com/zdharma/zinit
+  if ! type zinit > /dev/null 2>&1; then
+    echo "$(which zsh)" | sudo tee -a /etc/shells
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+    chsh "$USER" -s "$(which zsh)"
+  fi
+}
 
-# configure vim
-mkdir -p $HOME/.vim/colors
-curl -o $HOME/hybrid_material.vim https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/master/colors/hybrid_material.vim
-mv $HOME/hybrid_material.vim $HOME/.vim/colors
-git clone https://github.com/editorconfig/editorconfig-vim.git $HOME/.vim/pack/plugins/start/editorconfig-vim
-git clone https://github.com/cohama/lexima.vim.git $HOME/.vim/pack/plugins/start/lexima
-git clone https://github.com/itchyny/lightline.vim.git $HOME/.vim/pack/plugins/start/lightline
-git clone https://github.com/cocopon/lightline-hybrid.vim.git $HOME/.vim/pack/plugins/start/lightline-hybrid
+function setup_vim() {
+  if [[ -e "$HOME/.vim/colors/hybrid_material.vim" ]]; then
+    mkdir -p "$HOME/.vim/colors"
+    curl -o "$HOME/.vim/colors/hybrid_material.vim" https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/master/colors/hybrid_material.vim
+    git clone https://github.com/editorconfig/editorconfig-vim.git "$HOME/.vim/pack/plugins/start/editorconfig-vim"
+    git clone https://github.com/cohama/lexima.vim.git "$HOME/.vim/pack/plugins/start/lexima"
+    git clone https://github.com/itchyny/lightline.vim.git "$HOME/.vim/pack/plugins/start/lightline"
+    git clone https://github.com/cocopon/lightline-hybrid.vim.git "$HOME/.vim/pack/plugins/start/lightline-hybrid"
+  fi
+}
 
-# deploy dotfiles
-mkdir -p $HOME/.config
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/editorconfig $HOME/.editorconfig
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/gitconfig $HOME/.gitconfig
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/globalgitignore $HOME/.globalgitignore
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/npmrc $HOME/.npmrc
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/starship.toml $HOME/.config/starship.toml
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/vimrc $HOME/.vimrc
-ln -nfs $HOME/workspace/ghq/github.com/nazna/dotfiles/zshrc $HOME/.zshrc
+function deploy_dotfiles() {
+  mkdir -p "$HOME/.config/git"
+  ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/editorconfig" "$HOME/.editorconfig"
+  ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/gitconfig" "$HOME/.gitconfig"
+  ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/gitignore" "$HOME/.config/git/ignore"
+  ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/npmrc" "$HOME/.npmrc"
+  ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/starship.toml" "$HOME/.config/starship.toml"
+  ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/vimrc" "$HOME/.vimrc"
+  ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/zshrc" "$HOME/.zshrc"
+}
 
+pre_setup
+fetch_dotfiles
+install_rust
+install_sdkman
+install_nodejs
+install_homebrew
+install_homebrew_formulae
+setup_shell
+setup_vim
+deploy_dotfiles
 
 echo ">>> ========================================"
 echo ">>> 1. reboot"
-echo ">>> 2. change remote origin to ssh"
-echo ">>> 3. confirm vim, vscode and chrome settings"
-echo ">>> 4. configure system preferences"
-echo ">>> 4. add ssh key for github"
+echo ">>> 2. ssh-keygen -t ed25519"
+echo ">>> 3. cat $HOME/.ssh/id_ed25519.pub | pbcopy && open https://github.com/settings/keys"
+echo ">>> 4. git remote set-url origin git@github.com:nazna/dotfiles.git"
+echo ">>> 5. sdk install java 16.0.2-zulu"
+echo ">>> 6. fnm install 16.10.0"
+echo ">>> 9. Configure VSCode"
 echo ">>> ========================================"
