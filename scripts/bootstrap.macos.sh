@@ -104,7 +104,7 @@ function remove_garbages() {
 
 function configure_system_preferences() {
   if [[ ! -e "$HOME/work/ghq/github.com/nazna/dotfiles" ]]; then
-    bash "$HOME/workspace/ghq/github.com/nazna/dotfiles/scripts/configure.macos.sh"
+    bash "$HOME/work/ghq/github.com/nazna/dotfiles/scripts/configure.macos.sh"
   fi
 }
 
