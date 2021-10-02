@@ -1,10 +1,11 @@
 {
   "$schema": "https://aka.ms/terminal-profiles-schema",
   "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-  "copyOnSelect": false,
-  "copyFormatting": "none",
   "initialCols": 128,
   "initialRows": 32,
+  "copyOnSelect": false,
+  "copyFormatting": "none",
+  "multiLinePasteWarning": false,
   "profiles": {
     "defaults": {
       "colorScheme": "Hybrid",
@@ -67,6 +68,9 @@
     { "command": { "action": "switchToTab", "index": 6 }, "keys": "ctrl+7" },
     { "command": { "action": "switchToTab", "index": 7 }, "keys": "ctrl+8" },
     { "command": { "action": "switchToTab", "index": 8 }, "keys": "ctrl+9" },
-    { "command": { "action": "splitPane", "split": "vertical" }, "keys": "ctrl+d" }
+    {
+      "command": { "action": "splitPane", "split": "vertical" },
+      "keys": "ctrl+d"
+    }
   ]
 }

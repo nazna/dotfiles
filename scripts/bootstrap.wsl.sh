@@ -5,7 +5,7 @@ set -eu
 function pre_setup() {
   sudo apt update -y
   sudo apt upgrade -y
-  sudo apt install -y build-essential pkg-config libssl-dev zip unzip
+  sudo apt install -y build-essential procps pkg-config libssl-dev zip unzip
 }
 
 function fetch_dotfiles() {
@@ -54,7 +54,7 @@ function setup_shell() {
   if ! type zinit > /dev/null 2>&1; then
     echo "$(which zsh)" | sudo tee -a /etc/shells
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-    chsh "$USER" -s "$(which zsh)"
+    sudo chsh "$USER" -s "$(which zsh)"
   fi
 }
 
