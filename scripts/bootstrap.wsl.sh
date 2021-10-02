@@ -5,7 +5,7 @@ set -eu
 function pre_setup() {
   sudo apt update -y
   sudo apt upgrade -y
-  sudo apt install -y build-essential pkg-config libssl-dev
+  sudo apt install -y build-essential pkg-config libssl-dev zip unzip
 }
 
 function fetch_dotfiles() {
@@ -31,7 +31,7 @@ function install_sdkman() {
 function install_nodejs() {
   # https://github.com/Schniz/fnm
   if ! type fnm > /dev/null 2>&1; then
-    curl -fsSL https://fnm.vercel.app/install | bash -- --skip-shell
+    curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
     fnm completions --shell zsh
   fi
 }

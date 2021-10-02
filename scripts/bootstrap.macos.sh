@@ -31,7 +31,7 @@ function install_sdkman() {
 function install_nodejs() {
   # https://github.com/Schniz/fnm
   if ! type fnm > /dev/null 2>&1; then
-    curl -fsSL https://fnm.vercel.app/install | bash -- --skip-shell
+    curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
     fnm completions --shell zsh
   fi
 }
@@ -91,14 +91,14 @@ function deploy_dotfiles() {
 }
 
 function remove_garbages() {
-  rm -f "$HOME/Applications/.localized" 
-  rm -f "$HOME/Desktop/.localized" 
-  rm -f "$HOME/Documents/.localized" 
-  rm -f "$HOME/Downloads/.localized" 
-  rm -f "$HOME/Library/.localized" 
-  rm -f "$HOME/Movies/.localized" 
-  rm -f "$HOME/Music/.localized" 
-  rm -f "$HOME/Pictures/.localized" 
+  rm -f "$HOME/Applications/.localized"
+  rm -f "$HOME/Desktop/.localized"
+  rm -f "$HOME/Documents/.localized"
+  rm -f "$HOME/Downloads/.localized"
+  rm -f "$HOME/Library/.localized"
+  rm -f "$HOME/Movies/.localized"
+  rm -f "$HOME/Music/.localized"
+  rm -f "$HOME/Pictures/.localized"
   rm -f "$HOME/Public/.localized"
 }
 
