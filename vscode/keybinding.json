@@ -1,0 +1,22 @@
+[
+  {
+    "key": "ctrl+shift+i",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "editor.action.smartSelect.expand"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "editor.action.smartSelect.shrink"
+  }
+]
