@@ -43,7 +43,7 @@ function install_homebrew() {
 }
 
 function install_homebrew_formulae() {
-  if [[ -e "/usr/local/bin/brew" ]]; then
+  if [[ ! -e "/usr/local/bin/starship" ]]; then
     brew bundle --file "$HOME/work/ghq/github.com/nazna/dotfiles/Brewfile"
   fi
 }
