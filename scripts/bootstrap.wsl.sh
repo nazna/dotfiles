@@ -16,42 +16,42 @@ function fetch_dotfiles() {
 
 function install_rust() {
   # https://www.rust-lang.org/
-  if ! type rustup > /dev/null 2>&1; then
+  if [[ ! -e "$HOME/.rustup" ]]; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
   fi
 }
 
 function install_sdkman() {
   # https://sdkman.io/
-  if ! type sdk > /dev/null 2>&1; then
+  if [[ ! -e "$HOME/.sdkman" ]]; then
     curl -s "https://get.sdkman.io?rcupdate=false" | bash
   fi
 }
 
 function install_nodejs() {
   # https://github.com/Schniz/fnm
-  if ! type fnm > /dev/null 2>&1; then
+  if [[ ! -e "$HOME/.fnm" ]]; then
     curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
   fi
 }
 
 function install_homebrew() {
   # https://brew.sh/
-  if ! type brew > /dev/null 2>&1; then
+  if [[ ! -e "/home/linuxbrew/.linuxbrew" ]]; then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
 }
 
 function install_homebrew_formulae() {
-  if type brew > /dev/null 2>&1; then
+  if [[ -e "/home/linuxbrew/.linuxbrew" ]]; then
     brew install curl exa fzf ghq git jq nkf starship tree vim youtube-dl zsh
   fi
 }
 
 function setup_shell() {
   # https://github.com/zdharma/zinit
-  if ! type zinit > /dev/null 2>&1; then
+  if [[ ! -e "$HOME/.zinit" ]]; then
     echo "$(which zsh)" | sudo tee -a /etc/shells
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
     sudo chsh "$USER" -s "$(which zsh)"
@@ -61,7 +61,7 @@ function setup_shell() {
 function setup_vim() {
   if [[ ! -e "$HOME/.vim/colors" ]]; then
     mkdir -p "$HOME/.vim/colors"
-    curl -o "$HOME/.vim/colors/hybrid_material.vim" https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/master/colors/hybrid_material.vim
+    curl https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/HEAD/colors/hybrid_material.vim > "$HOME/.vim/colors/hybrid_material.vim"
     git clone https://github.com/editorconfig/editorconfig-vim.git "$HOME/.vim/pack/plugins/start/editorconfig-vim"
     git clone https://github.com/cohama/lexima.vim.git "$HOME/.vim/pack/plugins/start/lexima"
     git clone https://github.com/itchyny/lightline.vim.git "$HOME/.vim/pack/plugins/start/lightline"
