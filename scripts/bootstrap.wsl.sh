@@ -3,9 +3,11 @@
 set -eu
 
 function pre_setup() {
-  sudo apt update -y
-  sudo apt upgrade -y
-  sudo apt install -y build-essential procps pkg-config libssl-dev zip unzip
+  if [[ ! -e "$HOME/work/ghq/github.com/nazna/dotfiles" ]]; then
+    sudo apt update -y
+    sudo apt upgrade -y
+    sudo apt install -y build-essential procps pkg-config libssl-dev zip unzip
+  fi
 }
 
 function fetch_dotfiles() {
