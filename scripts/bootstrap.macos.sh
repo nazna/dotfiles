@@ -68,7 +68,7 @@ function setup_shell() {
 }
 
 function setup_vim() {
-  if [[ ! -e "$HOME/.vim/colors" ]]; then
+  if [[ ! -e "$HOME/.vim" ]]; then
     mkdir -p "$HOME/.vim/colors"
     curl https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/HEAD/colors/hybrid_material.vim > "$HOME/.vim/colors/hybrid_material.vim"
     git clone https://github.com/editorconfig/editorconfig-vim.git "$HOME/.vim/pack/plugins/start/editorconfig-vim"

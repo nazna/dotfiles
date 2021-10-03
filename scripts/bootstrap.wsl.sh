@@ -52,14 +52,14 @@ function install_homebrew_formulae() {
 function setup_shell() {
   # https://github.com/zdharma/zinit
   if [[ ! -e "$HOME/.zinit" ]]; then
-    echo "$(which zsh)" | sudo tee -a /etc/shells
+    which zsh | sudo tee -a /etc/shells
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
     sudo chsh "$USER" -s "$(which zsh)"
   fi
 }
 
 function setup_vim() {
-  if [[ ! -e "$HOME/.vim/colors" ]]; then
+  if [[ ! -e "$HOME/.vim" ]]; then
     mkdir -p "$HOME/.vim/colors"
     curl https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/HEAD/colors/hybrid_material.vim > "$HOME/.vim/colors/hybrid_material.vim"
     git clone https://github.com/editorconfig/editorconfig-vim.git "$HOME/.vim/pack/plugins/start/editorconfig-vim"
