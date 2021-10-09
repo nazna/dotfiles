@@ -57,24 +57,24 @@ function setup_fonts() {
   fi
 }
 
-function setup_shell() {
-  # https://github.com/zdharma/zinit
-  if [[ ! -e "$HOME/.zinit" ]]; then
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/HEAD/doc/install.sh)"
-    chsh "$USER" -s /usr/local/bin/zsh
-    chmod 755 /usr/local/share/zsh
-    chmod 755 /usr/local/share/zsh/site-functions
-  fi
-}
-
 function setup_vim() {
-  if [[ ! -e "$HOME/.vim" ]]; then
+  if [[ ! -e "$HOME/.vim/colors" ]]; then
     mkdir -p "$HOME/.vim/colors"
     curl https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/HEAD/colors/hybrid_material.vim > "$HOME/.vim/colors/hybrid_material.vim"
     git clone https://github.com/editorconfig/editorconfig-vim.git "$HOME/.vim/pack/plugins/start/editorconfig-vim"
     git clone https://github.com/cohama/lexima.vim.git "$HOME/.vim/pack/plugins/start/lexima"
     git clone https://github.com/itchyny/lightline.vim.git "$HOME/.vim/pack/plugins/start/lightline"
     git clone https://github.com/cocopon/lightline-hybrid.vim.git "$HOME/.vim/pack/plugins/start/lightline-hybrid"
+  fi
+}
+
+function setup_zinit() {
+  # https://github.com/zdharma/zinit
+  if [[ ! -e "$HOME/.zinit" ]]; then
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/HEAD/doc/install.sh)"
+    chsh "$USER" -s /usr/local/bin/zsh
+    chmod 755 /usr/local/share/zsh
+    chmod 755 /usr/local/share/zsh/site-functions
   fi
 }
 
@@ -108,17 +108,21 @@ function configure_system_preferences() {
 }
 
 fetch_dotfiles
+
 install_xcode_cli
 install_rust
 install_sdkman
 install_nodejs
 install_homebrew
 install_homebrew_formulae
+
 setup_fonts
-setup_shell
 setup_vim
+setup_zinit
+
 deploy_dotfiles
 remove_garbages
+
 configure_system_preferences
 
 echo ">>> =========================================================="
