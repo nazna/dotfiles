@@ -60,7 +60,7 @@ function setup_fonts() {
 function setup_shell() {
   # https://github.com/zdharma/zinit
   if [[ ! -e "$HOME/.zinit" ]]; then
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/HEAD/doc/install.sh)"
     chsh "$USER" -s /usr/local/bin/zsh
     chmod 755 /usr/local/share/zsh
     chmod 755 /usr/local/share/zsh/site-functions

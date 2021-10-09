@@ -5,11 +5,11 @@
 ## macOS
 
 ```sh
-curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/main/scripts/bootstrap.macos.sh | bash
+curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/HEAD/scripts/bootstrap.macos.sh | bash
 ```
 
 ## Windows Subsystem for Linux
 
 ```sh
-curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/main/scripts/bootstrap.wsl.sh | bash
+curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/HEAD/scripts/bootstrap.wsl.sh | bash
 ```

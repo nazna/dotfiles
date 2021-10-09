@@ -55,7 +55,7 @@ function setup_shell() {
   # https://github.com/zdharma/zinit
   if [[ ! -e "$HOME/.zinit" ]]; then
     which zsh | sudo tee -a /etc/shells
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/HEAD/doc/install.sh)"
     sudo chsh "$USER" -s "$(which zsh)"
   fi
 }
