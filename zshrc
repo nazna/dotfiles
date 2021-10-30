@@ -50,7 +50,7 @@ export EDITOR="vim"
 export FCEDIT="vim"
 
 export HISTFILE="$HOME/.zsh_history"
-export FISTSIZE=100000
+export HISTSIZE=100000
 export SAVEHIST=100000
 
 export FZF_DEFAULT_OPTS="--height 40% --ansi --cycle --reverse --select-1 --exit-0 --bind=tab:down --bind=btab:up"
