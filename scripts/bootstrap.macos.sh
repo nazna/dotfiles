@@ -68,10 +68,13 @@ function setup_vim() {
   fi
 }
 
-function setup_zinit() {
-  # https://github.com/zdharma/zinit
-  if [[ ! -e "$HOME/.zinit" ]]; then
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/HEAD/doc/install.sh)"
+function setup_zsh() {
+  if [[ ! -e "$HOME/.config/zsh" ]]; then
+    mkdir -p "$HOME/.config/zsh"
+    git clone https://github.com/zsh-users/zsh-completions "$HOME/.config/zsh/zsh-completions"
+    git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME/.config/zsh/zsh-autosuggestions"
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting "$HOME/.config/zsh/zsh-syntax-highlighting"
+    git clone https://github.com/zsh-users/zsh-history-substring-search "$HOME/.config/zsh/zsh-history-substring-search"
     chsh "$USER" -s /usr/local/bin/zsh
     chmod 755 /usr/local/share/zsh
     chmod 755 /usr/local/share/zsh/site-functions
@@ -108,31 +111,26 @@ function configure_system_preferences() {
 }
 
 fetch_dotfiles
-
 install_xcode_cli
 install_rust
 install_sdkman
 install_nodejs
 install_homebrew
 install_homebrew_formulae
-
 setup_fonts
 setup_vim
-setup_zinit
-
+setup_zsh
 deploy_dotfiles
 remove_garbages
-
 configure_system_preferences
 
 echo ">>> =========================================================="
 echo ">>> 1. reboot"
 echo ">>> 2. ssh-keygen -t ed25519"
-echo ">>> 3. cat $HOME/.ssh/id_ed25519.pub | pbcopy && open https://github.com/settings/keys"
+echo ">>> 3. cat $HOME/.ssh/id_ed25519.pub | pbcopy"
 echo ">>> 4. git remote set-url origin git@github.com:nazna/dotfiles.git"
-echo ">>> 5. sdk install java 16.0.2-zulu"
-echo ">>> 6. fnm install 16.10.0"
-echo ">>> 7. brew install intellij-idea"
+echo ">>> 5. sdk install java 17.0.1-zulu"
+echo ">>> 6. fnm install --lts"
 echo ">>> 8. Configure system preferences"
 echo ">>> 9. Configure Discord, VSCode, iTerm 2, Google Japanese IME and Google Chrome"
 echo ">>> =========================================================="

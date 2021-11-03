@@ -8,13 +8,15 @@
   precomposeunicode = true
   ignorecase = false
   quotepath = false
-  pager = LESSCHARSET=utf-8 less
+  pager = LESSCHARSET=utf-8 less -FRX
 [fetch]
   prune = true
 [push]
   default = current
 [pull]
   ff = only
+[merge]
+  ff = false
 [status]
   showUntrackedFiles = all
 [diff]

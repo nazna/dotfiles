@@ -1,14 +1,9 @@
 #!/usr/bin/env zsh
 
-source "$HOME/.zinit/bin/zinit.zsh"
-
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-zinit light "zsh-users/zsh-completions"
-zinit light "zsh-users/zsh-autosuggestions"
-zinit light "zsh-users/zsh-history-substring-search"
-zinit light "zdharma/fast-syntax-highlighting"
+source $HOME/.config/zsh/zsh-completions/zsh-completions.plugin.zsh
+source $HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source $HOME/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
 
 autoload -Uz compinit; compinit
 autoload -Uz colors; colors
@@ -100,7 +95,7 @@ function fzf_ghq() {
 zle -N fzf_ghq
 bindkey '^t' fzf_ghq
 
-function fzf_git_switch() {
+function fzf_switch() {
   local branch=$(git branch -a | tr -d " " | fzf +m --query="$LBUFFER" --prompt="switch > ")
   if [[ -n "$branch" ]]; then
     BUFFER="git switch ${branch}"
@@ -108,8 +103,8 @@ function fzf_git_switch() {
   fi
   zle reset-prompt
 }
-zle -N fzf_git_switch
-bindkey '^y' fzf_git_switch
+zle -N fzf_switch
+bindkey '^y' fzf_switch
 
 if type exa > /dev/null 2>&1; then
   alias ls="exa -F"
