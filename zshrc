@@ -69,7 +69,7 @@ if [[ -e "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
 fi
 
 if type fnm > /dev/null 2>&1; then
-  eval "$(fnm env)"
+  eval "$(fnm env --use-on-cd)"
 fi
 
 if type starship > /dev/null 2>&1; then
