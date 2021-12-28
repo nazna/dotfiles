@@ -1,5 +1,4 @@
 {
-  "$schema": "https://aka.ms/terminal-profiles-schema",
   "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
   "initialCols": 128,
   "initialRows": 32,

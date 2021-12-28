@@ -29,6 +29,7 @@ setopt nonomatch
 
 setopt share_history
 setopt extended_history
+setopt inc_append_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
@@ -109,8 +110,8 @@ bindkey '^y' fzf_switch
 if type exa > /dev/null 2>&1; then
   alias ls="exa -F"
   alias la="exa -Fa"
-  alias ll="exa -bhlHF"
-  alias lla="exa -bhlHFa"
+  alias ll="exa -bhlHF --sort=type --time-style=long-iso"
+  alias lla="exa -bhlHFa --sort=type --time-style=long-iso"
 else
   alias ls="ls -hFG"
   alias la="ls -hA"

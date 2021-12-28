@@ -1,9 +1,5 @@
 [
   {
-    "key": "ctrl+shift+i",
-    "command": "workbench.action.terminal.toggleTerminal"
-  },
-  {
     "key": "ctrl+tab",
     "command": "workbench.action.nextEditor"
   },
