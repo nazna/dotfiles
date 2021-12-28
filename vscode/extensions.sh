@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
+code --install-extension arcticicestudio.nord-visual-studio-code
 code --install-extension dbaeumer.vscode-eslint
 code --install-extension eamodio.gitlens
 code --install-extension editorconfig.editorconfig
 code --install-extension esbenp.prettier-vscode
 code --install-extension mikestead.dotenv
-code --install-extension naumovs.color-highlight
 code --install-extension oderwat.indent-rainbow
 code --install-extension pkief.material-icon-theme
 code --install-extension tamasfe.even-better-toml

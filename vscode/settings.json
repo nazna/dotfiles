@@ -28,11 +28,7 @@
   "update.showReleaseNotes": false,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.restoreFullscreen": true,
-  "workbench.colorCustomizations": {
-    "statusBarItem.remoteBackground": "#83a324",
-    "statusBar.noFolderBackground": "#70862b"
-  },
-  "workbench.colorTheme": "Hybrid Next (Gray Background)",
+  "workbench.colorTheme": "Nord",
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.panel.defaultLocation": "bottom",
