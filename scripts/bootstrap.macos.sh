@@ -65,6 +65,7 @@ function setup_vim() {
     git clone https://github.com/cohama/lexima.vim.git "$HOME/.vim/pack/plugins/start/lexima"
     git clone https://github.com/itchyny/lightline.vim.git "$HOME/.vim/pack/plugins/start/lightline"
     git clone https://github.com/cocopon/lightline-hybrid.vim.git "$HOME/.vim/pack/plugins/start/lightline-hybrid"
+    git clone https://github.com/arcticicestudio/nord-vim.git "$HOME/.vim/pack/plugins/start/nord"
   fi
 }
 

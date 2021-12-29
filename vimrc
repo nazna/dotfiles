@@ -13,7 +13,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 set background=dark
 
 autocmd ColorScheme * highlight Normal ctermbg=none
-colorscheme hybrid_material
+colorscheme nord
 
 set guioptions-=m
 set guioptions-=T
@@ -75,4 +75,4 @@ noremap k gk
 nnoremap ; :
 
 let g:enable_bold_font = 1
-let g:lightline = { 'colorscheme': 'hybrid' }
+let g:lightline = { 'colorscheme': 'nord' }
