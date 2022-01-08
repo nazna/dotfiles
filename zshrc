@@ -78,7 +78,7 @@ if type starship > /dev/null 2>&1; then
 fi
 
 function fzf_history() {
-  BUFFER=$(history -n -r 1 | fzf +s +m --query="$LBUFFER" --prompt="history > ")
+  BUFFER=$(history -n -r 1 | fzf -e +s +m --query="$LBUFFER" --prompt="history > ")
   CURSOR=$#BUFFER
   zle reset-prompt
 }
