@@ -7,7 +7,7 @@
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.folding": false,
-  "editor.fontFamily": "'JetBrains Mono NL', 'Droid Sans Mono', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "JetBrains Mono NL",
   "editor.fontLigatures": false,
   "editor.fontSize": 18,
   "editor.glyphMargin": false,
