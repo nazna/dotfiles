@@ -47,7 +47,7 @@ function install_homebrew() {
 
 function install_homebrew_formulae() {
   if [[ ! -e "/home/linuxbrew/.linuxbrew/bin/starship" ]]; then
-    brew install curl exa fzf ghq git jq nkf starship tree vim youtube-dl zsh
+    brew install curl exa fzf gcc@5 ghq git go jq nkf starship tree vim youtube-dl zsh
   fi
 }
 

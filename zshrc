@@ -53,7 +53,8 @@ export FZF_DEFAULT_OPTS="--height 40% --ansi --cycle --reverse --select-1 --exit
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-export PATH="$HOME/.fnm:$PATH"
+export GOPATH="$HOME/.go"
+export PATH="$HOME/.fnm:$GOPATH/bin:$PATH"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
