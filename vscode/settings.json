@@ -23,6 +23,8 @@
   "gitlens.advanced.messages": {
     "suppressGitMissingWarning": true
   },
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
   "search.smartCase": true,
   "security.workspace.trust.untrustedFiles": "open",
   "telemetry.telemetryLevel": "off",
