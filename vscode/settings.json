@@ -11,6 +11,7 @@
   "editor.fontLigatures": false,
   "editor.fontSize": 18,
   "editor.glyphMargin": false,
+  "editor.guides.bracketPairs": true,
   "editor.minimap.enabled": false,
   "editor.renderControlCharacters": true,
   "editor.suggestSelection": "first",
