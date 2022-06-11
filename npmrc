@@ -1,4 +1,4 @@
-engine-strict=true
+include=dev
 progress=false
-save=true
 save-exact=true
+engine-strict=true

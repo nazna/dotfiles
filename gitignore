@@ -1,13 +1,10 @@
-# Misc
-!.gitkeep
+# macOS
+.DS_Store
 
 # Backup
 *.swp
 *.bak
 *~
-
-# macOS
-.DS_Store
 
 # TeX
 *.dvi
@@ -15,3 +12,6 @@
 
 # Node.js
 node_modules
+
+# Misc
+!.gitkeep

@@ -111,8 +111,8 @@ bindkey '^y' fzf_switch
 if type exa > /dev/null 2>&1; then
   alias ls="exa -F"
   alias la="exa -Fa"
-  alias ll="exa -bhlHF --sort=type --time-style=long-iso"
-  alias lla="exa -bhlHFa --sort=type --time-style=long-iso"
+  alias ll="exa -bghlHF --sort=type --time-style=long-iso --octal-permissions"
+  alias lla="exa -bghlHFa --sort=type --time-style=long-iso --octal-permissions"
 else
   alias ls="ls -hFG"
   alias la="ls -hA"

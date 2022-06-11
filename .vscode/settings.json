@@ -1,6 +1,8 @@
 {
+  "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "editor.rulers": [120],
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   }
