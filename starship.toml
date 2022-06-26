@@ -1,3 +1,6 @@
+[battery]
+disabled = true
+
 [directory]
 truncate_to_repo = false
 
@@ -8,4 +11,4 @@ disabled = true
 ssh_only = true
 
 [nodejs]
-symbol = "🐢"
+symbol = "⬢ "
