@@ -35,10 +35,12 @@
   "update.showReleaseNotes": false,
   "vscode-graphql.showExecCodelens": false,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.newWindowDimensions": "inherit",
   "window.restoreFullscreen": true,
   "workbench.colorTheme": "Nord",
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.iconTheme": "material-icon-theme",
+  "workbench.layoutControl.enabled": false,
   "workbench.panel.defaultLocation": "bottom",
   "workbench.startupEditor": "none"
 }
