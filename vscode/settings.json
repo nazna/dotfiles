@@ -21,6 +21,7 @@
   "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "git.mergeEditor": false,
   "gitlens.advanced.messages": {
     "suppressGitMissingWarning": true
   },
