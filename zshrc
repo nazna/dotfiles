@@ -54,7 +54,7 @@ export FZF_DEFAULT_OPTS="--height 40% --ansi --cycle --reverse --select-1 --exit
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export GOPATH="$HOME/.go"
-export PATH="$HOME/.fnm:$GOPATH/bin:$PATH"
+export PATH="$HOME/.fnm:$GOPATH/bin:/snap/bin:$HOME/.androidsdk/cmdline-tools/bin:$PATH"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
@@ -134,3 +134,5 @@ fi
 if type clip.exe > /dev/null 2>&1; then
   alias pbcopy="clip.exe"
 fi
+
+alias kubectl="minikube kubectl --"
