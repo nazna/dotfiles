@@ -89,6 +89,8 @@ function deploy_dotfiles() {
   ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/gitignore" "$HOME/.config/git/ignore"
   ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/npmrc" "$HOME/.npmrc"
   ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/starship.toml" "$HOME/.config/starship.toml"
+  ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+  ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
   ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/vimrc" "$HOME/.vimrc"
   ln -nfs "$HOME/work/ghq/github.com/nazna/dotfiles/zshrc" "$HOME/.zshrc"
 }
