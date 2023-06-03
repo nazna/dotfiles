@@ -1,0 +1,13 @@
+# macOS
+
+.DS_Store
+
+# Backup
+
+_.swp
+_.bak
+\*~
+
+# Node.js
+
+node_modules

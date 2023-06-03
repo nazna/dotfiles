@@ -8,11 +8,11 @@
   precomposeunicode = true
   ignorecase = false
   quotepath = false
-  pager = LESSCHARSET=utf-8 less -FRX
+  pager = less -FRX
 [fetch]
   prune = true
 [push]
-  default = current
+  default = simple
 [pull]
   ff = only
 [merge]
@@ -26,11 +26,11 @@
 [grep]
   lineNumber = true
 [color]
-  ui = true
-  status = always
-  branch = always
-  grep = always
-  diff = always
-  diff-highlight = always
+  ui = auto
+  status = auto
+  branch = auto
+  grep = auto
+  diff = auto
+  diff-highlight = auto
 [ghq]
-  root = ~/work/ghq
+  root = ~/.ghq

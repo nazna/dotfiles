@@ -1,0 +1,27 @@
+[battery]
+disabled = true
+
+[directory]
+truncation_length = 2
+truncate_to_repo = false
+
+[package]
+disabled = true
+
+[hostname]
+ssh_only = true
+
+[kubernetes]
+disabled = false
+format = '[⎈ $cluster( \($namespace\))]($style) in '
+style = 'blue bold'
+
+[nodejs]
+symbol = "⬢ "
+
+[ruby]
+disabled = true
+
+[time]
+disabled = false
+format = '[$time]($style) '
