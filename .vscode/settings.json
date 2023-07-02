@@ -5,8 +5,5 @@
   "editor.rulers": [120],
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
   }
 }

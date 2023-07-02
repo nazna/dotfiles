@@ -4,6 +4,7 @@ autoload -Uz compinit; compinit
 autoload -Uz colors; colors
 
 zstyle ':completion::complete:*' use-cache true
+zstyle ':completion:*:commands' rehash 1
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors "${LS_COLORS}"
@@ -65,8 +66,8 @@ elif  [[ "$OSTYPE" == "linux-gnu"* ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-eval "$(fnm env --use-on-cd)"
 eval "$(starship init zsh)"
+eval "$(~/bin/rtx activate zsh)"
 
 zle -N fzf_history
 bindkey '^r' fzf_history

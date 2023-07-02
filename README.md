@@ -2,14 +2,24 @@
 
 > nazna's dotfiles and setup scripts
 
-## macOS
+## Usage
 
-```sh
-curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/HEAD/scripts/bootstrap.macos.sh | bash
+```shellscript
+curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/HEAD/scripts/install.sh | bash
 ```
 
-## Windows Subsystem for Linux
+Then execute commands below
 
-```sh
-curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/HEAD/scripts/bootstrap.wsl.sh | bash
+```shellscript
+$ ssh-keygen -t ed25519
+$ cat ${HOME}/.ssh/id_ed25519.pub | pbcopy
+$ open https://github.com/settings/keys
+$ git remote set-url origin git@github.com:nazna/dotfiles.git
+$ reboot
+```
+
+## Reset WSL
+
+```shellscript
+$ wsl.exe --unregister Ubuntu
 ```

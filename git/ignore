@@ -1,13 +1,10 @@
 # macOS
-
 .DS_Store
 
 # Backup
-
-_.swp
-_.bak
-\*~
+*.swp
+*.bak
+*~
 
 # Node.js
-
 node_modules
