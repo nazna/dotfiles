@@ -6,12 +6,5 @@
 *.bak
 *~
 
-# TeX
-*.dvi
-*.aux
-
 # Node.js
 node_modules
-
-# Misc
-!.gitkeep

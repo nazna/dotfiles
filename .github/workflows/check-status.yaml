@@ -1,0 +1,27 @@
+name: check status
+
+on: push
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
+
+env:
+  CI: true
+  TZ: Asia/Tokyo
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download actionlint
+        id: download-actionlint
+        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+        shell: bash
+      - name: Eexcute actionlint
+        run: ${{ steps.download-actionlint.outputs.executable }} -color
+        shell: bash

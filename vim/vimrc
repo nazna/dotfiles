@@ -12,9 +12,6 @@ set whichwrap=b,s,h,l,<,>,[,]
 
 set background=dark
 
-autocmd ColorScheme * highlight Normal ctermbg=none
-colorscheme nord
-
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
@@ -73,6 +70,3 @@ noremap j gj
 noremap k gk
 
 nnoremap ; :
-
-let g:enable_bold_font = 1
-let g:lightline = { 'colorscheme': 'nord' }
