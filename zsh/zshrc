@@ -32,7 +32,7 @@ setopt hist_reduce_blanks
 unsetopt caseglob
 unsetopt promptcr
 
-typeset -U PATH
+typeset -U path PATH
 
 export TZ="Asia/Tokyo"
 export LANG="ja_JP.UTF-8"
@@ -40,34 +40,29 @@ export LESS="-R"
 export EDITOR="vim"
 export FCEDIT="vim"
 
-export HISTFILE="$HOME/.zsh_history"
+export HISTFILE="${HOME}/.zsh_history"
 export HISTSIZE=100000
 export SAVEHIST=100000
 
 export FZF_DEFAULT_OPTS="--height 40% --ansi --cycle --reverse --select-1 --exit-0 --bind=tab:down --bind=btab:up"
 
-export XDG_CONFIG_HOME="$HOME/.config"
-export GOPATH="$HOME/.go"
-export FNMPATH="$HOME/.fnm"
-export PATH="$FNMPATH:$GOPATH/bin:$PATH"
+export XDG_CONFIG_HOME="${HOME}/.config"
 
-source $HOME/.config/zsh/zsh-completions/zsh-completions.plugin.zsh
-source $HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-source $HOME/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
+export GOPATH="${HOME}/.go"
+export PATH="${GOPATH}/bin:${PATH}"
 
-source "$HOME/.cargo/env"
-source "$XDG_CONFIG_HOME/zsh/alias.zsh"
-source "$XDG_CONFIG_HOME/zsh/function.zsh"
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  eval "$(/usr/local/bin/brew shellenv)"
-elif  [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
+eval "$(brew shellenv)"
+eval "$(rtx activate zsh)"
 eval "$(starship init zsh)"
-eval "$(~/bin/rtx activate zsh)"
+
+source "${HOME}/.cargo/env"
+
+source "${XDG_CONFIG_HOME}/zsh/alias.zsh"
+source "${XDG_CONFIG_HOME}/zsh/function.zsh"
+source "${XDG_CONFIG_HOME}/zsh/plugin/zsh-completions/zsh-completions.plugin.zsh"
+source "${XDG_CONFIG_HOME}/zsh/plugin/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+source "${XDG_CONFIG_HOME}/zsh/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+source "${XDG_CONFIG_HOME}/zsh/plugin/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh"
 
 zle -N fzf_history
 bindkey '^r' fzf_history

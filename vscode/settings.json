@@ -1,13 +1,13 @@
 {
   "breadcrumbs.enabled": false,
   "debug.javascript.codelens.npmScripts": "never",
-  "docker.showStartPage": false,
   "editor.bracketPairColorization.enabled": true,
   "editor.copyWithSyntaxHighlighting": false,
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.folding": false,
-  "editor.fontFamily": "JetBrains Mono NL",
+  "editor.fontFamily": "UDEV Gothic",
   "editor.fontLigatures": false,
   "editor.fontSize": 18,
   "editor.glyphMargin": false,
@@ -30,12 +30,11 @@
   "search.smartCase": true,
   "security.workspace.trust.untrustedFiles": "open",
   "telemetry.telemetryLevel": "off",
-  "terminal.integrated.fontFamily": "JetBrains Mono NL",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.fontFamily": "UDEV Gothic",
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.rightClickBehavior": "default",
   "update.showReleaseNotes": false,
-  "vscode-graphql.showExecCodelens": false,
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.newWindowDimensions": "inherit",
   "window.restoreFullscreen": true,
   "workbench.colorTheme": "Nord",
@@ -43,5 +42,8 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.layoutControl.enabled": false,
   "workbench.panel.defaultLocation": "bottom",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  }
 }

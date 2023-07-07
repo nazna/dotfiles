@@ -2,6 +2,32 @@
 
 set -eu
 
+# setup macos
+if [[ "${OSTYPE}" == darwin* ]] && [[ ! -e "/Library/Developer/CommandLineTools" ]]; then
+  sudo xcode-select --install
+fi
+
+# configure macos
+if [[ "${OSTYPE}" == darwin* ]]; then
+  defaults write com.apple.dock autohide-delay -float 0
+  defaults write com.apple.dock autohide-time-modifier -float 0
+  defaults write com.apple.screencapture location -string "${HOME}/work"
+  defaults write com.apple.screencapture type -string "png"
+  defaults write com.apple.screencapture disable-shadow -bool true
+  defaults write com.apple.screencapture name -string "ss"
+  defaults write com.apple.screencapture include-date -bool true
+  rm -f "${HOME}/Application/.localized" "${HOME}/Desktop/.localized" "${HOME}/Documents/.localized" "${HOME}/Downloads/.localized"
+  rm -f "${HOME}/Library/.localized" "${HOME}/Movies/.localized" "${HOME}/Music/.localized" "${HOME}/Pictures/.localized" "${HOME}/Public/.localized"
+fi
+
+# setup linux
+if [[ "${OSTYPE}" == linux* ]]; then
+  sudo apt update -y
+  sudo apt upgrade -y
+  sudo apt install -y build-essential
+  sudo cp "${HOME}/work/ghq/github.com/nazna/dotfiles/wsl/wsl.conf" "/etc/wsl.conf"
+fi
+
 # fetch dotfiles
 if [[ ! -e "${HOME}/work/ghq/github.com/nazna/dotfiles" ]]; then
   git clone https://github.com/nazna/dotfiles.git "${HOME}/work/ghq/github.com/nazna/dotfiles"
@@ -9,7 +35,9 @@ fi
 
 # deploy dotfiles
 if [[ -e "${HOME}/work/ghq/github.com/nazna/dotfiles" ]]; then
-  ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/editorconfig" "${HOME}/.editorconfig"
+  mkdir -o "${HOME}/.config/git"
+  mkdir -p "${HOME}/.config/zsh"
+  ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/misc/editorconfig" "${HOME}/.editorconfig"
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/node/npmrc" "${HOME}/.npmrc"
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/vim/vimrc" "${HOME}/.vimrc"
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/zsh/zshrc" "${HOME}/.zshrc"
@@ -20,36 +48,13 @@ if [[ -e "${HOME}/work/ghq/github.com/nazna/dotfiles" ]]; then
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/starship/starship.toml" "${HOME}/.config/starship.toml"
 fi
 
-# setup macos
-if [[ "${OSTYPE}" == darwin* ]] && [[ ! -e "/Library/Developer/CommandLineTools" ]]; then
-  sudo xcode-select --install
-fi
-
-# configure macos
-if [[ "${OSTYPE}" == darwin* ]]; then
-  defaults write com.apple.dock autohide-delay -float 0
-  defaults write com.apple.dock autohide-time-modifier -float 0
-  defaults write com.apple.screencapture location -string "${HOME}/Downloads"
-  defaults write com.apple.screencapture type -string "png"
-  defaults write com.apple.screencapture disable-shadow -bool true
-  defaults write com.apple.screencapture name -string "ss"
-  defaults write com.apple.screencapture include-date -bool true
-  /bin/rm -f "${HOME}/Application/.localized" "${HOME}/Desktop/.localized" "${HOME}/Documents/.localized" "${HOME}/Downloads/.localized"
-  /bin/rm -f "${HOME}/Library/.localized" "${HOME}/Movies/.localized" "${HOME}/Music/.localized" "${HOME}/Pictures/.localized" "${HOME}/Public/.localized"
-fi
-
-# setup linux
-if [[ "${OSTYPE}" == linux* ]]; then
-  sudo apt update -y
-  sudo apt upgrade -y
-  sudo apt install -y build-essential sqlite3 unzip zip
-  sudo cp "${HOME}/work/ghq/github.com/nazna/dotfiles/wsl/wsl.conf" "/etc/wsl.conf"
-fi
-
 # install homebrew
-if [[ ! -e "/usr/local/bin/brew" ]]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  brew bundle --file "${HOME}/work/ghq/github/com/nazna/dotfiles/Brewfile"
+if [[ "${OSTYPE}" == darwin* ]] && ! type brew > /dev/null 2>&1; then
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew bundle --file "${HOME}/work/ghq/github/com/nazna/dotfiles/misc/Brewfile.macos"
+elif [[ "${OSTYPE}" == linux* ]] && ! type brew > /dev/null 2>&1; then
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew bundle --file "${HOME}/work/ghq/github/com/nazna/dotfiles/misc/Brewfile.wsl"
 fi
 
 # fetch zsh plugins
@@ -61,25 +66,15 @@ if [[ ! -e "${HOME}/.config/zsh/plugin" ]]; then
   git clone https://github.com/zsh-users/zsh-history-substring-search "${HOME}/.config/zsh/plugin/zsh-history-substring-search"
 fi
 
-# fetch vim plugins
-if [[ ! -e "${HOME}/.vim/colors" ]]; then
-  mkdir -p "${HOME}/.vim/colors"
-  curl https://raw.githubusercontent.com/kristijanhusak/vim-hybrid-material/HEAD/colors/hybrid_material.vim > "${HOME}/.vim/colors/hybrid_material.vim"
-  git clone https://github.com/editorconfig/editorconfig-vim.git "${HOME}/.vim/pack/plugins/start/editorconfig-vim"
-  git clone https://github.com/cohama/lexima.vim.git "${HOME}/.vim/pack/plugins/start/lexima"
-  git clone https://github.com/itchyny/lightline.vim.git "${HOME}/.vim/pack/plugins/start/lightline"
-  git clone https://github.com/cocopon/lightline-hybrid.vim.git "${HOME}/.vim/pack/plugins/start/lightline-hybrid"
-  git clone https://github.com/arcticicestudio/nord-vim.git "${HOME}/.vim/pack/plugins/start/nord"
-fi
-
-# change default shell
-if ! command -v zsh > /dev/null; then
-  which zsh | sudo tee -a /etc/shells
-  sudo chsh "${USER}" -s "$(which zsh)"
+# fetch fonts
+if [[ "${OSTYPE}" == darwin* ]] && [[ ! -e "${HOME}/Library/Fonts/UDEVGothicNF-Regular.ttf" ]]; then
+  curl -o udev.zip -sSOL https://github.com/yuru7/udev-gothic/releases/download/v1.3.0/UDEVGothic_v1.3.0.zip
+  unzip -j udev.zip -d ./test "UDEVGothic_NF_v1.3.0/UDEVGothicNF-*"
+  rm udev.zip
 fi
 
 # install node and java
-if ! command -v rtx > /dev/null; then
+if ! type rtx > /dev/null 2>&1; then
   rtx install node@latest
   rtx install java@laetst
 fi
@@ -87,4 +82,10 @@ fi
 # install rust
 if [[ ! -e "${HOME}/.rustup" ]]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+fi
+
+# change default shell
+if ! type zsh > /dev/null 2>&1; then
+  which zsh | sudo tee -a /etc/shells
+  sudo chsh "${USER}" -s "$(which zsh)"
 fi

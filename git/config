@@ -13,10 +13,11 @@
   prune = true
 [push]
   default = simple
-[pull]
-  ff = only
+  autoSetupRemote = true
 [merge]
   ff = false
+[pull]
+  ff = only
 [status]
   showUntrackedFiles = all
 [diff]

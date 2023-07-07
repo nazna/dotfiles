@@ -22,6 +22,9 @@ symbol = "⬢ "
 [ruby]
 disabled = true
 
+[cmd_duration]
+min_time = 0
+
 [time]
 disabled = false
 format = '[$time]($style) '
