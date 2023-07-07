@@ -35,7 +35,7 @@ fi
 
 # deploy dotfiles
 if [[ -e "${HOME}/work/ghq/github.com/nazna/dotfiles" ]]; then
-  mkdir -o "${HOME}/.config/git"
+  mkdir -p "${HOME}/.config/git"
   mkdir -p "${HOME}/.config/zsh"
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/misc/editorconfig" "${HOME}/.editorconfig"
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/node/npmrc" "${HOME}/.npmrc"
