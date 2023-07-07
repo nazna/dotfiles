@@ -5,7 +5,7 @@
 ## Usage
 
 ```shellscript
-curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/HEAD/scripts/install.sh | bash
+curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/HEAD/install.sh | bash
 ```
 
 Then execute commands below

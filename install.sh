@@ -2,6 +2,11 @@
 
 set -eu
 
+# fetch dotfiles
+if [[ ! -e "${HOME}/work/ghq/github.com/nazna/dotfiles" ]]; then
+  git clone https://github.com/nazna/dotfiles.git "${HOME}/work/ghq/github.com/nazna/dotfiles"
+fi
+
 # setup macos
 if [[ "${OSTYPE}" == darwin* ]] && [[ ! -e "/Library/Developer/CommandLineTools" ]]; then
   sudo xcode-select --install
@@ -26,11 +31,6 @@ if [[ "${OSTYPE}" == linux* ]]; then
   sudo apt upgrade -y
   sudo apt install -y build-essential
   sudo cp "${HOME}/work/ghq/github.com/nazna/dotfiles/wsl/wsl.conf" "/etc/wsl.conf"
-fi
-
-# fetch dotfiles
-if [[ ! -e "${HOME}/work/ghq/github.com/nazna/dotfiles" ]]; then
-  git clone https://github.com/nazna/dotfiles.git "${HOME}/work/ghq/github.com/nazna/dotfiles"
 fi
 
 # deploy dotfiles
