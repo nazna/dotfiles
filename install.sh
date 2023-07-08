@@ -82,7 +82,7 @@ fi
 # install node and java
 if type rtx > /dev/null 2>&1; then
   rtx install node@latest
-  rtx install java@laetst
+  rtx install java@latest
   rtx use -g node@latest
   rtx use -g java@latest
 fi
