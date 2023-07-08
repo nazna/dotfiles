@@ -51,7 +51,12 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export GOPATH="${HOME}/.go"
 export PATH="${GOPATH}/bin:${PATH}"
 
-eval "$(brew shellenv)"
+if [[ "${OSTYPE}" == darwin* ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+elif [[ "${OSTYPE}" == linux* ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 eval "$(rtx activate zsh)"
 eval "$(starship init zsh)"
 
