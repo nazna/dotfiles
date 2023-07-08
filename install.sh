@@ -74,19 +74,21 @@ if [[ "${OSTYPE}" == darwin* ]] && [[ ! -e "${HOME}/Library/Fonts/UDEVGothicNF-R
   rm udev.zip
 fi
 
-# install node and java
-if ! type rtx > /dev/null 2>&1; then
-  rtx install node@latest
-  rtx install java@laetst
-fi
-
 # install rust
 if [[ ! -e "${HOME}/.rustup" ]]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 fi
 
+# install node and java
+if type rtx > /dev/null 2>&1; then
+  rtx install node@latest
+  rtx install java@laetst
+  rtx use -g node@latest
+  rtx use -g java@latest
+fi
+
 # change default shell
-if ! type zsh > /dev/null 2>&1; then
+if type zsh > /dev/null 2>&1; then
   which zsh | sudo tee -a /etc/shells
   sudo chsh "${USER}" -s "$(which zsh)"
 fi
