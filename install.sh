@@ -29,7 +29,7 @@ fi
 if [[ "${OSTYPE}" == linux* ]]; then
   sudo apt update -y
   sudo apt upgrade -y
-  sudo apt install -y build-essential
+  sudo apt install -y build-essential language-pack-ja
   sudo cp "${HOME}/work/ghq/github.com/nazna/dotfiles/wsl/wsl.conf" "/etc/wsl.conf"
 fi
 
