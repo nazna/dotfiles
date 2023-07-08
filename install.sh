@@ -55,6 +55,7 @@ if [[ "${OSTYPE}" == darwin* ]] && ! type brew > /dev/null 2>&1; then
 elif [[ "${OSTYPE}" == linux* ]] && ! type brew > /dev/null 2>&1; then
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew bundle --file "${HOME}/work/ghq/github/com/nazna/dotfiles/misc/Brewfile.wsl"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # fetch zsh plugins
