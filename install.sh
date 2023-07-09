@@ -50,10 +50,10 @@ fi
 
 # install homebrew
 if [[ "${OSTYPE}" == darwin* ]] && ! type brew > /dev/null 2>&1; then
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   cat "${HOME}/work/ghq/github.com/nazna/dotfiles/misc/Brewfile.macos" | brew bundle --file=-
 elif [[ "${OSTYPE}" == linux* ]] && ! type brew > /dev/null 2>&1; then
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   cat "${HOME}/work/ghq/github.com/nazna/dotfiles/misc/Brewfile.wsl" | brew bundle --file=-
 fi
