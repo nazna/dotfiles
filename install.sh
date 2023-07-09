@@ -69,8 +69,8 @@ fi
 
 # fetch fonts
 if [[ "${OSTYPE}" == darwin* ]] && [[ ! -e "${HOME}/Library/Fonts/UDEVGothicNF-Regular.ttf" ]]; then
-  curl -o udev.zip -sSOL https://github.com/yuru7/udev-gothic/releases/download/v1.3.0/UDEVGothic_v1.3.0.zip
-  unzip -j udev.zip -d ./test "UDEVGothic_NF_v1.3.0/UDEVGothicNF-*"
+  curl -o udev.zip -sSOL https://github.com/yuru7/udev-gothic/releases/download/v1.3.0/UDEVGothic_NF_v1.3.0.zip
+  unzip -j udev.zip -d "${HOME}/Library/Fonts" "UDEVGothic_NF_v1.3.0/UDEVGothicNF-*"
   rm udev.zip
 fi
 
