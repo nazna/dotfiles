@@ -14,15 +14,11 @@ fi
 
 # configure macos
 if [[ "${OSTYPE}" == darwin* ]]; then
-  defaults write com.apple.dock autohide-delay -float 0
-  defaults write com.apple.dock autohide-time-modifier -float 0
   defaults write com.apple.screencapture location -string "${HOME}/work"
   defaults write com.apple.screencapture type -string "png"
   defaults write com.apple.screencapture disable-shadow -bool true
   defaults write com.apple.screencapture name -string "ss"
   defaults write com.apple.screencapture include-date -bool true
-  rm -f "${HOME}/Application/.localized" "${HOME}/Desktop/.localized" "${HOME}/Documents/.localized" "${HOME}/Downloads/.localized"
-  rm -f "${HOME}/Library/.localized" "${HOME}/Movies/.localized" "${HOME}/Music/.localized" "${HOME}/Pictures/.localized" "${HOME}/Public/.localized"
 fi
 
 # setup linux
