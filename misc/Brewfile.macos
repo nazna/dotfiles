@@ -22,7 +22,6 @@ cask "discord"
 cask "google-chrome"
 cask "google-japanese-ime"
 cask "orbstack"
-cask "tabby"
 cask "visual-studio-code"
 
 vscode "arcticicestudio.nord-visual-studio-code"
