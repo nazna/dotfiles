@@ -35,7 +35,7 @@ unsetopt promptcr
 typeset -U path PATH
 
 export TZ="Asia/Tokyo"
-export LANG="ja_JP.UTF-8"
+export LANG="ja_JP.utf8"
 export LESS="-R"
 export EDITOR="vim"
 export FCEDIT="vim"
