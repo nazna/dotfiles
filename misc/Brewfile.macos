@@ -3,7 +3,7 @@ tap "homebrew/cask"
 tap "homebrew/core"
 
 brew "curl"
-brew "exa"
+brew "eza"
 brew "fzf"
 brew "ghq"
 brew "git"
