@@ -76,11 +76,11 @@ if [[ ! -e "${HOME}/.rustup" ]]; then
 fi
 
 # install node and java
-if type rtx > /dev/null 2>&1; then
-  rtx install node@latest
-  rtx install java@latest
-  rtx use -g node@latest
-  rtx use -g java@latest
+if type mise > /dev/null 2>&1; then
+  mise install node@latest
+  mise install java@latest
+  mise use -g node@latest
+  mise use -g java@latest
 fi
 
 # change default shell

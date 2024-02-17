@@ -57,7 +57,7 @@ elif [[ "${OSTYPE}" == linux* ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-eval "$(rtx activate zsh)"
+eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
 
 source "${HOME}/.cargo/env"
