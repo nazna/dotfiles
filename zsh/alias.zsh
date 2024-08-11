@@ -1,8 +1,8 @@
 if type eza > /dev/null 2>&1; then
   alias ls="eza -F"
-  alias la="eza -Fa"
+  alias la="eza -aF"
   alias ll="eza -bghlHF --sort=type --time-style=long-iso --octal-permissions"
-  alias lla="eza -bghlHFa --sort=type --time-style=long-iso --octal-permissions"
+  alias lla="eza -abghlHF --sort=type --time-style=long-iso --octal-permissions"
 else
   alias ls="ls -hFG"
   alias la="ls -hA"
