@@ -42,6 +42,7 @@ if [[ -e "${HOME}/work/ghq/github.com/nazna/dotfiles" ]]; then
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/git/config" "${HOME}/.config/git/config"
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/git/ignore" "${HOME}/.config/git/ignore"
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/starship/starship.toml" "${HOME}/.config/starship.toml"
+  ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/wezterm/wezterm.lua" "${HOME}/.config/wezterm/wezterm.lua"
 fi
 
 # install homebrew
