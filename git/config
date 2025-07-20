@@ -9,19 +9,35 @@
   ignorecase = false
   quotepath = false
   pager = less -FRX
+[help]
+  autocorrect = prompt
 [fetch]
   prune = true
+  pruneTags = true
+[merge]
+  ff = false
+  conflictstyle = zdiff3
+[pull]
+  ff = only
 [push]
   default = simple
   autoSetupRemote = true
-[merge]
-  ff = false
-[pull]
-  ff = only
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+[column]
+  ui = auto
 [status]
   showUntrackedFiles = all
+[branch]
+  sort = -committerdate
+[commit]
+  verbose = true
 [diff]
   algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
   renames = true
   compactionHeuristic = true
 [grep]
@@ -33,5 +49,10 @@
   grep = auto
   diff = auto
   diff-highlight = auto
+[tag]
+  sort = version:refname
+[rerere]
+  enabled = true
+  autoupdate = true
 [ghq]
   root = ~/work/ghq
