@@ -9,5 +9,8 @@
 *.bak
 *~
 
+# Mise
+.mise.local.toml
+
 # Node.js
 node_modules

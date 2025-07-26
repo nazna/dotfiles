@@ -1,0 +1,6 @@
+[tools]
+node = "latest"
+"npm:@google/gemini-cli" = "latest"
+
+[settings]
+experimental = true
