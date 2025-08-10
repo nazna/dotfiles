@@ -33,6 +33,7 @@ fi
 if [[ -e "${HOME}/work/ghq/github.com/nazna/dotfiles" ]]; then
   mkdir -p "${HOME}/.config/git"
   mkdir -p "${HOME}/.config/zsh"
+  mkdir -p "${HOME}/.config/mise"
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/misc/editorconfig" "${HOME}/.editorconfig"
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/node/npmrc" "${HOME}/.npmrc"
   ln -nfs "${HOME}/work/ghq/github.com/nazna/dotfiles/vim/vimrc" "${HOME}/.vimrc"
