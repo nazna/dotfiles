@@ -26,8 +26,6 @@
   autoSquash = true
   autoStash = true
   updateRefs = true
-[column]
-  ui = auto
 [status]
   showUntrackedFiles = all
 [branch]

@@ -20,6 +20,6 @@ $ reboot
 
 ## Reset WSL
 
-```shellscript
-$ wsl.exe --unregister Ubuntu
+```sh
+wsl.exe --unregister Ubuntu
 ```

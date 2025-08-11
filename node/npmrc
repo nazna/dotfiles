@@ -1,3 +1,5 @@
-save-exact=true
-engine-strict=true
-git-tag-version=false
+audit = false
+include = dev
+save-exact = true
+engine-strict = true
+git-tag-version = false

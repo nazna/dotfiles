@@ -35,7 +35,7 @@ unsetopt promptcr
 typeset -U path PATH
 
 export TZ="Asia/Tokyo"
-export LANG="ja_JP.utf8"
+export LANG="ja_JP.UTF8"
 export LESS="-R"
 export EDITOR="vim"
 export FCEDIT="vim"
@@ -59,10 +59,15 @@ fi
 
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
-eval "$(uv generate-shell-completion zsh)"
-eval "$(uvx --generate-shell-completion zsh)"
 
-source "${HOME}/.cargo/env"
+if type uv > /dev/null 2>&1; then
+  eval "$(uv generate-shell-completion zsh)"
+  eval "$(uvx --generate-shell-completion zsh)"
+fi
+
+if [[ -d "${HOME}/.cargo" ]]; then
+  source "${HOME}/.cargo/env"
+fi
 
 source "${XDG_CONFIG_HOME}/zsh/alias.zsh"
 source "${XDG_CONFIG_HOME}/zsh/function.zsh"

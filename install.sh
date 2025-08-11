@@ -80,9 +80,7 @@ fi
 # install node and java
 if type mise > /dev/null 2>&1; then
   mise install node@latest
-  mise install java@latest
   mise use -g node@latest
-  mise use -g java@latest
 fi
 
 # change default shell
