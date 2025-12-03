@@ -1,6 +1,11 @@
 [tools]
+"cargo:zizmor" = "latest"
+go = "latest"
+"go:github.com/suzuki-shunsuke/pinact/cmd/pinact" = "latest"
 node = "latest"
 "npm:@google/gemini-cli" = "latest"
+"npm:fast-cli" = "latest"
+rust = "latest"
 
 [settings]
 experimental = true

@@ -1,5 +1,7 @@
 # Misc
 .env
+.env.*
+*.local.*
 
 # macOS
 .DS_Store
@@ -8,9 +10,6 @@
 *.swp
 *.bak
 *~
-
-# Mise
-.mise.local.toml
 
 # Node.js
 node_modules
