@@ -19,7 +19,7 @@ if type git > /dev/null 2>&1; then
   alias gpl="git pull"
   alias gps="git push"
   alias gcm="git commit --message"
-  alias gg="git fetch --all --prune; git branch -vv | awk '/: gone]/{print \$1}' | xargs git branch -D"
+  alias gg="git fetch --all --prune; git branch -vv | awk '/: gone]/{print \$1}' | grep -v '*' | xargs git branch -D"
 fi
 
 if type clip.exe > /dev/null 2>&1; then

@@ -1,14 +1,11 @@
 {
-  "biome.requireConfiguration": true,
   "breadcrumbs.enabled": false,
-  "catppuccin.accentColor": "sapphire",
   "debug.javascript.codelens.npmScripts": "never",
   "editor.bracketPairColorization.enabled": true,
   "editor.copyWithSyntaxHighlighting": false,
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": "explicit",
-  "editor.defaultFormatter": "biomejs.biome",
-  "editor.fontFamily": "UDEV Gothic 35NF",
+  "editor.fontFamily": "'UDEV Gothic 35NF'",
   "editor.fontSize": 20,
   "editor.guides.bracketPairs": true,
   "editor.minimap.enabled": false,
@@ -22,12 +19,11 @@
   "editor.wordWrap": "on",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "gopls": {
-    "ui.semanticTokens": true
+  "github.copilot.enable": {
+    "*": false
   },
+  "github.copilot.nextEditSuggestions.enabled": true,
   "search.smartCase": true,
-  "security.allowedUNCHosts": ["wsl.localhost"],
-  "security.workspace.trust.untrustedFiles": "open",
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.fontFamily": "'UDEV Gothic 35NF'",
@@ -46,16 +42,4 @@
   "workbench.panel.defaultLocation": "bottom",
   "workbench.startupEditor": "none",
   "workbench.tree.indent": 24,
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[sql]": {
-    "editor.defaultFormatter": "Quary.sqruff"
-  },
-  "[toml]": {
-    "editor.defaultFormatter": "tamasfe.even-better-toml"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
 }

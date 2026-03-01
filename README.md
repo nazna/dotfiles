@@ -18,6 +18,11 @@ $ git remote set-url origin git@github.com:nazna/dotfiles.git
 $ reboot
 ```
 
+## Notes
+
+- Copilot CLI (primary)
+- OpenCode (secondary)
+
 ## Reset WSL
 
 ```sh
