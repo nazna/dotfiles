@@ -82,3 +82,10 @@ bindkey '^g' fzf_ghq
 
 zle -N fzf_switch
 bindkey '^b' fzf_switch
+
+# Pi
+export PATH="/home/nazna/.local/share/mise/installs/node/26.1.0/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/nazna/.local/bin:$PATH"
