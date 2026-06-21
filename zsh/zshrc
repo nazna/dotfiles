@@ -41,7 +41,6 @@ export DISABLE_TELEMETRY=1
 typeset -U path PATH
 
 path+=("${HOME}/.local/bin")
-fpath+=("${HOME}/.zsh/completions")
 
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"

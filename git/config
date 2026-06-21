@@ -5,10 +5,10 @@
   defaultBranch = main
 [core]
   editor = vim
-  precomposeunicode = true
-  ignorecase = false
-  quotepath = false
   pager = LESSCHARSET=utf-8 less -FRX
+  autocrlf = input
+  quotepath = false
+  ignorecase = false
 [fetch]
   prune = true
   pruneTags = true
@@ -17,24 +17,28 @@
 [push]
   default = simple
   autoSetupRemote = true
-[rebase]
-  autoSquash = true
-  autoStash = true
-  updateRefs = true
+[commit]
+  verbose = true
 [status]
   showUntrackedFiles = all
 [branch]
   sort = -committerdate
-[commit]
-  verbose = true
+[tag]
+  sort = version:refname
+[column]
+  ui = auto
+[color]
+  ui = auto
+  diff = always
+  grep = always
+  branch = always
+  status = always
+  interactive = always
 [diff]
   algorithm = histogram
-  colorMoved = plain
   mnemonicPrefix = true
   renames = true
   compactionHeuristic = true
-[tag]
-  sort = version:refname
 [rerere]
   enabled = true
   autoupdate = true

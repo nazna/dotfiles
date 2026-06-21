@@ -24,11 +24,12 @@ cd ${DOTFILES} && git remote set-url origin git@github.com:nazna/dotfiles.git &&
 # install system packages
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y build-essential bubblewrap curl ffmpeg imagemagick language-pack-ja nkf sqlite3 tree unzip vim wget zip zsh
+sudo apt install -y build-essential language-pack-ja
+sudo atp install -y bubblewrap curl ffmpeg imagemagick nkf sqlite3 unzip vim wget zip zsh
 
 # install mise
 curl https://mise.run | sh
-eval "$(${HOME}/.local/bin/mise activate)"
+eval "$(${HOME}/.local/bin/mise activate bash)"
 mise doctor
 mise install
 
@@ -45,7 +46,6 @@ mkdir -p "${XDG_CONFIG_HOME}/vim"
 ln -nfs "${DOTFILES}/vim/vimrc" "${XDG_CONFIG_HOME}/vim/vimrc"
 
 mkdir -p "${XDG_CONFIG_HOME}/zsh"
-ln -nfs "${DOTFILES}/zsh/zshenv" "${HOME}/.zshenv"
 ln -nfs "${DOTFILES}/zsh/zshrc" "${HOME}/.zshrc"
 ln -nfs "${DOTFILES}/zsh/alias.zsh" "${XDG_CONFIG_HOME}/zsh/alias.zsh"
 ln -nfs "${DOTFILES}/zsh/function.zsh" "${XDG_CONFIG_HOME}/zsh/function.zsh"
@@ -53,6 +53,9 @@ ln -nfs "${DOTFILES}/starship/starship.toml" "${XDG_CONFIG_HOME}/starship.toml"
 
 mkdir -p "${XDG_CONFIG_HOME}/mise"
 ln -nfs "${DOTFILES}/mise/config.toml" "${XDG_CONFIG_HOME}/mise/config.toml"
+
+mkdir -p "${HOME}/.pi/agent"
+ln -nfs "${DOTFILES}/pi/settings.json" "${HOME}/.pi/agent/settings.json"
 
 if is_wsl; then
   ln -nfs "${DOTFILES}/misc/wsl.conf" /etc/wsl.conf
