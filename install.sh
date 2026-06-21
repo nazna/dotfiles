@@ -67,4 +67,4 @@ curl -fsSL https://antigravity.google/cli/install.sh | bash
 
 # change login shell
 which zsh | sudo tee -a /etc/shells
-chsh -s "$(which zsh)"
+chsh "${USER}" -s "$(which zsh)"
