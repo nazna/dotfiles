@@ -19,7 +19,7 @@ mkdir -p "${HOME}/sandbox"
 
 # fetch dotfiles
 git clone https://github.com/nazna/dotfiles "${DOTFILES}"
-cd ${DOTFILES} && git remote set-url origin git@github.com:nazna/dotfiles.git && cd -
+cd "${DOTFILES}" && git remote set-url origin git@github.com:nazna/dotfiles.git && cd -
 
 # install system packages
 sudo apt update -y
@@ -30,8 +30,8 @@ sudo apt install -y bubblewrap curl ffmpeg imagemagick nkf sqlite3 unzip vim wge
 # install mise
 curl https://mise.run | sh
 eval "$(${HOME}/.local/bin/mise activate bash)"
-mise doctor
-mise install
+mise trust "${DOTFILES}/mise/config.toml"
+mise install --yes
 
 # link dotfiles
 ln -nfs "${DOTFILES}/misc/editorconfig" "${HOME}/.editorconfig"
