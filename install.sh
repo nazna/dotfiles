@@ -34,7 +34,6 @@ cat "${DOTFILES}/misc/Brewfile" | brew bundle --file=-
 # link dotfiles
 ln -nfs "${DOTFILES}/misc/editorconfig" "${HOME}/.editorconfig"
 ln -nfs "${DOTFILES}/nodejs/npmrc" "${HOME}/.npmrc"
-ln -nfs "${DOTFILES}/starship/starship.toml" "${XDG_CONFIG_HOME}/starship.toml"
 
 mkdir -p "${XDG_CONFIG_HOME}/git"
 ln -nfs "${DOTFILES}/git/config" "${XDG_CONFIG_HOME}/git/config"
@@ -49,6 +48,7 @@ ln -nfs "${DOTFILES}/zsh/zshenv" "${HOME}/.zshenv"
 ln -nfs "${DOTFILES}/zsh/zshrc" "${HOME}/.zshrc"
 ln -nfs "${DOTFILES}/zsh/alias.zsh" "${XDG_CONFIG_HOME}/zsh/alias.zsh"
 ln -nfs "${DOTFILES}/zsh/function.zsh" "${XDG_CONFIG_HOME}/zsh/function.zsh"
+ln -nfs "${DOTFILES}/starship/starship.toml" "${XDG_CONFIG_HOME}/starship.toml"
 
 mkdir -p "${XDG_CONFIG_HOME}/mise"
 ln -nfs "${DOTFILES}/mise/config.toml" "${XDG_CONFIG_HOME}/mise/config.toml"
