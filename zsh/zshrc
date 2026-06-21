@@ -69,10 +69,9 @@ fi
 
 source "${XDG_CONFIG_HOME}/zsh/alias.zsh"
 source "${XDG_CONFIG_HOME}/zsh/function.zsh"
-source "${XDG_CONFIG_HOME}/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh"
-source "${XDG_CONFIG_HOME}/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
-source "${XDG_CONFIG_HOME}/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
-source "${XDG_CONFIG_HOME}/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh"
+source "${XDG_CONFIG_HOME}/zsh/zsh-completions/zsh-completions.plugin.zsh"
+source "${XDG_CONFIG_HOME}/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+source "${XDG_CONFIG_HOME}/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
 zle -N fzf_history
 bindkey '^r' fzf_history
@@ -85,7 +84,6 @@ bindkey '^b' fzf_switch
 
 # Pi
 export PATH="/home/nazna/.local/share/mise/installs/node/26.1.0/bin:$PATH"
-
 
 # Added by Antigravity CLI installer
 export PATH="/home/nazna/.local/bin:$PATH"
