@@ -1,5 +1,18 @@
 [tools]
 node = "latest"
 
+antigravity-cli = "latest"
+eza = "latest"
+fd = "latest"
+fzf = "latest"
+ghq = "latest"
+github-cli = "latest"
+jq = "latest"
+pi = "latest"
+ripgrep = "latest"
+starship = "latest"
+yazi = "latest"
+yt-dlp = "latest"
+
 [settings]
 idiomatic_version_file_enable_tools = []

@@ -1,14 +1,15 @@
-# Misc
-.env
-*.local.*
-
-# macOS
-.DS_Store
-
 # Backup
 *.swp
 *.bak
 *~
 
+# macOS
+.DS_Store
+Thumbs.db
+
 # Node.js
 node_modules
+
+# Misc
+.env
+*.local.*

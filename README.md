@@ -1,52 +1,35 @@
 # dotfiles
 
-> nazna's dotfiles
+> nazna's dotfiles (v3)
 
 ## Usage
-
-### Setup
 
 ```sh
 curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/HEAD/install.sh | bash
 ```
 
-### Update
-
-```sh
-./scripts/update.sh
-```
-
-## Notes
-
-- `pi update` は実行しない
-- Homebrew を mise に集約できるか検討する
-
-### Choosing installation method
-
-1. 公式インストールスクリプトを使う
-2. 安定性があればよい場合: `apt`
-3. その他の場合: `brew`
-
-### Setup SSH key
+インストールが完了したら以下のコマンドを実行する:
 
 ```sh
 ssh-keygen -t ed25519
 cat ${HOME}/.ssh/id_ed25519.pub | pbcopy
-open https://github.com/settings/keys
 ```
 
-### How to check Homebrew installed packages
+## Notes
+
+- `pi update` や `agy update` は実行しない
+- WSL2 をリセットするには `wsl.exe --unregister Ubuntu` を PowerShell で実行する
+
+## Update
 
 ```sh
-brew leaves
-```
-
-### How to reset WSL2
-
-```sh
-wsl.exe --unregister Ubuntu
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove
+mise upgrade
 ```
 
 ## References
 
+- [SSH and GPG keys - GitHub.com](https://github.com/settings/keys)
 - [yuru7/udev-gothic](https://github.com/yuru7/udev-gothic)

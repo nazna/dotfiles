@@ -10,7 +10,7 @@ is_wsl() {
   fi
 }
 
-DOTFILES="${HOME}/ghq/github.com/nazna/dotfiles"
+DOTFILES="${HOME}/work/github.com/nazna/dotfiles"
 XDG_CONFIG_HOME="${HOME}/.config"
 
 # setup directories
@@ -24,12 +24,13 @@ cd ${DOTFILES} && git remote set-url origin git@github.com:nazna/dotfiles.git &&
 # install system packages
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y build-essential procps curl file git language-pack-ja bubblewrap
+sudo apt install -y build-essential bubblewrap curl ffmpeg imagemagick language-pack-ja nkf sqlite3 tree unzip vim wget zip zsh
 
-# install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
-cat "${DOTFILES}/misc/Brewfile" | brew bundle --file=-
+# install mise
+curl https://mise.run | sh
+eval "$(${HOME}/.local/bin/mise activate)"
+mise doctor
+mise install
 
 # link dotfiles
 ln -nfs "${DOTFILES}/misc/editorconfig" "${HOME}/.editorconfig"
@@ -52,19 +53,15 @@ ln -nfs "${DOTFILES}/starship/starship.toml" "${XDG_CONFIG_HOME}/starship.toml"
 
 mkdir -p "${XDG_CONFIG_HOME}/mise"
 ln -nfs "${DOTFILES}/mise/config.toml" "${XDG_CONFIG_HOME}/mise/config.toml"
-mise trust "${XDG_CONFIG_HOME}/mise/config.toml"
 
 if is_wsl; then
   ln -nfs "${DOTFILES}/misc/wsl.conf" /etc/wsl.conf
 fi
 
 # fetch zsh plugins
-git clone --depth=1 https://github.com/zsh-users/zsh-completions "${XDG_CONFIG_HOME}/zsh/zsh-completions"
-git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "${XDG_CONFIG_HOME}/zsh/zsh-autosuggestions"
-git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting "${XDG_CONFIG_HOME}/zsh/zsh-syntax-highlighting"
-
-# install Antigravity
-curl -fsSL https://antigravity.google/cli/install.sh | bash
+git clone --depth=1 https://github.com/zsh-users/zsh-completions "${XDG_CONFIG_HOME}/zsh/completions"
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "${XDG_CONFIG_HOME}/zsh/autosuggestions"
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting "${XDG_CONFIG_HOME}/zsh/syntax-highlighting"
 
 # change login shell
 which zsh | sudo tee -a /etc/shells

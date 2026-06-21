@@ -9,14 +9,9 @@
   ignorecase = false
   quotepath = false
   pager = LESSCHARSET=utf-8 less -FRX
-[help]
-  autocorrect = prompt
 [fetch]
   prune = true
   pruneTags = true
-[merge]
-  ff = false
-  conflictstyle = zdiff3
 [pull]
   ff = only
 [push]
@@ -38,19 +33,10 @@
   mnemonicPrefix = true
   renames = true
   compactionHeuristic = true
-[grep]
-  lineNumber = true
-[color]
-  ui = auto
-  status = auto
-  branch = auto
-  grep = auto
-  diff = auto
-  diff-highlight = auto
 [tag]
   sort = version:refname
 [rerere]
   enabled = true
   autoupdate = true
 [ghq]
-  root = ~/ghq
+  root = ~/work
