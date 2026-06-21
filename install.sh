@@ -31,7 +31,7 @@ sudo apt install -y bubblewrap curl ffmpeg imagemagick nkf sqlite3 unzip vim wge
 curl https://mise.run | sh
 eval "$(${HOME}/.local/bin/mise activate bash)"
 mise trust "${DOTFILES}/mise/config.toml"
-mise install --yes
+mise install --yes --config "${DOTFILES}/mise/config.toml"
 
 # link dotfiles
 ln -nfs "${DOTFILES}/misc/editorconfig" "${HOME}/.editorconfig"
