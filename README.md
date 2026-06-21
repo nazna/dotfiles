@@ -37,6 +37,12 @@ open https://github.com/settings/keys
 git remote set-url origin git@github.com:nazna/dotfiles.git
 ```
 
+### How to check Homebrew installed packages
+
+```sh
+brew leaves
+```
+
 ### How to reset WSL2
 
 ```sh
