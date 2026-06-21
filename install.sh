@@ -27,12 +27,6 @@ sudo apt upgrade -y
 sudo apt install -y build-essential language-pack-ja
 sudo apt install -y bubblewrap curl ffmpeg imagemagick nkf sqlite3 unzip vim wget zip zsh
 
-# install mise
-curl https://mise.run | sh
-eval "$(${HOME}/.local/bin/mise activate bash)"
-mise trust "${DOTFILES}/mise/config.toml"
-mise install --yes --config "${DOTFILES}/mise/config.toml"
-
 # link dotfiles
 ln -nfs "${DOTFILES}/misc/editorconfig" "${HOME}/.editorconfig"
 ln -nfs "${DOTFILES}/nodejs/npmrc" "${HOME}/.npmrc"
@@ -65,6 +59,13 @@ fi
 git clone --depth=1 https://github.com/zsh-users/zsh-completions "${XDG_CONFIG_HOME}/zsh/completions"
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "${XDG_CONFIG_HOME}/zsh/autosuggestions"
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting "${XDG_CONFIG_HOME}/zsh/syntax-highlighting"
+
+# install mise
+curl https://mise.run | sh
+eval "$(${HOME}/.local/bin/mise activate bash)"
+mise doctor
+mise trust "${DOTFILES}/mise/config.toml"
+mise install --yes
 
 # change login shell
 which zsh | sudo tee -a /etc/shells
