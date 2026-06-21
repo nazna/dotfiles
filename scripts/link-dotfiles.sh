@@ -1,5 +1,13 @@
 set -euo pipefail
 
+is_wsl() {
+  if [[ -d /run/WSL ]]; then
+    return 1
+  else
+    return 0
+  fi
+}
+
 if [[ ! -d "${DOTFILES}" ]]; then
   mkdir -p "${HOME}/.config/git"
   mkdir -p "${HOME}/.config/zsh"
