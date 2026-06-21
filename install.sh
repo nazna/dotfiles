@@ -1,28 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -euo pipefail
 
 DOTFILES="${HOME}/ghq/github.com/nazna/dotfiles"
 
-is_wsl() {
-  if [[ -d /run/WSL ]]; then
-    return 1
-  else
-    return 0
-  fi
-}
+# setup directories
+mkdir -p "${HOME}/work"
+mkdir -p "${HOME}/sandbox"
 
-# Fetch dotfiles
-if [[ ! -d "${DOTFILES}" ]]; then
-  git clone https://github.com/nazna/dotfiles "${DOTFILES}"
-fi
+# fetch dotfiles
+git clone https://github.com/nazna/dotfiles "${DOTFILES}"
+cd ${DOTFILES} && git remote set-url origin git@github.com:nazna/dotfiles.git && cd -
 
-# Install system packages
+# install system packages
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install -y build-essential language-pack-ja bubblewrap
 
-# Install Homebrew
+# install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 cat "${DOTFILES}/misc/Brewfile" | brew bundle --file=-
@@ -30,11 +25,9 @@ cat "${DOTFILES}/misc/Brewfile" | brew bundle --file=-
 source ./scripts/link-dotfiles.sh
 source ./scripts/install-zsh-plugins.sh
 
-# Install Antigravity
+# install Antigravity
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 
-# Change login shell
-if type zsh > /dev/null 2>&1; then
-  which zsh | sudo tee -a /etc/shells
-  sudo chsh "${USER}" -s "$(which zsh)"
-fi
+# change login shell
+which zsh | sudo tee -a /etc/shells
+chsh -s "$(which zsh)"
