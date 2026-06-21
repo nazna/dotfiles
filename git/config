@@ -53,4 +53,4 @@
   enabled = true
   autoupdate = true
 [ghq]
-  root = ~/work/ghq
+  root = ~/ghq

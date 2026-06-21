@@ -1,5 +1,2 @@
 # macOS
 .DS_Store
-
-# Homebrew
-Brewfile.lock.json

@@ -1,6 +1,5 @@
 # Misc
 .env
-.env.*
 *.local.*
 
 # macOS
