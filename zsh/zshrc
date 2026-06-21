@@ -69,10 +69,10 @@ fi
 
 source "${XDG_CONFIG_HOME}/zsh/alias.zsh"
 source "${XDG_CONFIG_HOME}/zsh/function.zsh"
-source "${XDG_CONFIG_HOME}/zsh/plugin/zsh-completions/zsh-completions.plugin.zsh"
-source "${XDG_CONFIG_HOME}/zsh/plugin/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
-source "${XDG_CONFIG_HOME}/zsh/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
-source "${XDG_CONFIG_HOME}/zsh/plugin/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh"
+source "${XDG_CONFIG_HOME}/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh"
+source "${XDG_CONFIG_HOME}/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+source "${XDG_CONFIG_HOME}/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+source "${XDG_CONFIG_HOME}/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh"
 
 zle -N fzf_history
 bindkey '^r' fzf_history
