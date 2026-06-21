@@ -18,7 +18,6 @@ curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/HEAD/install.sh | ba
 
 ## Notes
 
-- ./install.sh は何度実行しても問題ないようにする
 - `pi update` は実行しない
 - Homebrew を mise に集約できるか検討する
 
@@ -34,7 +33,6 @@ curl -sSfL https://raw.githubusercontent.com/nazna/dotfiles/HEAD/install.sh | ba
 ssh-keygen -t ed25519
 cat ${HOME}/.ssh/id_ed25519.pub | pbcopy
 open https://github.com/settings/keys
-git remote set-url origin git@github.com:nazna/dotfiles.git
 ```
 
 ### How to check Homebrew installed packages
