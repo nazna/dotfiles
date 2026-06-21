@@ -25,7 +25,7 @@ cd ${DOTFILES} && git remote set-url origin git@github.com:nazna/dotfiles.git &&
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install -y build-essential language-pack-ja
-sudo atp install -y bubblewrap curl ffmpeg imagemagick nkf sqlite3 unzip vim wget zip zsh
+sudo apt install -y bubblewrap curl ffmpeg imagemagick nkf sqlite3 unzip vim wget zip zsh
 
 # install mise
 curl https://mise.run | sh
