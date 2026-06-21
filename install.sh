@@ -65,4 +65,4 @@ git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting "${XDG_
 
 # change login shell
 which zsh | sudo tee -a /etc/shells
-chsh "${USER}" -s "$(which zsh)"
+sudo chsh "${USER}" -s "$(which zsh)"
