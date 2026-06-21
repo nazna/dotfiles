@@ -63,7 +63,6 @@ git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting "${XDG_
 # install mise
 curl https://mise.run | sh
 eval "$(${HOME}/.local/bin/mise activate bash)"
-mise doctor
 mise trust "${DOTFILES}/mise/config.toml"
 mise install --yes
 
