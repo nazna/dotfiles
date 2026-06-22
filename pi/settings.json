@@ -1,9 +1,10 @@
 {
-  "lastChangelogVersion": "0.79.9",
-  "collapseChangelog": true,
   "defaultProvider": "openrouter",
   "defaultModel": "moonshotai/kimi-k2.7-code",
+  "theme": "dark",
   "enableInstallTelemetry": false,
+  "collapseChangelog": true,
+  "lastChangelogVersion": "0.79.9",
   "packages": [
     "npm:@ff-labs/pi-fff",
     "npm:pi-ask-user"

@@ -18,7 +18,7 @@ alias gps="git push"
 alias gpl="git pull"
 alias gg="git fetch --all --prune && git branch -vv | awk '/: gone]/{print \$1}' | grep -v '*' | xargs git branch -D"
 
-alias pic="pic --continue"
+alias pic="pi --continue"
 
 alias pbcopy="clip.exe"
 alias pbpaste="powershell.exe -command 'Get-Clipboard'"
