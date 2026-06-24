@@ -2,6 +2,7 @@
 node = "latest"
 
 antigravity-cli = "latest"
+ast-grep = "latest"
 eza = "latest"
 fd = "latest"
 fzf = "latest"

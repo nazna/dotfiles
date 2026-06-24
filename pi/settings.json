@@ -1,12 +1,16 @@
 {
   "defaultProvider": "openrouter",
   "defaultModel": "moonshotai/kimi-k2.7-code",
-  "theme": "dark",
   "enableInstallTelemetry": false,
   "collapseChangelog": true,
-  "lastChangelogVersion": "0.79.9",
+  "hideThinkingBlock": true,
+  "lastChangelogVersion": "0.79.10",
+  "quietStartup": true,
+  "theme": "dark",
   "packages": [
+    "git:github.com/DietrichGebert/ponytail",
     "npm:@ff-labs/pi-fff",
+    "npm:context-mode",
     "npm:pi-ask-user"
   ]
 }

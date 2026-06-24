@@ -32,4 +32,5 @@ mise upgrade
 ## References
 
 - [SSH and GPG keys - GitHub.com](https://github.com/settings/keys)
+- [Bootstrap | mise-en-place](https://mise.jdx.dev/bootstrap.html)
 - [yuru7/udev-gothic](https://github.com/yuru7/udev-gothic)
