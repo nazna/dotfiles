@@ -46,8 +46,8 @@ function gcma() {
     return 1
   fi
 
-  local prompt='Generate a SINGLE-LINE commit message in the imperative mood (under 60 characters) that strictly summarizes the changes based on the provided diff. No conventional commits prefixes needed. Start the message with a lowercase letter. Do not include any explanations or body text, output ONLY the summary line.'
-  local msg=$(pi --no-session --model google/gemini-3.1-flash-lite --thinking off --print "${prompt}" <<< "${diff}")
+  local prompt='Generate a one-line imperative commit message (<60 chars) summarizing the diff. Start with lowercase, no period, no prefixes, no body, no explanation. Output ONLY the message.'
+  local msg=$(pi --no-session --model deepseek/deepseek-v4-flash --thinking off --print "${prompt}" <<< "${diff}")
 
   if [[ -z "${msg}" ]]; then
     echo "No message printed."
