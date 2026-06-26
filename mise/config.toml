@@ -16,4 +16,5 @@ yazi = "latest"
 yt-dlp = "latest"
 
 [settings]
+experimental = true
 idiomatic_version_file_enable_tools = []
