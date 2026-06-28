@@ -1,10 +1,11 @@
 {
   "defaultProvider": "openrouter",
-  "defaultModel": "moonshotai/kimi-k2.7-code",
+  "defaultModel": "poolside/laguna-m.1:free",
+  "defaultThinkingLevel": "medium",
   "enableInstallTelemetry": false,
   "collapseChangelog": true,
   "hideThinkingBlock": true,
-  "lastChangelogVersion": "0.79.10",
+  "lastChangelogVersion": "0.80.2",
   "quietStartup": true,
   "theme": "dark",
   "packages": [
