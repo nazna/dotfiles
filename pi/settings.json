@@ -1,11 +1,11 @@
 {
   "defaultProvider": "openrouter",
-  "defaultModel": "poolside/laguna-m.1:free",
-  "defaultThinkingLevel": "medium",
+  "defaultModel": "deepseek/deepseek-v4-pro",
+  "defaultThinkingLevel": "high",
   "enableInstallTelemetry": false,
   "collapseChangelog": true,
   "hideThinkingBlock": true,
-  "lastChangelogVersion": "0.80.2",
+  "lastChangelogVersion": "0.80.3",
   "quietStartup": true,
   "theme": "dark",
   "packages": [
