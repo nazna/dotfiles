@@ -7,11 +7,16 @@
   "hideThinkingBlock": true,
   "lastChangelogVersion": "0.80.3",
   "quietStartup": true,
-  "theme": "dark",
+  "theme": "light/dark",
   "packages": [
     "git:github.com/DietrichGebert/ponytail",
     "npm:@ff-labs/pi-fff",
     "npm:context-mode",
     "npm:pi-ask-user"
-  ]
+  ],
+  "mcpServers": {
+    "context-mode": {
+      "command": "context-mode"
+    }
+  }
 }

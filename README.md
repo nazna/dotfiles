@@ -33,3 +33,4 @@ mise upgrade
 
 - [SSH and GPG keys - GitHub.com](https://github.com/settings/keys)
 - [yuru7/udev-gothic](https://github.com/yuru7/udev-gothic)
+- [Android CLI](https://developer.android.com/tools/agents/android-cli/download)
