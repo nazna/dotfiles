@@ -5,7 +5,7 @@
   "enableInstallTelemetry": false,
   "collapseChangelog": true,
   "hideThinkingBlock": true,
-  "lastChangelogVersion": "0.80.3",
+  "lastChangelogVersion": "0.80.6",
   "quietStartup": true,
   "theme": "light/dark",
   "packages": [
