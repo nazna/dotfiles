@@ -1,0 +1,15 @@
+theme = Catppuccin Frappe
+
+font-family = UDEV Gothic 35NF
+font-feature = -dlig
+
+window-padding-x = 16
+window-padding-y = 16
+window-padding-balance = true
+
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
+
+mouse-hide-while-typing = true
+resize-overlay = never

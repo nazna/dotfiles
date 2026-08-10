@@ -7,9 +7,12 @@
 .DS_Store
 Thumbs.db
 
+# Mise
+mise.local.toml
+.mise.local.toml
+
 # Node.js
 node_modules
 
 # Misc
 .env
-*.local.*

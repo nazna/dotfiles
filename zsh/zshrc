@@ -38,15 +38,15 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="${HOME}/.config"}
 export DO_NOT_TRACK=1
 export DISABLE_TELEMETRY=1
 
-typeset -U path PATH
+typeset -U path PATH fpath
 
-path+=("${HOME}/.local/bin")
+path=("${HOME}/.local/bin" $path)
+fpath=("${XDG_CONFIG_HOME}/zsh/completions/src" $fpath)
 
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
 
 source "${XDG_CONFIG_HOME}/zsh/alias.zsh"
 source "${XDG_CONFIG_HOME}/zsh/function.zsh"
-source "${XDG_CONFIG_HOME}/zsh/completions/zsh-completions.plugin.zsh"
-source "${XDG_CONFIG_HOME}/zsh/autosuggestions/zsh-autosuggestions.plugin.zsh"
-source "${XDG_CONFIG_HOME}/zsh/syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+source "${XDG_CONFIG_HOME}/zsh/autosuggestions/zsh-autosuggestions.zsh"
+source "${XDG_CONFIG_HOME}/zsh/syntax-highlighting/zsh-syntax-highlighting.zsh"

@@ -19,6 +19,12 @@ cat ${HOME}/.ssh/id_ed25519.pub | pbcopy
 
 - `pi update` や `agy update` は実行しない
 - WSL2 をリセットするには `wsl.exe --unregister Ubuntu` を PowerShell で実行する
+- pi の拡張機能を作りたい
+  - OpenRouter WebFetch
+  - OpenRouter WebSearch
+- Starship の設定を見直す
+- VSCode と Zed の設定ファイルのリンク方法を考える
+- VSCode の拡張機能の管理方法を考える
 
 ## Update
 
@@ -34,3 +40,4 @@ mise upgrade
 - [SSH and GPG keys - GitHub.com](https://github.com/settings/keys)
 - [yuru7/udev-gothic](https://github.com/yuru7/udev-gothic)
 - [Android CLI](https://developer.android.com/tools/agents/android-cli/download)
+- [HazAT/pi-openrouter: Pi extension exposing OpenRouter server tools (advisor, subagent, fusion, web search, web fetch) as local tools with live streaming progress](https://github.com/HazAT/pi-openrouter)

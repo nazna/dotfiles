@@ -48,8 +48,15 @@ ln -nfs "${DOTFILES}/starship/starship.toml" "${XDG_CONFIG_HOME}/starship.toml"
 mkdir -p "${XDG_CONFIG_HOME}/mise"
 ln -nfs "${DOTFILES}/mise/config.toml" "${XDG_CONFIG_HOME}/mise/config.toml"
 
+mkdir -p "${XDG_CONFIG_HOME}/ghostty"
+ln -nfs "${DOTFILES}/ghostty/config" "${XDG_CONFIG_HOME}/ghostty/config"
+
+mkdir -p "${XDG_CONFIG_HOME}/.agents"
+ln -nfs "${DOTFILES}/agents/skill-lock.json" "${HOME}/.agents/.skill-lock.json"
+
 mkdir -p "${HOME}/.pi/agent"
-ln -nfs "${DOTFILES}/pi/settings.json" "${HOME}/.pi/agent/settings.json"
+ln -nfs "${DOTFILES}/pi/agent/AGENTS.md" "${HOME}/.pi/agent/AGENTS.md"
+ln -nfs "${DOTFILES}/pi/agent/settings.json" "${HOME}/.pi/agent/settings.json"
 
 if is_wsl; then
   ln -nfs "${DOTFILES}/misc/wsl.conf" /etc/wsl.conf

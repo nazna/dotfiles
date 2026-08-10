@@ -1,46 +1,63 @@
 [user]
   name = nazna
   email = 14846330+nazna@users.noreply.github.com
+
 [init]
+
   defaultBranch = main
 [core]
   editor = vim
-  pager = LESSCHARSET=utf-8 less -FRX
-  autocrlf = input
+  precomposeunicode = true
   quotepath = false
-  ignorecase = false
+
+[column]
+  ui = auto
+
+[color]
+  ui = auto
+
+[status]
+  showUntrackedFiles = all
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  sort = version:refname
+
+[push]
+  default = simple
+  followTags = true
+  autoSetupRemote = true
+
+[pull]
+  ff = only
+
 [fetch]
   prune = true
   pruneTags = true
-[pull]
-  ff = only
-[push]
-  default = simple
-  autoSetupRemote = true
+
+[rebase]
+  autoStash = true
+  autoSquash = true
+  updateRefs = true
+
+[merge]
+  conflictStyle = zdiff3
+
 [commit]
   verbose = true
-[status]
-  showUntrackedFiles = all
-[branch]
-  sort = -committerdate
-[tag]
-  sort = version:refname
-[column]
-  ui = auto
-[color]
-  ui = auto
-  diff = always
-  grep = always
-  branch = always
-  status = always
-  interactive = always
-[diff]
-  algorithm = histogram
-  mnemonicPrefix = true
-  renames = true
-  compactionHeuristic = true
+
 [rerere]
   enabled = true
   autoupdate = true
+
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+  compactionHeuristic = true
+
 [ghq]
   root = ~/work

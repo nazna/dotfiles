@@ -1,4 +1,9 @@
-export FZF_DEFAULT_OPTS="--height 40% --ansi --cycle --reverse --select-1 --exit-0 --bind=tab:down --bind=btab:up"
+export FZF_DEFAULT_OPTS='
+  --ansi
+  --cycle
+  --layout=reverse
+  --info=inline
+  --bind=tab:down,shift-tab:up'
 
 function fzf_history() {
   BUFFER=$(history -n -r 1 | fzf -e +s +m --query="$LBUFFER" --prompt="history > ")
@@ -50,7 +55,7 @@ function gcma() {
   local msg=$(pi --no-session --model deepseek/deepseek-v4-flash --thinking off --print "${prompt}" <<< "${diff}")
 
   if [[ -z "${msg}" ]]; then
-    echo "No message printed."
+    echo "No message generated."
     return 1
   fi
 

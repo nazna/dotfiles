@@ -5,6 +5,11 @@
     }
   },
   "buffer_font_size": 15,
+  "gutter": {
+    "bookmarks": false,
+    "breakpoints": false,
+    "runnables": false
+  },
   "icon_theme": "Catppuccin Latte",
   "telemetry": {
     "diagnostics": false,
