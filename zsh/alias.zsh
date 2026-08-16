@@ -1,5 +1,6 @@
 alias cdw="cd ${HOME}/work"
 alias cds="cd ${HOME}/sandbox"
+alias up='cd ..'
 alias reload="exec ${SHELL} -l"
 
 alias ls='eza --classify=auto'
@@ -18,7 +19,7 @@ alias gps='git push'
 alias gpl='git pull'
 alias gg='git fetch --all --prune && git branch -vv | awk "/: gone]/{print \$1}" | xargs git branch -D'
 
-alias pic="pi --continue"
+alias pic='pi --continue'
 
-alias pbcopy="clip.exe"
-alias pbpaste="powershell.exe -command 'Get-Clipboard'"
+alias pbcopy='clip.exe'
+alias pbpaste='powershell.exe -command "Get-Clipboard"'
