@@ -63,6 +63,7 @@ ln -nfs "${DOTFILES}/ghostty/config" "${XDG_CONFIG_HOME}/ghostty/config"
 
 mkdir -p "${XDG_CONFIG_HOME}/zed"
 ln -nfs "${DOTFILES}/zed/settings.json" "${XDG_CONFIG_HOME}/zed/settings.json"
+ln -nfs "${DOTFILES}/zed/keymap.json" "${XDG_CONFIG_HOME}/zed/keymap.json"
 
 mkdir -p "${XDG_CONFIG_HOME}/.agents"
 ln -nfs "${DOTFILES}/agents/skill-lock.json" "${HOME}/.agents/.skill-lock.json"
