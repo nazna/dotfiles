@@ -19,7 +19,7 @@
     "font_family": "UDEV Gothic 35NF"
   },
   "theme": {
-    "mode": "dark",
+    "mode": "system",
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Frappé"
   },
