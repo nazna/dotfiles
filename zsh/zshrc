@@ -22,11 +22,11 @@ setopt no_beep
 setopt extended_glob
 setopt nonomatch
 
-export TZ="Asia/Tokyo"
-export LANG="ja_JP.UTF8"
-export LESS="-R"
-export EDITOR="vim"
-export FCEDIT="vim"
+export TZ='Asia/Tokyo'
+export LANG='en_US.UTF-8'
+export LESS='-R'
+export EDITOR='vim'
+export FCEDIT='vim'
 
 export HISTFILE="${HOME}/.zsh_history"
 export HISTSIZE=1000000
