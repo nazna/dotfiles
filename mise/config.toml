@@ -9,13 +9,11 @@ fzf = "latest"
 ghq = "latest"
 github-cli = "latest"
 jq = "latest"
-"github:earendil-works/pi" = "latest"
+pi = "latest"
 ripgrep = "latest"
 starship = "latest"
 yazi = "latest"
 yt-dlp = "latest"
-
-"npm:context-mode" = "latest"
 
 [settings]
 experimental = true
