@@ -1,15 +1,25 @@
+config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
+
 theme = Catppuccin Frappe
 
 font-family = UDEV Gothic 35NF
 font-feature = -dlig
 
+window-theme = ghostty
 window-padding-x = 16
 window-padding-y = 16
 window-padding-balance = true
+confirm-close-surface=false
+resize-overlay = never
+gtk-toolbar-style = flat
 
-shell-integration-features = no-cursor
+shell-integration-features = no-cursor,ssh-env
 cursor-style = block
 cursor-style-blink = false
 
 mouse-hide-while-typing = true
 resize-overlay = never
+
+keybind = ctrl+t=new_tab
+
+async-backend = epoll
