@@ -10,6 +10,14 @@ is_wsl() {
   fi
 }
 
+is_hyprland() {
+  pgrep -x Hyprland > /dev/null
+}
+
+is_omarchy() {
+  [ "$(. /etc/os-release && echo "${ID:-}")" = "omarchy" ]
+}
+
 DOTFILES="${HOME}/work/github.com/nazna/dotfiles"
 XDG_CONFIG_HOME="${HOME}/.config"
 
@@ -22,10 +30,12 @@ git clone https://github.com/nazna/dotfiles "${DOTFILES}"
 cd "${DOTFILES}" && git remote set-url origin git@github.com:nazna/dotfiles.git && cd -
 
 # install system packages
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install -y build-essential language-pack-ja
-sudo apt install -y bubblewrap curl ffmpeg imagemagick nkf sqlite3 unzip vim wget zip zsh
+if is_wsl; then
+  sudo apt update -y
+  sudo apt upgrade -y
+  sudo apt install -y build-essential language-pack-ja
+  sudo apt install -y bubblewrap curl ffmpeg imagemagick nkf sqlite3 unzip vim wget zip zsh
+fi
 
 # link dotfiles
 ln -nfs "${DOTFILES}/misc/editorconfig" "${HOME}/.editorconfig"
@@ -60,6 +70,17 @@ ln -nfs "${DOTFILES}/pi/agent/settings.json" "${HOME}/.pi/agent/settings.json"
 
 if is_wsl; then
   ln -nfs "${DOTFILES}/misc/wsl.conf" /etc/wsl.conf
+fi
+
+if is_hyprland; then
+  ln -nfs "${DOTFILES}/hypr/input.lua" "${XDG_CONFIG_HOME}/hypr/input.lua"
+fi
+
+if is_omarchy; then
+  mkdir -p "${XDG_CONFIG_HOME}/omarchy/plugins/us-japanese.ime"
+  ln -nfs "${DOTFILES}/omarchy/shell.json" "${XDG_CONFIG_HOME}/omarchy/shell.json"
+  ln -nfs "${DOTFILES}/omarchy/plugins/us-japanese.ime/Ime.qml" "${XDG_CONFIG_HOME}/omarchy/plugins/us-japanese.ime/Ime.qml"
+  ln -nfs "${DOTFILES}/omarchy/plugins/us-japanese.ime/manifest.json" "${XDG_CONFIG_HOME}/omarchy/plugins/us-japanese.ime/manifest.json"
 fi
 
 # fetch zsh plugins

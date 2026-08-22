@@ -1,13 +1,13 @@
 {
   "defaultProvider": "openrouter",
-  "defaultModel": "deepseek/deepseek-v4-flash-0731",
+  "defaultModel": "stealth/ox-alpha",
   "defaultThinkingLevel": "high",
   "enableInstallTelemetry": false,
   "collapseChangelog": true,
   "hideThinkingBlock": true,
   "lastChangelogVersion": "0.84.2",
   "quietStartup": true,
-  "theme": "light/dark",
+  "theme": "omarchy-system",
   "packages": [
     "git:github.com/DietrichGebert/ponytail",
     "npm:pi-ask-user"

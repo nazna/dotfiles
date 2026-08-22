@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "us-japanese.ime",
+  "name": "Input method",
+  "version": "1.0.0",
+  "author": "nazna",
+  "description": "Current fcitx5 input method (あ/Ａ)",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Ime.qml"
+  },
+  "barWidget": {
+    "displayName": "Input method",
+    "description": "Current fcitx5 input method (あ/Ａ)",
+    "category": "Compositor",
+    "allowMultiple": false
+  }
+}
