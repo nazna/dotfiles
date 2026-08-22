@@ -11,7 +11,11 @@
     "breakpoints": false,
     "runnables": false
   },
-  "icon_theme": "Catppuccin Latte",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Frappé"
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
