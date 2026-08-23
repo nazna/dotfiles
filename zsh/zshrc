@@ -46,6 +46,7 @@ fpath=("${XDG_CONFIG_HOME}/zsh/completions/src" $fpath)
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
 
+source "${XDG_CONFIG_HOME}/zsh/common.zsh"
 source "${XDG_CONFIG_HOME}/zsh/alias.zsh"
 source "${XDG_CONFIG_HOME}/zsh/function.zsh"
 source "${XDG_CONFIG_HOME}/zsh/autosuggestions/zsh-autosuggestions.zsh"

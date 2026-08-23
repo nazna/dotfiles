@@ -2,21 +2,7 @@
 
 set -euo pipefail
 
-is_wsl() {
-  if [[ -d /run/WSL ]]; then
-    return 1
-  else
-    return 0
-  fi
-}
-
-is_hyprland() {
-  pgrep -x Hyprland > /dev/null
-}
-
-is_omarchy() {
-  [ "$(. /etc/os-release && echo "${ID:-}")" = "omarchy" ]
-}
+source "${BASH_SOURCE[0]%/*}/zsh/common.zsh"
 
 DOTFILES="${HOME}/work/github.com/nazna/dotfiles"
 XDG_CONFIG_HOME="${HOME}/.config"
@@ -51,6 +37,7 @@ ln -nfs "${DOTFILES}/vim/vimrc" "${XDG_CONFIG_HOME}/vim/vimrc"
 
 mkdir -p "${XDG_CONFIG_HOME}/zsh"
 ln -nfs "${DOTFILES}/zsh/zshrc" "${HOME}/.zshrc"
+ln -nfs "${DOTFILES}/zsh/common.zsh" "${XDG_CONFIG_HOME}/zsh/common.zsh"
 ln -nfs "${DOTFILES}/zsh/alias.zsh" "${XDG_CONFIG_HOME}/zsh/alias.zsh"
 ln -nfs "${DOTFILES}/zsh/function.zsh" "${XDG_CONFIG_HOME}/zsh/function.zsh"
 ln -nfs "${DOTFILES}/starship/starship.toml" "${XDG_CONFIG_HOME}/starship.toml"

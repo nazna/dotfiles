@@ -21,5 +21,11 @@ alias gg='git fetch --all --prune && git branch -vv | awk "/: gone]/{print \$1}"
 
 alias pic='pi --continue'
 
-alias pbcopy='clip.exe'
-alias pbpaste='powershell.exe -command "Get-Clipboard"'
+if is_wsl; then
+  alias pbcopy='clip.exe'
+  alias pbpaste='powershell.exe -command "Get-Clipboard"'
+fi
+
+if is_native_linux; then
+  alias zed='zeditor'
+fi
