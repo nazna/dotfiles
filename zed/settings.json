@@ -21,7 +21,8 @@
     "metrics": false
   },
   "terminal": {
-    "font_family": "UDEV Gothic 35NF"
+    "font_family": "UDEV Gothic 35NF",
+    "scroll_multiplier": 5
   },
   "theme": {
     "mode": "system",

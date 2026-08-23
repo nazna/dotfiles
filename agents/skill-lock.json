@@ -1,1 +1,14 @@
-{}
+{
+  "version": 3,
+  "skills": {
+    "librarian": {
+      "source": "mitsuhiko/agent-stuff",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mitsuhiko/agent-stuff.git",
+      "skillPath": "skills/librarian/SKILL.md",
+      "skillFolderHash": "d9c9e4f484d7aed8b71f0e9dda7b0abddbdf6b13",
+      "installedAt": "2026-08-23T02:10:31Z",
+      "updatedAt": "2026-08-23T02:10:31Z"
+    }
+  }
+}
