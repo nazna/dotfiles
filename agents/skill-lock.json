@@ -1,6 +1,15 @@
 {
   "version": 3,
   "skills": {
+    "cloudflare": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cloudflare/skills.git",
+      "skillPath": "skills/cloudflare/SKILL.md",
+      "skillFolderHash": "a92bec38b7b5ff5e634b509c7ff3c289d9d61290",
+      "installedAt": "2026-08-25T15:28:49Z",
+      "updatedAt": "2026-08-25T15:32:21Z"
+    },
     "librarian": {
       "source": "mitsuhiko/agent-stuff",
       "sourceType": "github",

@@ -24,7 +24,7 @@ setopt nonomatch
 
 export TZ='Asia/Tokyo'
 export LANG='en_US.UTF-8'
-export LESS='-R'
+export LESSCHARSET=utf-8
 export EDITOR='vim'
 export FCEDIT='vim'
 
