@@ -1,9 +1,27 @@
 [
   {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-up": "editor::SelectLargerSyntaxNode",
+      "ctrl-down": "editor::SelectSmallerSyntaxNode",
+      "ctrl-enter": "editor::NewlineBelow",
+    },
+  },
+  {
     "context": "Pane",
     "bindings": {
       "ctrl-tab": "pane::ActivateNextItem",
-      "ctrl-shift-tab": "pane::ActivatePreviousItem"
-    }
-  }
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-1": ["pane::ActivateItem", 0],
+      "cmd-2": ["pane::ActivateItem", 1],
+      "cmd-3": ["pane::ActivateItem", 2],
+      "cmd-4": ["pane::ActivateItem", 3],
+      "cmd-5": ["pane::ActivateItem", 4],
+    },
+  },
 ]
