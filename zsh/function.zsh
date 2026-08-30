@@ -52,7 +52,7 @@ function gcma() {
   fi
 
   local prompt='Generate a one-line imperative commit message (<60 chars) summarizing the diff without changes. Start with lowercase, no period, no prefixes, no body, no explanation, no backticks. Output ONLY the message.'
-  local msg=$(pi --no-session --model deepseek/deepseek-v4-flash-0731 --thinking off --print "${prompt}" <<< "${diff}")
+  local msg=$(pi --no-session --model z-ai/glm-5.3-flash --thinking off --print "${prompt}" <<< "${diff}")
 
   if [[ -z "${msg}" ]]; then
     echo "No message generated."
