@@ -20,7 +20,7 @@ if is_wsl; then
   sudo apt update -y
   sudo apt upgrade -y
   sudo apt install -y build-essential language-pack-ja
-  sudo apt install -y bubblewrap curl ffmpeg imagemagick nkf sqlite3 unzip vim wget zip zsh
+  sudo apt install -y bubblewrap curl ffmpeg imagemagick nkf sqlite3 unzip vim vim-gtk3 wget zip zsh
 fi
 
 # link dotfiles
@@ -63,8 +63,7 @@ ln -nfs "${DOTFILES}/pi/agent/skills/cdp/SKILL.md" "${HOME}/.pi/agent/skills/cdp
 
 ln -nfs "${DOTFILES}/starship/starship.toml" "${XDG_CONFIG_HOME}/starship.toml"
 
-mkdir -p "${XDG_CONFIG_HOME}/vim"
-ln -nfs "${DOTFILES}/vim/vimrc" "${XDG_CONFIG_HOME}/vim/vimrc"
+ln -nfs "${DOTFILES}/vim/vimrc" "${HOME}/.vimrc"
 
 # TODO: vscode
 

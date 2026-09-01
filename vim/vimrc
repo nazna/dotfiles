@@ -1,24 +1,11 @@
-if &compatible
-  set compatible
-endif
-
 filetype plugin indent on
 syntax enable
 
 set encoding=utf-8
 set mouse=a
-set t_Co=256
 set whichwrap=b,s,h,l,<,>,[,]
 
 set background=dark
-
-set guioptions-=m
-set guioptions-=T
-set guioptions-=r
-set guioptions-=R
-set guioptions-=l
-set guioptions-=L
-set guioptions-=b
 
 set backspace=indent,eol,start
 set tabstop=2
@@ -27,8 +14,6 @@ set softtabstop=0
 set expandtab
 
 set autoindent
-set cindent
-set smartindent
 set shiftround
 
 set wrap
