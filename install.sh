@@ -65,7 +65,9 @@ ln -nfs "${DOTFILES}/starship/starship.toml" "${XDG_CONFIG_HOME}/starship.toml"
 
 ln -nfs "${DOTFILES}/vim/vimrc" "${HOME}/.vimrc"
 
-# TODO: vscode
+mkdir -p "${XDG_CONFIG_HOME}/Code/User"
+ln -nfs "${DOTFILES}/vscode/settings.json" "${XDG_CONFIG_HOME}/Code/User/settings.json"
+ln -nfs "${DOTFILES}/vscode/keybindings.json" "${XDG_CONFIG_HOME}/Code/User/keybindings.json"
 
 mkdir -p "${XDG_CONFIG_HOME}/zed"
 ln -nfs "${DOTFILES}/zed/settings.json" "${XDG_CONFIG_HOME}/zed/settings.json"
