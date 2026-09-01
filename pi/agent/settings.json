@@ -7,7 +7,7 @@
   "hideThinkingBlock": true,
   "lastChangelogVersion": "0.84.3",
   "quietStartup": true,
-  "theme": "omarchy-system",
+  "theme": "light/dark",
   "packages": [
     "git:github.com/DietrichGebert/ponytail",
     "npm:pi-ask-user"
