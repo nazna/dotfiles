@@ -76,6 +76,7 @@ ln -nfs "${DOTFILES}/zed/keymap.json" "${XDG_CONFIG_HOME}/zed/keymap.json"
 mkdir -p "${XDG_CONFIG_HOME}/zsh"
 ln -nfs "${DOTFILES}/zsh/zshrc" "${HOME}/.zshrc"
 ln -nfs "${DOTFILES}/zsh/common.zsh" "${XDG_CONFIG_HOME}/zsh/common.zsh"
+ln -nfs "${DOTFILES}/zsh/env.zsh" "${XDG_CONFIG_HOME}/zsh/env.zsh"
 ln -nfs "${DOTFILES}/zsh/alias.zsh" "${XDG_CONFIG_HOME}/zsh/alias.zsh"
 ln -nfs "${DOTFILES}/zsh/function.zsh" "${XDG_CONFIG_HOME}/zsh/function.zsh"
 
