@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+typeset -U path PATH fpath
+
+path=("${HOME}/.local/bin" $path)
+fpath=("${XDG_CONFIG_HOME}/zsh/completions/src" $fpath)
+
 autoload -Uz compinit; compinit
 
 zstyle ':completion::complete:*' use-cache true
@@ -44,11 +49,6 @@ source "${XDG_CONFIG_HOME}/zsh/alias.zsh"
 source "${XDG_CONFIG_HOME}/zsh/function.zsh"
 source "${XDG_CONFIG_HOME}/zsh/autosuggestions/zsh-autosuggestions.zsh"
 source "${XDG_CONFIG_HOME}/zsh/syntax-highlighting/zsh-syntax-highlighting.zsh"
-
-typeset -U path PATH fpath
-
-path=("${HOME}/.local/bin" $path)
-fpath=("${XDG_CONFIG_HOME}/zsh/completions/src" $fpath)
 
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"

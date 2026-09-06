@@ -2,8 +2,6 @@
 
 set -euo pipefail
 
-source "${BASH_SOURCE[0]%/*}/zsh/common.zsh"
-
 DOTFILES="${HOME}/work/github.com/nazna/dotfiles"
 XDG_CONFIG_HOME="${HOME}/.config"
 
@@ -14,6 +12,8 @@ mkdir -p "${HOME}/sandbox"
 # fetch dotfiles
 git clone https://github.com/nazna/dotfiles "${DOTFILES}"
 cd "${DOTFILES}" && git remote set-url origin git@github.com:nazna/dotfiles.git && cd -
+
+source "${DOTFILES}/zsh/common.zsh"
 
 # install system packages
 if is_wsl; then
@@ -40,7 +40,7 @@ fi
 ln -nfs "${DOTFILES}/misc/editorconfig" "${HOME}/.editorconfig"
 
 if is_wsl; then
-  ln -nfs "${DOTFILES}/misc/wsl.conf" /etc/wsl.conf
+  sudo ln -nfs "${DOTFILES}/misc/wsl.conf" /etc/wsl.conf
 
   mkdir -p "${HOME}/.config/systemd/user" "${HOME}/.local/bin"
   win_local_app_data="$(powershell.exe -NoProfile -Command '$env:LOCALAPPDATA' | tr -d '\r')"
