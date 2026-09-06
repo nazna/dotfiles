@@ -30,6 +30,7 @@ ln -nfs "${DOTFILES}/ghostty/config" "${XDG_CONFIG_HOME}/ghostty/config"
 mkdir -p "${XDG_CONFIG_HOME}/git"
 ln -nfs "${DOTFILES}/git/config" "${XDG_CONFIG_HOME}/git/config"
 ln -nfs "${DOTFILES}/git/ignore" "${XDG_CONFIG_HOME}/git/ignore"
+ln -nfs "${DOTFILES}/git/signers" "${XDG_CONFIG_HOME}/git/signers"
 ln -nfs "${DOTFILES}/git/attributes" "${XDG_CONFIG_HOME}/git/attributes"
 
 if is_hyprland; then

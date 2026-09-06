@@ -1,6 +1,7 @@
 [user]
   name = nazna
   email = 14846330+nazna@users.noreply.github.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINYMjfHI+zhPqO0dAkNV0LBdIJxvB5f94XDBBmMoJYfV
 
 [init]
 
@@ -47,6 +48,7 @@
 
 [commit]
   verbose = true
+	gpgsign = true
 
 [rerere]
   enabled = true
@@ -58,6 +60,11 @@
   mnemonicPrefix = true
   renames = true
   compactionHeuristic = true
+
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /home/nazna/.config/git/signers
 
 [ghq]
   root = ~/work
