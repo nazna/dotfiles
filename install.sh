@@ -43,7 +43,8 @@ if is_wsl; then
   ln -nfs "${DOTFILES}/misc/wsl.conf" /etc/wsl.conf
 
   mkdir -p "${HOME}/.config/systemd/user" "${HOME}/.local/bin"
-  cp "$(wslpath "$(powershell.exe -NoProfile -Command '(Get-Command npiperelay.exe).Source' | tr -d '\r')")" "${HOME}/.local/bin/"
+  win_local_app_data="$(powershell.exe -NoProfile -Command '$env:LOCALAPPDATA' | tr -d '\r')"
+  cp "$(wslpath "${win_local_app_data}")/Microsoft/WinGet/Packages/"albertony.npiperelay_*/npiperelay.exe "${HOME}/.local/bin/"
   ln -nfs "${DOTFILES}/misc/wsl-bitwarden-ssh-agent.service" "${XDG_CONFIG_HOME}/systemd/user/bitwarden-ssh-agent.service"
   systemctl --user daemon-reload
   systemctl --user enable --now bitwarden-ssh-agent.service
