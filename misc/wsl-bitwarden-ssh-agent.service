@@ -1,0 +1,11 @@
+[Unit]
+Description=Bitwarden SSH Agent
+
+[Service]
+ExecStartPre=-/usr/bin/rm -f %h/.bitwarden-ssh-agent.sock
+ExecStart=/usr/bin/socat -t 10 UNIX-LISTEN:%h/.bitwarden-ssh-agent.sock,fork EXEC:"%h/.local/bin/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent"
+ExecStopPost=-/usr/bin/rm -f %h/.bitwarden-ssh-agent.sock
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

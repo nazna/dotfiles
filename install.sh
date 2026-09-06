@@ -20,7 +20,7 @@ if is_wsl; then
   sudo apt update -y
   sudo apt upgrade -y
   sudo apt install -y build-essential language-pack-ja
-  sudo apt install -y bubblewrap curl ffmpeg imagemagick nkf sqlite3 unzip vim vim-gtk3 wget zip zsh
+  sudo apt install -y bubblewrap curl ffmpeg imagemagick nkf socat sqlite3 unzip vim vim-gtk3 wget zip zsh
 fi
 
 # link dotfiles
@@ -41,6 +41,12 @@ ln -nfs "${DOTFILES}/misc/editorconfig" "${HOME}/.editorconfig"
 
 if is_wsl; then
   ln -nfs "${DOTFILES}/misc/wsl.conf" /etc/wsl.conf
+
+  mkdir -p "${HOME}/.config/systemd/user" "${HOME}/.local/bin"
+  cp "$(wslpath "$(powershell.exe -NoProfile -Command '(Get-Command npiperelay.exe).Source' | tr -d '\r')")" "${HOME}/.local/bin/"
+  ln -nfs "${DOTFILES}/misc/wsl-bitwarden-ssh-agent.service" "${XDG_CONFIG_HOME}/systemd/user/bitwarden-ssh-agent.service"
+  systemctl --user daemon-reload
+  systemctl --user enable --now bitwarden-ssh-agent.service
 fi
 
 mkdir -p "${XDG_CONFIG_HOME}/mise"

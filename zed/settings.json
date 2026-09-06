@@ -1,12 +1,15 @@
 {
-  "git_panel": {
-    "group_by": "staging",
-  },
   "buffer_font_size": 15,
   "buffer_font_features": {
     "calt": false,
   },
   "cli_default_open_behavior": "new_window",
+  "edit_predictions": {
+    "allow_data_collection": "no"
+  },
+  "git_panel": {
+    "group_by": "staging",
+  },
   "gutter": {
     "bookmarks": false,
     "breakpoints": false,
@@ -21,6 +24,7 @@
     "show": "never",
   },
   "scroll_sensitivity": 1.8,
+  "show_edit_predictions": false,
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
