@@ -7,26 +7,54 @@ description: Drive a headless Chrome via the Chrome DevTools Protocol (CDP) with
 
 Drive headless Chrome over CDP using only Node built-ins (WebSocket is global since Node 22). No libraries.
 
-## 1. Launch Chrome
+## 1. Ensure a browser binary
+
+Default to **`chrome-headless-shell`** (official standalone old-headless binary, actively shipped; ideal for screenshots/scraping/basic verification, no X11/D-Bus needed — good for WSL2). Use full Chrome with `--headless=new` only when real-Chrome rendering fidelity matters (E2E tests, rendering-sensitive checks).
+
+Check in this order:
+
+1. `command -v google-chrome-stable chromium chrome-headless-shell`
+2. The puppeteer cache layout: `find ~/.cache -name chrome-headless-shell -type f 2>/dev/null` (typical path: `~/.cache/cull-browsers/chrome-headless-shell/linux-*/chrome-headless-shell-linux64/chrome-headless-shell`)
+
+If nothing exists, install the shell (no sudo needed):
 
 ```bash
-google-chrome-stable --headless=new \
+npx @puppeteer/browsers install chrome-headless-shell@stable --path ~/.cache/cull-browsers
+```
+
+Note the printed binary path. If the shell is insufficient and real Chrome is needed, ask the user for approval before installing `google-chrome-stable` (sudo + official apt repo):
+
+```bash
+wget -qO- https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+sudo apt update && sudo apt install -y google-chrome-stable
+```
+
+Avoid `chromium-browser` on Ubuntu 24.04 (snap; awkward in WSL2).
+
+## 2. Launch
+
+```bash
+<binary> --headless=new \
   --remote-debugging-port=9333 \
   --user-data-dir=/tmp/cdp-profile-$$ \
   --enable-experimental-web-platform-features \
   --no-first-run about:blank >/tmp/chrome.log 2>&1 &
+echo "$! /tmp/cdp-profile-$$" > /tmp/chrome-9333.pid
 sleep 3
 ```
 
+(With `chrome-headless-shell` the `--headless=new` flag is a harmless no-op — the shell is always headless.)
+
 - **NEVER point `--user-data-dir` at the user's real profile** (`~/.config/google-chrome` etc.) — CDP exposes every cookie and login session to any local process.
-- Clean up when done: `kill %1 && rm -rf /tmp/cdp-profile-*` (or launch inside a subshell with `trap 'rm -rf "$d"' EXIT`).
+- Each bash invocation is a separate shell, so `kill %1` won't work in a later call — and `$$` there would be a different PID too. That's why the launch saves the Chrome PID and its profile path: clean up with `read pid d < /tmp/chrome-9333.pid && kill $pid && rm -rf "$d" /tmp/chrome-9333.pid` (only your own profile dir — a concurrent session may own the others).
+- Running as root or in Docker? Add `--no-sandbox` or Chrome refuses to start.
 - Drop `--enable-experimental-web-platform-features` unless the page needs experimental APIs.
-- Chromium also works (`chromium` binary). Pick whichever exists (`command -v`).
 - Endpoint check: `curl -s http://localhost:9333/json/version`.
 
-## 2. Connect and drive
+## 3. Connect and drive
 
-Write a throwaway `.mjs` script (pattern below), run it, read its output, delete nothing until done — keep it in `/tmp`, never commit.
+Write a throwaway `.mjs` script (pattern below), run it, read its output. Keep it in `/tmp` while you iterate, delete it when done — never commit it.
 
 ```js
 // /tmp/verify.mjs
@@ -35,11 +63,15 @@ const page = pages.find(p => p.url.includes('localhost:3000')) ?? pages[0];
 const ws = new WebSocket(page.webSocketDebuggerUrl);
 
 let id = 0;
-const pending = new Map();
+const pending = new Map(); // id -> { resolve, reject }
 const exceptions = [], consoleErrors = [], requests = [];
 ws.onmessage = (e) => {
   const m = JSON.parse(e.data);
-  if (m.id && pending.has(m.id)) { pending.get(m.id)(m.result); pending.delete(m.id); return; }
+  if (m.id && pending.has(m.id)) {
+    const { resolve, reject } = pending.get(m.id); pending.delete(m.id);
+    m.error ? reject(new Error(`CDP ${m.error.message}`)) : resolve(m.result);
+    return;
+  }
   if (m.method === 'Runtime.exceptionThrown')
     exceptions.push((m.params.exceptionDetails.exception?.description || m.params.exceptionDetails.text).split('\n')[0]);
   if (m.method === 'consoleAPICalled' && m.params.type === 'error')
@@ -47,24 +79,36 @@ ws.onmessage = (e) => {
   if (m.method === 'Network.requestWillBeSent')
     requests.push(`${m.params.request.method} ${m.params.request.url}`);
 };
+ws.onclose = () => { for (const p of pending.values()) p.reject(new Error('WebSocket closed — did Chrome crash?')); };
 await new Promise(r => ws.onopen = r);
-const send = (method, params = {}) =>
-  new Promise(res => { pending.set(++id, res); ws.send(JSON.stringify({ id, method, params })); });
+const send = (method, params = {}) => new Promise((resolve, reject) => {
+  pending.set(++id, { resolve, reject }); ws.send(JSON.stringify({ id, method, params }));
+});
 
+const load = new Promise(r => {
+  const h = (e) => { if (JSON.parse(e.data).method === 'Page.loadEventFired') { ws.removeEventListener('message', h); r(); } };
+  ws.addEventListener('message', h);
+});
 await send('Page.enable');
 await send('Runtime.enable');
 await send('Network.enable');
 await send('Page.navigate', { url: 'http://localhost:3000/' });
-await new Promise(r => setTimeout(r, 1500)); // let scripts settle
+await Promise.race([load, new Promise(r => setTimeout(r, 10000))]);
 
-const evaluate = async (expression) =>
-  (await send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true })).result?.value;
+const evaluate = async (expression) => {
+  const r = await send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true });
+  if (r.exceptionDetails) throw new Error(r.exceptionDetails.exception?.description || r.exceptionDetails.text);
+  return r.result?.value;
+};
+
+// app fetches data after load? poll for readiness inside ONE evaluate, not a fixed sleep
+await evaluate(`(async () => { for (let i = 0; i < 50 && document.querySelector('[data-loading]'); i++) await new Promise(r => setTimeout(r, 100)); })()`).catch(() => {});
 
 console.log(await evaluate(`document.title`));
 console.log('exceptions:', exceptions.join(' | ') || 'none');
 console.log('console errors:', consoleErrors.join(' | ') || 'none');
 console.log('requests:', requests.join(', ') || 'none');
-process.exit(0);
+ws.close(); // a thrown evaluate error escapes as an unhandled rejection → node exits 1 with the stack
 ```
 
 Run: `timeout 120 node /tmp/verify.mjs`
