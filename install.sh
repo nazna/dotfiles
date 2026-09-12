@@ -34,6 +34,7 @@ ln -nfs "${DOTFILES}/git/signers" "${XDG_CONFIG_HOME}/git/signers"
 ln -nfs "${DOTFILES}/git/attributes" "${XDG_CONFIG_HOME}/git/attributes"
 
 if is_hyprland; then
+  ln -nfs "${DOTFILES}/hypr/hyprland.lua" "${XDG_CONFIG_HOME}/hypr/hyprland.lua"
   ln -nfs "${DOTFILES}/hypr/input.lua" "${XDG_CONFIG_HOME}/hypr/input.lua"
 fi
 
