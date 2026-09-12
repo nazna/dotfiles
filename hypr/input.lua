@@ -3,6 +3,9 @@ hl.config({
     kb_layout = "us",
     kb_options = "ctrl:nocaps,shift:both_capslock_cancel",
 
+    repeat_rate = 25,
+    repeat_delay = 600,
+
     sensitivity = 0.2,
 
     touchpad = {
