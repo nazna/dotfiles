@@ -10,7 +10,7 @@ alias lla='eza -alo --no-user --classify=auto --sort=type --time-style=long-iso'
 alias tree='eza --tree'
 
 alias gs='git status --short --branch'
-alias gl='git --no-pager log -10 --date=short --pretty=format:"%C(yellow)%h %C(green)%cd %C(blue)%cn %C(reset)%s"'
+alias gl='git --no-pager log -10 --date=short --pretty=tformat:"%C(yellow)%h %C(green)%cd %C(blue)%cn %C(reset)%s"'
 alias gb='git --no-pager branch --no-column'
 alias gd='git diff ":(exclude)package-lock.json"'
 alias ga='git add'
