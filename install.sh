@@ -24,6 +24,9 @@ if is_wsl; then
 fi
 
 # link dotfiles
+mkdir -p "${XDG_CONFIG_HOME}/delta"
+ln -nfs "${DOTFILES}/delta/AGENTS.md" "${XDG_CONFIG_HOME}/delta/AGENTS.md"
+
 mkdir -p "${XDG_CONFIG_HOME}/ghostty"
 ln -nfs "${DOTFILES}/ghostty/config" "${XDG_CONFIG_HOME}/ghostty/config"
 
