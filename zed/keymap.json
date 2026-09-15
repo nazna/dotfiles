@@ -5,14 +5,20 @@
       "ctrl-up": "editor::SelectLargerSyntaxNode",
       "ctrl-down": "editor::SelectSmallerSyntaxNode",
       "ctrl-enter": "editor::NewlineBelow",
-    },
+    }
   },
   {
     "context": "Pane",
     "bindings": {
       "ctrl-tab": "pane::ActivateNextItem",
       "ctrl-shift-tab": "pane::ActivatePreviousItem",
-    },
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-enter": ["terminal::SendText", "\u001b[13;3u"]
+    }
   },
   {
     "context": "Workspace",
@@ -22,6 +28,6 @@
       "cmd-3": ["pane::ActivateItem", 2],
       "cmd-4": ["pane::ActivateItem", 3],
       "cmd-5": ["pane::ActivateItem", 4],
-    },
-  },
+    }
+  }
 ]
