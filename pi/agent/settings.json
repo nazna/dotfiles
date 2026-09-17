@@ -1,6 +1,6 @@
 {
   "defaultProvider": "openrouter",
-  "defaultModel": "z-ai/glm-5.3-flash",
+  "defaultModel": "stealth/union-alpha",
   "defaultThinkingLevel": "high",
   "enableInstallTelemetry": false,
   "collapseChangelog": true,
