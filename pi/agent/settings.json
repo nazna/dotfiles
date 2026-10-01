@@ -2,7 +2,7 @@
   "defaultProvider": "openrouter",
   "defaultModel": "z-ai/glm-5.3-flash",
   "defaultThinkingLevel": "high",
-  "defaultTools": ["+codemode", "+tool_search"],
+  "defaultTools": ["+codemode"],
   "enableInstallTelemetry": false,
   "collapseChangelog": true,
   "hideThinkingBlock": true,
