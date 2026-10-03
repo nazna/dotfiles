@@ -2,15 +2,15 @@
   "defaultProvider": "openrouter",
   "defaultModel": "z-ai/glm-5.3-flash",
   "defaultThinkingLevel": "high",
-  "defaultTools": ["+codemode"],
+  "defaultTools": [
+    "+codemode"
+  ],
   "enableInstallTelemetry": false,
   "collapseChangelog": true,
   "hideThinkingBlock": true,
-  "lastChangelogVersion": "0.87.1",
-  "quietStartup": true,
+  "lastChangelogVersion": "1.0.0",
   "theme": "system",
   "packages": [
-    "git:github.com/DietrichGebert/ponytail",
-    "npm:pi-ask-user"
+    "git:github.com/DietrichGebert/ponytail"
   ]
 }
