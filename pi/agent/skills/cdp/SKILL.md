@@ -1,65 +1,67 @@
 ---
 name: cdp
-description: Drive a headless Chrome via the Chrome DevTools Protocol (CDP) with zero dependencies — plain Node WebSocket, no puppeteer/playwright. Use when verifying web app behavior in a real browser from the agent (form submit, DOM inspection, network requests, console exceptions, computed styles, screenshots), testing streaming/DOM APIs, or when asked to "check in the browser" / "verify with CDP".
+description: Drive a real Chrome (WSL or native Linux) over the Chrome DevTools Protocol. Default to raw CDP (zero deps, plain Node WebSocket) for navigation, DOM inspection, JS evaluation, network/console capture and screenshots. Escalate to the chrome-devtools-mcp tools (via codemode) for trusted input (click/type), accessibility snapshots, performance traces and Lighthouse. Use when verifying web app behavior in a real browser, testing streaming/DOM APIs, or when asked to "check in the browser" / "verify with CDP".
 ---
 
 # CDP Browser Verification
 
-Drive headless Chrome over CDP using only Node built-ins (WebSocket is global since Node 22). No libraries.
+Two layers, use the cheaper one that works:
 
-## 1. Ensure a browser binary
+- **Raw CDP (default)** — plain Node WebSocket, no dependencies. Best for navigation, `Runtime.evaluate`, network/console capture, computed styles, screenshots.
+- **chrome-devtools-mcp (escalate)** — project MCP server `chrome-devtools`, configured in the project's `.pi/mcp.json`. Best for trusted clicks/typing, `take_snapshot`, network request detail, performance traces, Lighthouse. Reach it from a codemode script with `tools.mcp__chrome_devtools__*` (discover with `searchTools('take snapshot click navigate', { namespace: 'chrome-devtools' })`).
 
-Default to **`chrome-headless-shell`** (official standalone old-headless binary, actively shipped; ideal for screenshots/scraping/basic verification, no X11/D-Bus needed — good for WSL2). Use full Chrome with `--headless=new` only when real-Chrome rendering fidelity matters (E2E tests, rendering-sensitive checks).
+## 1. Start the shared Chrome
 
-Check in this order:
+Both raw CDP and the MCP server talk to the same Chrome on port **9333**. The MCP server config (`--browserUrl http://127.0.0.1:9333`) depends on this Chrome already running; it does not launch its own. If the project already ships its own `.pi/mcp.json` wired to a different browser/port, that config wins. Otherwise the default is this skill's shared Chrome on 9333 (the MCP tools, if present, assume it).
 
-1. `command -v google-chrome-stable chromium chrome-headless-shell`
-2. The puppeteer cache layout: `find ~/.cache -name chrome-headless-shell -type f 2>/dev/null` (typical path: `~/.cache/cull-browsers/chrome-headless-shell/linux-*/chrome-headless-shell-linux64/chrome-headless-shell`)
-
-If nothing exists, install the shell (no sudo needed):
+Launch Chrome **headless** with an isolated throwaway profile:
 
 ```bash
-npx @puppeteer/browsers install chrome-headless-shell@stable --path ~/.cache/cull-browsers
+prof=$(mktemp -d /tmp/cdp-profile-XXXX)
+echo "$prof" >/tmp/cdp-profile-path   # cleanup runs in a new shell; remember the dir
+if [ -x "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" ]; then
+  # WSL: use the Windows binary (do not use the chromium-browser snap on Debian/Ubuntu)
+  chrome="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+  userdir=$(wslpath -w "$prof")
+else
+  # native Linux
+  chrome=$(command -v google-chrome-stable || command -v google-chrome || command -v chromium) || {
+    echo 'no Chrome found'; exit 1; }
+  userdir="$prof"
+fi
+"$chrome" --headless=new --remote-debugging-port=9333 \
+  --user-data-dir="$userdir" --no-first-run --no-default-browser-check \
+  about:blank >/tmp/chrome.log 2>&1 &
+sleep 5
+curl -sf --max-time 5 http://localhost:9333/json/version || { echo 'Chrome not up — see /tmp/chrome.log'; exit 1; }
 ```
 
-Note the printed binary path. If the shell is insufficient and real Chrome is needed, ask the user for approval before installing `google-chrome-stable` (sudo + official apt repo):
+Headless keeps it off the user's screen. If a visible window is needed, drop `--headless=new` (it stays `--remote-debugging-port`; never point `--user-data-dir` at the user's real profile).
 
-```bash
-wget -qO- https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-sudo apt update && sudo apt install -y google-chrome-stable
-```
+- **Binary fallback**: `command -v google-chrome-stable || command -v google-chrome || command -v chromium`; else the puppeteer shell `find ~/.cache -name chrome-headless-shell -type f`. The Windows path above is the default install location only — if Chrome lives elsewhere, pass the real path.
+- **Cleanup** — each bash call is a new shell, so re-derive the PID from the port:
+  ```bash
+  pid=$(ss -lptn 'sport = :9333' 2>/dev/null | grep -oP 'pid=\K[0-9]+' | head -1)
+  if [ -n "$pid" ]; then
+    kill "$pid" 2>/dev/null
+  elif [ -x /mnt/c/Windows/System32/netstat.exe ]; then
+    # WSL: Windows Chrome process; kill won't reach it
+    wp=$(/mnt/c/Windows/System32/netstat.exe -ano | awk '$2=="127.0.0.1:9333"{gsub(/\r/,"",$5);print $5}')
+    [ -n "$wp" ] && taskkill.exe /F /PID "$wp"
+  fi
+  rm -rf "$(cat /tmp/cdp-profile-path 2>/dev/null)" /tmp/cdp-profile-path
+  ```
+  Only kill the port you started — a concurrent session may own it.
+- Running as root or in Docker? Add `--no-sandbox`.
 
-Avoid `chromium-browser` on Ubuntu 24.04 (snap; awkward in WSL2).
+## 2. Drive with raw CDP
 
-## 2. Launch
-
-```bash
-<binary> --headless=new \
-  --remote-debugging-port=9333 \
-  --user-data-dir=/tmp/cdp-profile-$$ \
-  --enable-experimental-web-platform-features \
-  --no-first-run about:blank >/tmp/chrome.log 2>&1 &
-echo "$! /tmp/cdp-profile-$$" > /tmp/chrome-9333.pid
-sleep 3
-```
-
-(With `chrome-headless-shell` the `--headless=new` flag is a harmless no-op — the shell is always headless.)
-
-- **NEVER point `--user-data-dir` at the user's real profile** (`~/.config/google-chrome` etc.) — CDP exposes every cookie and login session to any local process.
-- Each bash invocation is a separate shell, so `kill %1` won't work in a later call — and `$$` there would be a different PID too. That's why the launch saves the Chrome PID and its profile path: clean up with `read pid d < /tmp/chrome-9333.pid && kill $pid && rm -rf "$d" /tmp/chrome-9333.pid` (only your own profile dir — a concurrent session may own the others).
-- Running as root or in Docker? Add `--no-sandbox` or Chrome refuses to start.
-- Drop `--enable-experimental-web-platform-features` unless the page needs experimental APIs.
-- Endpoint check: `curl -s http://localhost:9333/json/version`.
-
-## 3. Connect and drive
-
-Write a throwaway `.mjs` script (pattern below), run it, read its output. Keep it in `/tmp` while you iterate, delete it when done — never commit it.
+Write a throwaway `.mjs` script, run it, read its output. Keep it in `/tmp` while iterating, delete it when done — never commit it.
 
 ```js
 // /tmp/verify.mjs
 const pages = await fetch('http://localhost:9333/json/list').then(r => r.json());
-const page = pages.find(p => p.url.includes('localhost:3000')) ?? pages[0];
+const page = pages.find(p => p.url.includes('localhost:3000')) ?? pages.find(p => p.type === 'page');
 const ws = new WebSocket(page.webSocketDebuggerUrl);
 
 let id = 0;
@@ -113,7 +115,7 @@ ws.close(); // a thrown evaluate error escapes as an unhandled rejection → nod
 
 Run: `timeout 120 node /tmp/verify.mjs`
 
-## Core methods
+## Core methods (raw CDP)
 
 | Task | Call |
 |---|---|
@@ -127,16 +129,33 @@ Run: `timeout 120 node /tmp/verify.mjs`
 | Emulate viewport / dark mode | `Emulation.setDeviceMetricsOverride { width, height, deviceScaleFactor: 0, mobile: false }` / `Emulation.setEmulatedMedia { features: [{ name: 'prefers-color-scheme', value: 'dark' }] }` |
 | A11y tree | `Accessibility.getFullAXTree` (no enable needed) — snapshot without screenshots |
 
+## Escalate to chrome-devtools-mcp
+
+Use it when raw `Runtime.evaluate` can't: trusted clicks/typing (raw CDP can't dispatch trusted input), `take_snapshot` (accessibility tree with stable UIDs), detailed network requests, performance traces, Lighthouse. It is wired in the project's `.pi/mcp.json` with `codemode` exposure, so call it from a codemode script:
+
+```js
+// discover exact names + signatures
+const found = await searchTools('take snapshot click navigate network', { namespace: 'chrome-devtools' });
+// tools.mcp__chrome_devtools__list_pages({})
+// tools.mcp__chrome_devtools__navigate_page({ url: 'http://localhost:3000/' })
+// tools.mcp__chrome_devtools__take_snapshot({})
+// tools.mcp__chrome_devtools__click({ pageId, uid })
+const snapshot = await tools.mcp__chrome_devtools__take_snapshot({});
+return snapshot.content?.[0]?.text;
+```
+
+Call `list_pages` first — `pageId` routing is on (`--page-id-routing` default) and selects which page the tools act on. The server connects to the shared Chrome on 9333; if it reports "not connected", start Chrome per step 1 and `/reload`.
+
+If the project has no `chrome-devtools` server configured, this layer is simply unavailable — fall back to raw CDP (trusted input then has no direct solution; say so rather than faking it).
+
+Do **not** install packages globally or let `npx` manage its own Chrome for this skill: the project server connects to the shared 9333 instance, which avoids a second browser and profile.
+
 ## Gotchas learned the hard way
 
 - **Async waits**: after navigation or actions that trigger fetches, poll inside one `Runtime.evaluate` (`while (busy) await sleep(...)`) rather than many separate evaluates — separate calls race each other.
 - **One evaluate per scenario**: an entire multi-step flow (submit form → wait → inspect DOM → submit again) fits in a single `(async () => {...})()` expression. Splitting steps across evaluate calls caused false "the second click didn't fire" readings.
+- **Trusted clicks need the MCP layer**: a JS `.click()` and `Input.dispatchMouseEvent` over a raw WebSocket are not trusted. Use `chrome-devtools` MCP `click`/`fill`/`press_key` for anything a real user gesture must trigger.
 - **`returnByValue: true`** or you get back unserializable remote object handles. For big results, build a string in-page and return it.
 - **Module-scope variables** of the page's `<script type="module">` are not reachable from evaluate; go through `document.getElementById(...)` etc., or wrap/rebind handlers before triggering them.
 - **Always collect `Runtime.exceptionThrown`** — a page can look fine while the handler threw mid-way.
-
-## When raw CDP is not enough
-
-`Runtime.evaluate`-driven interaction can't do trusted clicks, performance tracing, or Lighthouse. For those, the official CLI (`chrome-devtools-mcp`, https://github.com/ChromeDevTools/chrome-devtools-mcp) provides `take_snapshot`, `click`, `performance_start_trace`, `lighthouse_audit`, …
-
-**ALWAYS ask the user for approval before installing or using it** (`npm i chrome-devtools-mcp@latest -g` adds a global package with a Puppeteer dependency tree, and its CLI manages its own Chrome instance). Propose the exact command, wait for explicit yes, and only then proceed. Do not use it as an unattended fallback — raw CDP in this skill stays the default.
+- **WSL networking (WSL only)**: on WSL this skill assumes `networkingMode=mirrored` in `.wslconfig`, so Windows `127.0.0.1` is WSL `localhost`. If `curl http://localhost:9333/json/version` fails after Chrome is up, networking is in NAT mode — the Windows host is not `localhost`; fall back to a Linux headless shell binary. Native Linux needs none of this.
