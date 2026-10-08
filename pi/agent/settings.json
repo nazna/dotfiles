@@ -1,7 +1,7 @@
 {
   "defaultProvider": "openrouter",
-  "defaultModel": "deepseek/deepseek-v4.1-flash",
-  "defaultThinkingLevel": "high",
+  "defaultModel": "z-ai/glm-5.3-flash",
+  "defaultThinkingLevel": "max",
   "defaultTools": [
     "+codemode"
   ],
