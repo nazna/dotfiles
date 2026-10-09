@@ -3,6 +3,5 @@ audit=true
 audit-level=high
 engine-strict=true
 ignore-scripts=true
-min-release-age=1
 save-exact=true
 strict-peer-deps=true
