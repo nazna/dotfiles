@@ -21,3 +21,4 @@
 - `.env` や `auth.json` のような表示すべき環境変数を出力してセッションログに残すべきではない
 - OpenRouter をプロバイダーとして使っているとき URL をユーザーが入力したら WebFetch/WebSearch を利用してよい
 - git リポジトリの URL をユーザーが入力したら librarian スキルを利用する
+- ウェブ検索が必要な場合は codemode の `ALL_TOOLS` だけでなく OpenRouter をプロバイダーに利用している場合は Server Tools で利用できるものを確認する
