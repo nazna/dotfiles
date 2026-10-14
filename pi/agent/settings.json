@@ -1,6 +1,6 @@
 {
   "defaultProvider": "openrouter",
-  "defaultModel": "z-ai/glm-5.3-flash",
+  "defaultModel": "openai/gpt-6-luna",
   "defaultThinkingLevel": "max",
   "defaultTools": [
     "+codemode"
