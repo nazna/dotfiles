@@ -1,14 +1,14 @@
 {
   "defaultProvider": "openrouter",
-  "defaultModel": "openai/gpt-6-luna",
-  "defaultThinkingLevel": "max",
+  "defaultModel": "deepseek/deepseek-v4.1-flash-1017",
+  "defaultThinkingLevel": "high",
   "defaultTools": [
     "+codemode"
   ],
   "enableInstallTelemetry": false,
   "collapseChangelog": true,
   "hideThinkingBlock": true,
-  "lastChangelogVersion": "1.1.0",
+  "lastChangelogVersion": "1.3.0",
   "theme": "system",
   "packages": [
     "git:github.com/DietrichGebert/ponytail"
