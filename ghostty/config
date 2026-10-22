@@ -2,7 +2,7 @@ config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
 
 theme = Catppuccin Frappe
 
-font-family = UDEV Gothic 35NF
+font-family = UDEV Gothic NF
 font-feature = -dlig
 
 window-theme = ghostty
