@@ -28,7 +28,7 @@
     "metrics": false,
   },
   "terminal": {
-    "font_family": "UDEV Gothic 35NF",
+    "font_family": "UDEV Gothic NF",
     "scroll_multiplier": 5,
   },
   "theme": {
@@ -36,6 +36,6 @@
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Frappé",
   },
-  "ui_font_family": "UDEV Gothic 35NF",
+  "ui_font_family": "UDEV Gothic NF",
   "ui_font_size": 16,
 }
