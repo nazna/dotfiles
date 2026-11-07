@@ -1,6 +1,5 @@
 alias cdw="cd ${HOME}/work"
 alias cds="cd ${HOME}/sandbox"
-alias up='cd ..'
 alias reload="exec ${SHELL} -l"
 
 alias ls='eza --classify=auto'
@@ -18,6 +17,7 @@ alias gcm='git commit --message'
 alias gps='git push'
 alias gpl='git pull'
 alias gg='git fetch --all --prune && git branch -vv | awk "/: gone]/{print \$1}" | xargs git branch -D'
+alias gpla='ghq list | ghq get --update --parallel'
 
 alias pic='pi --continue'
 

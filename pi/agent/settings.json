@@ -1,7 +1,7 @@
 {
   "defaultProvider": "openrouter",
-  "defaultModel": "stealth/crouton-alpha",
-  "defaultThinkingLevel": "high",
+  "defaultModel": "deepseek/deepseek-v4.1-flash-1017",
+  "defaultThinkingLevel": "max",
   "defaultTools": [
     "+codemode"
   ],
